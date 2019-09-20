@@ -1,0 +1,72 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+
+	This Template is responsible for creating a table of domain objects.
+
+	If you modify this template, do not forget to change the overwrite settings
+	in /Configuration/ExtensionBuilder/settings.yaml:
+	  Resources:
+		Private:
+		  Templates:
+			List.html: keep
+
+	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+	<f:section name="content">
+		<h1>Listing for Job</h1>
+
+		<f:flashMessages />
+
+		<table  class="tx_googleforjobs" >
+			<tr>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.date_posted" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.description" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.hiring_organization_name" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.hiring_organization_website" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.hiring_organization_logo_url" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.job_location_street_address" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.job_location_city" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.job_location_postal_code" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.job_location_region" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.job_location_country" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.title" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.valid_through" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.base_salary_currency" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.base_salary_unit_text" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.base_salary_value" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.employment_type" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.job_location_type" /></th>
+				<th><f:translate key="tx_googleforjobs_domain_model_job.applicant_location_requirements" /></th>
+				<th> </th>
+				<th> </th>
+			</tr>
+
+			<f:for each="{jobs}" as="job">
+				<tr>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.datePosted -> f:format.date()}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.description}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.hiringOrganizationName}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.hiringOrganizationWebsite}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.hiringOrganizationLogoUrl}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.jobLocationStreetAddress}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.jobLocationCity}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.jobLocationPostalCode}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.jobLocationRegion}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.jobLocationCountry}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.title}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.validThrough -> f:format.date()}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.baseSalaryCurrency}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.baseSalaryUnitText}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.baseSalaryValue}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.employmentType}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.jobLocationType}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{job : job}"> {job.applicantLocationRequirements}</f:link.action></td>
+					<td><f:link.action action="edit" arguments="{job : job}">Edit</f:link.action></td>
+					<td><f:link.action action="delete" arguments="{job : job}">Delete</f:link.action></td>
+				</tr>
+			</f:for>
+		</table>
+
+		<f:link.action action="new">New Job</f:link.action>
+	</f:section>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-09-19T13:34:19Z" product-name="google_for_jobs">
+		<header/>
+		<body>
+			<trans-unit id="tx_googleforjobs_domain_model_job">
+				<source>Job</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.date_posted">
+				<source>Date Posted</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_name">
+				<source>Hiring Organization Name</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_website">
+				<source>Hiring Organization Website</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_logo_url">
+				<source>Hiring Organization Logo Url</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_street_address">
+				<source>Job Location Street Address</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_city">
+				<source>Job Location City</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_postal_code">
+				<source>Job Location Postal Code</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_region">
+				<source>Job Location Region</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_country">
+				<source>Job Location Country</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.valid_through">
+				<source>Valid Through</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_currency">
+				<source>Base Salary Currency</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_text">
+				<source>Base Salary Unit Text</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_value">
+				<source>Base Salary Value</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type">
+				<source>Employment Type</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_type">
+				<source>Job Location Type</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements">
+				<source>Applicant Location Requirements</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,29 @@
+{
+    "name": "pegasus/google-for-jobs",
+    "type": "typo3-cms-extension",
+    "description": "Render Google for Jobs structured data.",
+    "authors": [
+        {
+            "name": "Michael Kunst",
+            "role": "Developer"
+        }
+    ],
+    "version": "1.0.0",
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pegasus\\GoogleForJobs\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pegasus\\GoogleForJobs\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "google_for_jobs": "self.version",
+        "typo3-ter/google-for-jobs": "self.version"
+    }
+}

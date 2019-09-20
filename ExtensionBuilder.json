@@ -1,0 +1,289 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    442,
+                    74
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Job",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "Jobs",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "1330535389404"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The original date that employer posted the job in ISO 8601 format. For example, \"2017-01-24\" or \"2017-01-24T19:33:17+00:00\".",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "datePosted",
+                            "propertyType": "NativeDate",
+                            "uid": "1388274184407"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The full description of the job in HTML format. The description should be a complete representation of the job, including job responsibilities, qualifications, skills, working hours, education requirements, and experience requirements. The description can't be the same as the title.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "description",
+                            "propertyType": "RichText",
+                            "uid": "1099006510149"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The organization offering the job position. This should be the name of the company, and not the specific location that is hiring.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "hiringOrganizationName",
+                            "propertyType": "String",
+                            "uid": "269250695117"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The website of the organization offering the job position. ",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "hiringOrganizationWebsite",
+                            "propertyType": "String",
+                            "uid": "632462524578"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "If you have a third-party job site, you can provide a different logo for a given organization than the image shown in the organization's Knowledge Graph card.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "hiringOrganizationLogoUrl",
+                            "propertyType": "String",
+                            "uid": "69017042391"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The Street and No. of the business where the employee will report to work.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "jobLocationStreetAddress",
+                            "propertyType": "String",
+                            "uid": "367548814038"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The city of the business where the employee will report to work.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "jobLocationCity",
+                            "propertyType": "String",
+                            "uid": "1422329731649"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The postal code of the business where the employee will report to work.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "jobLocationPostalCode",
+                            "propertyType": "String",
+                            "uid": "514447161648"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The region of the business where the employee will report to work. For example, California or another appropriate first-level Administrative division.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "jobLocationRegion",
+                            "propertyType": "String",
+                            "uid": "958220678793"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The country of the business where the employee will report to work. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "jobLocationCountry",
+                            "propertyType": "String",
+                            "uid": "1036342099705"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The title of the job. For example, \"Software Engineer\" or \"Barista\".",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "title",
+                            "propertyType": "String",
+                            "uid": "75243383211"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The date when the job posting will expire in ISO 8601 format. For example, \"2017-02-24\".",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "validThrough",
+                            "propertyType": "NativeDate",
+                            "uid": "1319838858797"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The currency of the base salary for the job.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "baseSalaryCurrency",
+                            "propertyType": "String",
+                            "uid": "1071168739974"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "For the unitText of the base salary, use one of the following case-sensitive values: \"HOUR\",\"DAY\",\"WEEK\",\"MONTH\",\"YEAR\"",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "baseSalaryUnitText",
+                            "propertyType": "String",
+                            "uid": "1079434107985"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The actual base salary for the job, as provided by the employer (not an estimate).",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "baseSalaryValue",
+                            "propertyType": "Float",
+                            "uid": "1370065543220"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Type of employment. Choose one or more of the following case-sensitive values: \"FULL_TIME\", \"PART_TIME\", \"CONTRACTOR\", \"TEMPORARY\", \"INTERN\", \"VOLUNTEER\"\n\"PER_DIEM\"\n\"OTHER\"",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "employmentType",
+                            "propertyType": "String",
+                            "uid": "94093364189"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Set this property with the value TELECOMMUTE for jobs in which the employee may or must work remotely 100% of the time.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "jobLocationType",
+                            "propertyType": "String",
+                            "uid": "1331999512842"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "The country in which employees may be located for to be eligible for the remote job.",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "applicantLocationRequirements",
+                            "propertyType": "String",
+                            "uid": "1286335090061"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "Render Google for Jobs structured data.",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 9.5.0-9.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "9.5.0-9.5.99",
+            "version": "0.1.0"
+        },
+        "extensionKey": "google_for_jobs",
+        "name": "Google for Jobs",
+        "originalExtensionKey": "google_for_jobs",
+        "originalVendorName": "Pegasus",
+        "persons": [
+            {
+                "company": "PEGASUS Werbeagentur GmbH",
+                "email": "kunst@pega-sus.de",
+                "name": "Michael Kunst",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Job => list, show",
+                    "noncacheableActions": "",
+                    "switchableActions": ""
+                },
+                "description": "",
+                "key": "job",
+                "name": "Job (Google for Jobs)"
+            }
+        ],
+        "vendorName": "Pegasus"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2019-09-19 01:34",
+        "extension_builder_version": "9.10.0",
+        "be_user": " (1)"
+    }
+}

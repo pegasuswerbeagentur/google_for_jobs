@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-09-19T13:34:19Z" product-name="google_for_jobs">
+		<header/>
+		<body>
+			<trans-unit id="date_posted.description">
+				<source>The original date that employer posted the job in ISO 8601 format. For example, &amp;quot;2017-01-24&amp;quot; or &amp;quot;2017-01-24T19:33:17+00:00&amp;quot;.</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>The full description of the job in HTML format. The description should be a complete representation of the job, including job responsibilities, qualifications, skills, working hours, education requirements, and experience requirements. The description can&#039;t be the same as the title.</source>
+			</trans-unit>
+			<trans-unit id="hiring_organization_name.description">
+				<source>The organization offering the job position. This should be the name of the company, and not the specific location that is hiring.</source>
+			</trans-unit>
+			<trans-unit id="hiring_organization_website.description">
+				<source>The website of the organization offering the job position. </source>
+			</trans-unit>
+			<trans-unit id="hiring_organization_logo_url.description">
+				<source>If you have a third-party job site, you can provide a different logo for a given organization than the image shown in the organization&#039;s Knowledge Graph card.</source>
+			</trans-unit>
+			<trans-unit id="job_location_street_address.description">
+				<source>The Street and No. of the business where the employee will report to work.</source>
+			</trans-unit>
+			<trans-unit id="job_location_city.description">
+				<source>The city of the business where the employee will report to work.</source>
+			</trans-unit>
+			<trans-unit id="job_location_postal_code.description">
+				<source>The postal code of the business where the employee will report to work.</source>
+			</trans-unit>
+			<trans-unit id="job_location_region.description">
+				<source>The region of the business where the employee will report to work. For example, California or another appropriate first-level Administrative division.</source>
+			</trans-unit>
+			<trans-unit id="job_location_country.description">
+				<source>The country of the business where the employee will report to work. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>The title of the job. For example, &amp;quot;Software Engineer&amp;quot; or &amp;quot;Barista&amp;quot;.</source>
+			</trans-unit>
+			<trans-unit id="valid_through.description">
+				<source>The date when the job posting will expire in ISO 8601 format. For example, &amp;quot;2017-02-24&amp;quot;.</source>
+			</trans-unit>
+			<trans-unit id="base_salary_currency.description">
+				<source>The currency of the base salary for the job.</source>
+			</trans-unit>
+			<trans-unit id="base_salary_unit_text.description">
+				<source>For the unitText of the base salary, use one of the following case-sensitive values: &amp;quot;HOUR&amp;quot;,&amp;quot;DAY&amp;quot;,&amp;quot;WEEK&amp;quot;,&amp;quot;MONTH&amp;quot;,&amp;quot;YEAR&amp;quot;</source>
+			</trans-unit>
+			<trans-unit id="base_salary_value.description">
+				<source>The actual base salary for the job, as provided by the employer (not an estimate).</source>
+			</trans-unit>
+			<trans-unit id="employment_type.description">
+				<source>Type of employment. Choose one or more of the following case-sensitive values: &amp;quot;FULL_TIME&amp;quot;, &amp;quot;PART_TIME&amp;quot;, &amp;quot;CONTRACTOR&amp;quot;, &amp;quot;TEMPORARY&amp;quot;, &amp;quot;INTERN&amp;quot;, &amp;quot;VOLUNTEER&amp;quot;
+&amp;quot;PER_DIEM&amp;quot;
+&amp;quot;OTHER&amp;quot;</source>
+			</trans-unit>
+			<trans-unit id="job_location_type.description">
+				<source>Set this property with the value TELECOMMUTE for jobs in which the employee may or must work remotely 100% of the time.</source>
+			</trans-unit>
+			<trans-unit id="applicant_location_requirements.description">
+				<source>The country in which employees may be located for to be eligible for the remote job.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
