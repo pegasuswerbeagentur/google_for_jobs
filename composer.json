@@ -1,7 +1,7 @@
 {
     "name": "pegasus/google-for-jobs",
     "type": "typo3-cms-extension",
-    "description": "Render Google for Jobs structured data.",
+    "description": "TYPO3 Extension for Google for Jobs.",
     "authors": [
         {
             "name": "Michael Kunst",
