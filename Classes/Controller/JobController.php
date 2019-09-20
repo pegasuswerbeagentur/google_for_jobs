@@ -46,6 +46,9 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {   
         $structuredData = $job->createStructuredData();
         $this->view->assign('structuredData', $structuredData);
-        $this->view->assign('job', $job);
+        
+        if($this->settings['job']['renderDetailTemplate']) {
+            $this->view->assign('job', $job);
+        }
     }
 }

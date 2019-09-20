@@ -42,8 +42,11 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.valid_through">
 				<source>Valid Through</source>
 			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_enable">
+				<source>Add Salary Information</source>
+			</trans-unit>			
 			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_currency">
-				<source>Base Salary Currency</source>
+				<source>Base Salary Currency (ISO 4217 Currency Format)</source>
 			</trans-unit>
 			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_text">
 				<source>Base Salary Unit Text</source>
@@ -55,10 +58,10 @@
 				<source>Employment Type</source>
 			</trans-unit>
 			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_type">
-				<source>Job Location Type</source>
+				<source>Remote Job</source>
 			</trans-unit>
 			<trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements">
-				<source>Applicant Location Requirements</source>
+				<source>Applicant Location Requirements (Country)</source>
 			</trans-unit>
 			<trans-unit id="tx_google_for_jobs_job.name">
 				<source>Job (Google for Jobs)</source>

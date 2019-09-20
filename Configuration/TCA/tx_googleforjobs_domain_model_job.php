@@ -16,15 +16,15 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'requestUpdate' => 'job_location_type',
+        'requestUpdate' => 'job_location_type, base_salary_enable',
         'searchFields' => 'title,description,hiring_organization_name,hiring_organization_website,hiring_organization_logo_url,job_location_street_address,job_location_city,job_location_postal_code,job_location_region,job_location_country,base_salary_currency,base_salary_unit_text,employment_type,job_location_type,applicant_location_requirements',
         'iconfile' => 'EXT:google_for_jobs/Resources/Public/Icons/tx_googleforjobs_domain_model_job.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, date_posted, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_location_street_address, job_location_city, job_location_postal_code, job_location_region, job_location_country, valid_through, base_salary_currency, base_salary_unit_text, base_salary_value, employment_type, job_location_type, applicant_location_requirements',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, date_posted, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_location_street_address, job_location_city, job_location_postal_code, job_location_region, job_location_country, valid_through, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, employment_type, job_location_type, applicant_location_requirements',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, employment_type, date_posted, valid_through, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_location_street_address, job_location_city, job_location_postal_code, job_location_region, job_location_country, base_salary_currency, base_salary_unit_text, base_salary_value, job_location_type, applicant_location_requirements, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, employment_type, date_posted, valid_through, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_location_street_address, job_location_city, job_location_postal_code, job_location_region, job_location_country, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, job_location_type, applicant_location_requirements, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -171,10 +171,6 @@ return [
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
-                'linkPopup' => [
-                    'blindLinkOptions' => 'file, mail, page, spec',
-                    'blindLinkFields' => 'class, params',
-                ],
                 'size' => 30,
                 'eval' => 'trim,required,domainname'
             ],
@@ -184,6 +180,7 @@ return [
             'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.hiring_organization_logo_url',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputLink',
                 'size' => 30,
                 'eval' => 'trim,domainname'
             ],
@@ -245,14 +242,23 @@ return [
                 'default' => null,
             ],
         ],
+        'base_salary_enable' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_enable',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle'
+            ],
+        ],
         'base_salary_currency' => [
             'exclude' => true,
             'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_currency',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim,required'
             ],
+            'displayCond' => 'FIELD:base_salary_enable:=:1',
         ],
         'base_salary_unit_text' => [
             'exclude' => true,
@@ -268,6 +274,7 @@ return [
                     ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_year', 'YEAR'],
                 ],
             ],
+            'displayCond' => 'FIELD:base_salary_enable:=:1',
         ],
         'base_salary_value' => [
             'exclude' => true,
@@ -275,8 +282,9 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'double2'
-            ]
+                'eval' => 'double2,required'
+            ],
+            'displayCond' => 'FIELD:base_salary_enable:=:1',
         ],
         'employment_type' => [
             'exclude' => true,

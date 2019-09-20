@@ -16,6 +16,7 @@ CREATE TABLE tx_googleforjobs_domain_model_job (
 	job_location_postal_code varchar(255) DEFAULT '' NOT NULL,
 	job_location_region varchar(255) DEFAULT '' NOT NULL,
 	job_location_country varchar(255) DEFAULT '' NOT NULL,
+	base_salary_enable tinyint(1) DEFAULT '0' NOT NULL,
 	base_salary_currency varchar(255) DEFAULT '' NOT NULL,
 	base_salary_unit_text varchar(255) DEFAULT '' NOT NULL,
 	base_salary_value double(11,2) DEFAULT '0.00' NOT NULL,
