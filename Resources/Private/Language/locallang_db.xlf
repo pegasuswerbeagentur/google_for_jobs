@@ -66,7 +66,6 @@
 			<trans-unit id="tx_google_for_jobs_job.description">
 				<source></source>
 			</trans-unit>
-
 			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_full_time">
 				<source>Full-time</source>
 			</trans-unit>
@@ -90,6 +89,21 @@
 			</trans-unit>
 			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_other">
 				<source>Other</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_hour">
+				<source>Hour</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_day">
+				<source>Day</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_week">
+				<source>Week</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_month">
+				<source>Month</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_year">
+				<source>Year</source>
 			</trans-unit>
 		</body>
 	</file>

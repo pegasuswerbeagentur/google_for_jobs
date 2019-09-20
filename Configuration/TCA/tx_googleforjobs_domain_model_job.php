@@ -16,6 +16,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
+        'requestUpdate' => 'job_location_type',
         'searchFields' => 'title,description,hiring_organization_name,hiring_organization_website,hiring_organization_logo_url,job_location_street_address,job_location_city,job_location_postal_code,job_location_region,job_location_country,base_salary_currency,base_salary_unit_text,employment_type,job_location_type,applicant_location_requirements',
         'iconfile' => 'EXT:google_for_jobs/Resources/Public/Icons/tx_googleforjobs_domain_model_job.gif'
     ],
@@ -257,9 +258,15 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_text',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_hour', 'HOUR'],
+                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_day', 'DAY'],
+                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_week', 'WEEK'],
+                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_month', 'MONTH'],
+                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_year', 'YEAR'],
+                ],
             ],
         ],
         'base_salary_value' => [
@@ -293,9 +300,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.job_location_type',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'check',
+                'renderType' => 'checkboxToggle'
             ],
         ],
         'applicant_location_requirements' => [
@@ -304,8 +310,9 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim,required'
             ],
+            'displayCond' => 'FIELD:job_location_type:=:1',
         ],
     
     ],

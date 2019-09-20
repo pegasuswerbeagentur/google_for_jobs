@@ -546,4 +546,77 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->applicantLocationRequirements = $applicantLocationRequirements;
     }
+
+    /**
+     * Creates and returns Structured Data JSON string from job data for output 
+     */
+    public function createStructuredData()
+    {   
+        $data = [];
+        // mandatory key/value
+        $data['@context'] = "https://schema.org/";
+        // mandatory key/value
+        $data['@type'] = 'JobPosting';
+        // title of the job offer
+        $data['title'] = $this->getTitle();
+        // Full HTML description of the job offer
+        $data['description'] = $this->getDescription();
+        // Creation date of the job offer, converts crdate field (unix time) to Y-m-d format
+        $data['datePosted'] = $this->getDatePosted();
+        // date through which the offer is valid (format: Y-m-d)
+        $data['validThrough'] = $this->getValidThrough();
+        // type of employment (valid values: FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER)
+        $data['employmentType'] = explode(',', $this->getEmploymentType());
+ 
+        // mandatory key/value
+        $data['identifier']['@type'] = 'PropertyValue';
+        // name of the offering organization
+        $data['identifier']['name'] = $this->getHiringOrganizationName();
+        // unique ID for the job offer, uses the CE uid converted to a string
+        $data['identifier']['value'] = $this->getUid();
+ 
+        // mandatory key/value
+        $data['hiringOrganization']['@type'] = 'Organization';
+        // name of the offering organization
+        $data['hiringOrganization']['name'] = $this->getHiringOrganizationName();
+        // website of the hiring organization
+        $data['hiringOrganization']['sameAs'] = $this->getHiringOrganizationWebsite();
+ 
+        // mandatory key/value
+        $data['jobLocation']['@type'] = 'Place';
+        // mandatory key/value
+        $data['jobLocation']['address']['@type'] = 'PostalAddress';
+        // street and no. of the job location
+        $data['jobLocation']['address']['streetAddress'] = $this->getJobLocationStreetAddress();
+        // city of the job location
+        $data['jobLocation']['address']['addressLocality'] = $this->getJobLocationCity();
+        // region of the job location
+        $data['jobLocation']['address']['addressRegion'] = $this->getJobLocationRegion();
+        // postal code of the job location
+        $data['jobLocation']['address']['postalCode'] = $this->getJobLocationPostalCode();
+        // country of the job location
+        $data['jobLocation']['address']['addressCountry'] = $this->getJobLocationCountry();
+
+        $data['baseSalary']['@type'] = 'MonetaryAmount';
+        $data['baseSalary']['currency'] = $this->getBaseSalaryCurrency();
+        $data['baseSalary']['value']['@type'] = 'QuantativeValue';
+        $data['baseSalary']['value']['value'] = $this->getBaseSalaryValue();
+        $data['baseSalary']['value']['unitText'] = $this->getBaseSalaryUnitText();
+
+        if($this->getJobLocationType()) {
+            $data['jobLocationType'] = 'TELECOMMUTE';
+            $data['applicantLocationRequirement']['@type'] = 'Country';
+            $data['applicantLocationRequirement']['name'] = $this->getApplicantLocationRequirements();
+        }
+ 
+        // convert data to JSON format while keeping certain characters unescaped
+        // JSON_UNESCAPED_UNICODE: Don't escape unicode characters (e.g "&")
+        // JSON_UNESCAPED_SLASHES: Don't escape slashes
+        $jsonData = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+        // add script tag
+        $sturcturedData = '<script type="application/ld+json">' . $jsonData . '</script>';
+
+        return $sturcturedData;
+    }
 }

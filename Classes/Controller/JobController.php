@@ -1,7 +1,6 @@
 <?php
 namespace Pegasus\GoogleForJobs\Controller;
 
-
 /***
  *
  * This file is part of the "Google for Jobs" Extension for TYPO3 CMS.
@@ -44,7 +43,9 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @return void
      */
     public function showAction(\Pegasus\GoogleForJobs\Domain\Model\Job $job)
-    {
+    {   
+        $structuredData = $job->createStructuredData();
+        $this->view->assign('structuredData', $structuredData);
         $this->view->assign('job', $job);
     }
 }
