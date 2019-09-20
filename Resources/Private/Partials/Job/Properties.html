@@ -2,7 +2,16 @@
 
 <div class="tx_googleforjobs-single">
 	<div>
-		<f:translate key="tx_googleforjobs_domain_model_job.description" />
+			<f:format.htmlentitiesDecode>{job.description}</f:format.htmlentitiesDecode>
+	</div>
+	<div>
+			<f:format.htmlentitiesDecode>{job.date_posted}</f:format.htmlentitiesDecode>
+	</div>
+	<div>
+			<f:format.htmlentitiesDecode>{job.hiring_organization_logo_url}</f:format.htmlentitiesDecode>
+	</div>
+	<div>
+			<f:format.htmlentitiesDecode>{job.hiring_organization_name}</f:format.htmlentitiesDecode>
 	</div>
 </div>
 
