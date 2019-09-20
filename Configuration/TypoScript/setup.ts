@@ -9,7 +9,7 @@ plugin.tx_googleforjobs_job {
         layoutRootPaths.1 = {$plugin.tx_googleforjobs_job.view.layoutRootPath}
     }
     persistence {
-        storagePid = {$plugin.tx_googleforjobs_job.persistence.storagePid}
+        storagePid >
         #recursive = 1
     }
     features {
