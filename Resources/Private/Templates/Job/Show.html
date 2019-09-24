@@ -4,14 +4,11 @@
 	<f:section name="content">
 		<f:format.raw>{structuredData}</f:format.raw>
 
-		<f:if condition="{job}">
-			<h1>{job.title}</h1>		
+		<f:if condition="{job}">		
 			<f:flashMessages />
 			<f:render partial="Job/Properties" arguments="{job:job}" />
 			<f:link.action action="list">Back to list</f:link.action>
-			
 		</f:if>
 		
-
 	</f:section>
 </html>
