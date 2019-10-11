@@ -1,7 +1,5 @@
 <?php
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
 defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(
@@ -24,4 +22,4 @@ call_user_func(
 
 $pluginSignature = 'googleforjobs_job';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:google_for_jobs/Configuration/FlexForms/flexform_job.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:google_for_jobs/Configuration/FlexForms/flexform_job.xml');
