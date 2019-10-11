@@ -47,3 +47,7 @@ to accept only bugfixes if I can reproduce the issue.
 - Features: Feel free to contact us if u have some cool ideas or wishes.
 
 [1]: https://getcomposer.org/
+
+### 3.3. Changelog
+
+Read the full Changelog [here](./CHANGLOG.md).
