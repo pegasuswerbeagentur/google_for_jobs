@@ -1,7 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.1] - 2019-11-20
+## [1.2.0] - 2019-10-28
+### Added
+- Support for detail view on different page than list view
+
+### Fixed
+- correct JSON output for datePosted and validThrough settings
+
+## [1.1.1] - 2019-10-11
 ### Added
 - Changelog.
 
