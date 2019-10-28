@@ -562,9 +562,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         // Full HTML description of the job offer
         $data['description'] = $this->getDescription();
         // Creation date of the job offer, converts crdate field (unix time) to Y-m-d format
-        $data['datePosted'] = $this->getDatePosted();
+        $data['datePosted'] = $this->getDatePosted()->format('Y-m-d');
         // date through which the offer is valid (format: Y-m-d)
-        $data['validThrough'] = $this->getValidThrough();
+        $data['validThrough'] = $this->getValidThrough()->format('Y-m-d');
         // type of employment (valid values: FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER)
         $data['employmentType'] = explode(',', $this->getEmploymentType());
  
@@ -599,7 +599,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
         $data['baseSalary']['@type'] = 'MonetaryAmount';
         $data['baseSalary']['currency'] = $this->getBaseSalaryCurrency();
-        $data['baseSalary']['value']['@type'] = 'QuantativeValue';
+        $data['baseSalary']['value']['@type'] = 'QuantitativeValue';
         $data['baseSalary']['value']['value'] = $this->getBaseSalaryValue();
         $data['baseSalary']['value']['unitText'] = $this->getBaseSalaryUnitText();
 
