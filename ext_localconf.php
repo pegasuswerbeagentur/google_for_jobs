@@ -9,7 +9,7 @@ call_user_func(
             'Pegasus.GoogleForJobs',
             'Job',
             [
-                'Job' => 'list, show'
+                'Job' => 'list, show, noJobFound'
             ],
             // non-cacheable actions
             [

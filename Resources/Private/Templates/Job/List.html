@@ -3,13 +3,12 @@
 
 	<f:section name="content">
 		<h1>Listing for Jobs</h1>
-
 		<f:flashMessages />
 
 		<div class="tx_googleforjobs-list">
 			<f:for each="{jobs}" as="job">
 				<div class="jobs-list-wrap">
-					<f:link.action action="show" arguments="{job : job}">
+					<f:link.action action="show" arguments="{job : job}" pageUid="{settings.job.detailPid}">
 					 	<div class="job-title">
 							{job.title}
 						</div>

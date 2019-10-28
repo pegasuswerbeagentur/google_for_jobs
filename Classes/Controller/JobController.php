@@ -31,7 +31,10 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @return void
      */
     public function listAction()
-    {
+    {   
+        if ($this->settings['job']['renderType'] != 'list') {
+            $this->redirect('noJobFound');
+        }
         $jobs = $this->jobRepository->findAll();
         $this->view->assign('jobs', $jobs);
     }
@@ -50,5 +53,14 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if($this->settings['job']['renderDetailTemplate']) {
             $this->view->assign('job', $job);
         }
+    }
+
+    /**
+     * Render no job found template
+     * 
+     * @return void 
+     */
+    protected function noJobFoundAction()
+    {
     }
 }

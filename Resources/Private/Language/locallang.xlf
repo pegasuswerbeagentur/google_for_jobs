@@ -60,6 +60,9 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements">
 				<source>Applicant Location Requirements</source>
 			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.no_job_found">
+				<source>This job is not available anymore.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
