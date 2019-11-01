@@ -30,7 +30,7 @@ Download and install the extension with the extension manager module.
 ### 3) Sitemap
 
 Add the following code to your setup.typoscript
-
+```
 plugin.tx_seo.config {
   xmlSitemap {
     sitemaps {
@@ -57,7 +57,7 @@ plugin.tx_seo.config {
     }
   }
 }
-
+```
 ## 3. Administration
 
 ### 3.1. Versions and support
