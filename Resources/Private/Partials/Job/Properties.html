@@ -1,60 +1,120 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <div class="tx_googleforjobs-single">
-	<div>
-		<f:format.raw>{job.title}</f:format.raw>
-	</div>
-	<div>
-		<f:format.htmlentitiesDecode>{job.description}</f:format.htmlentitiesDecode>
-	</div>
-	<div>
-		<f:format.date format="%d. %B %Y">{job.dateposted}</f:format.date>
-	</div>
-	<div>
-		<f:format.raw>{job.hiringorganizationlogourl}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.hiringorganizationname}</f:format.raw>
-	</div>
-	<div>
-		<f:link.typolink parameter="{job.hiringorganizationwebsite}">{job.hiringorganizationwebsite}</f:link.typolink>
-	</div>
-	<div>
-		<f:format.raw>{job.joblocationcity}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.joblocationstreetaddress}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.joblocationpostalcode}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.joblocationregion}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.joblocationtype}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.joblocationcountry}</f:format.raw>
-	</div>
-	<div>
-		<f:format.date format="%d. %B %Y">{job.validthrough}</f:format.date>
-	</div>
-	<div>
-		<f:format.raw>{job.basesalarycurrency}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.basesalaryunittext}</f:format.raw>
-	</div>
-	<div>
-		<f:format.currency>{job.basesalaryvalue}</f:format.currency>
-	</div>
-	<div>
-		<f:format.raw>{job.employmenttype}</f:format.raw>
-	</div>
-	<div>
-		<f:format.raw>{job.applicantlocationrequirements}</f:format.raw>
-	</div>
+
+    <f:comment>General</f:comment>
+
+    <f:if condition="{job.alternativeTitle}">
+        <div>
+            <f:format.raw>{job.alternativeTitle}</f:format.raw>
+        </div>
+    </f:if>
+
+    <f:comment>/General</f:comment>
+
+
+    <f:comment>Structured data</f:comment>
+
+    <div>
+        <f:format.raw>{job.title}</f:format.raw>
+    </div>
+    <div>
+        <f:format.html>{job.description}</f:format.html>
+    </div>
+    <div>
+        <f:format.date format="%d. %B %Y">{job.dateposted}</f:format.date>
+    </div>
+    <div>
+        <f:link.typolink parameter="{job.hiringorganizationlogourl}">{job.hiringorganizationlogourl}</f:link.typolink>
+    </div>
+    <div>
+        <f:format.raw>{job.hiringorganizationname}</f:format.raw>
+    </div>
+    <div>
+        <f:link.typolink parameter="{job.hiringorganizationwebsite}">{job.hiringorganizationwebsite}</f:link.typolink>
+    </div>
+    <div>
+        <f:format.raw>{job.joblocationcity}</f:format.raw>
+    </div>
+    <div>
+        <f:format.raw>{job.joblocationstreetaddress}</f:format.raw>
+    </div>
+    <div>
+        <f:format.raw>{job.joblocationpostalcode}</f:format.raw>
+    </div>
+    <div>
+        <f:format.raw>{job.joblocationregion}</f:format.raw>
+    </div>
+    <div>
+        <f:format.raw>{job.joblocationtype}</f:format.raw>
+    </div>
+    <div>
+        <f:format.raw>{job.joblocationcountry}</f:format.raw>
+    </div>
+    <div>
+        <f:format.date format="%d. %B %Y">{job.validthrough}</f:format.date>
+    </div>
+    <div>
+        <f:format.raw>{job.basesalarycurrency}</f:format.raw>
+    </div>
+    <div>
+        <f:format.raw>{job.basesalaryunittext}</f:format.raw>
+    </div>
+    <div>
+        <f:format.currency>{job.basesalaryvalue}</f:format.currency>
+    </div>
+    <div>
+        <f:format.raw>{job.employmenttype}</f:format.raw>
+    </div>
+    <div>
+        <f:format.raw>{job.applicantlocationrequirements}</f:format.raw>
+    </div>
+
+    <f:comment>/Structured data</f:comment>
+
+
+    <f:comment>Media</f:comment>
+
+    <f:if condition="{job.falMedia}">
+        <f:for each="{job.falMedia}" as="mediaFile">
+            <div>
+                <f:image image="{mediaFile}" title="{mediaFile.title}" alt="{mediaFile.alternative}" />
+            </div>
+        </f:for>
+    </f:if>
+    <f:if condition="{job.falRelatedFiles}">
+        <ul>
+            <f:for each="{job.falRelatedFiles}" as="relatedFile">
+                <li>
+                    <a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+								{f:if(condition:relatedFile.originalResource.title, then:relatedFile.originalResource.title, else:relatedFile.originalResource.name)}
+							</a>
+                    <span>
+								{relatedFile.originalResource.size -> f:format.bytes()}
+						</span>
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+
+    <f:comment>/Media</f:comment>
+
+
+    <f:comment>Metadata</f:comment>
+
+    <f:if condition="{job.author}">
+        <div>
+            <f:format.raw>{job.author}</f:format.raw>
+        </div>
+    </f:if>
+    <f:if condition="{job.category}">
+        <div>
+            <f:format.raw>{job.category}</f:format.raw>
+        </div>
+    </f:if>
+
+    <f:comment>/Metadata</f:comment>
+
 </div>
 
 </html>
