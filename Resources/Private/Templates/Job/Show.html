@@ -1,14 +1,15 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
+<f:layout name="Default" />
 
-	<f:section name="content">
-		<f:format.raw>{structuredData}</f:format.raw>
+<f:section name="content">
+    <f:format.raw>{structuredData}</f:format.raw>
 
-		<f:if condition="{job}">		
-			<f:flashMessages />
-			<f:render partial="Job/Properties" arguments="{job:job}" />
-			<f:link.action action="list" pageUid="{settings.job.returnToPid}">Back to list</f:link.action>
-		</f:if>
-		
-	</f:section>
+    <f:if condition="{job}">
+        <f:flashMessages />
+        <f:render partial="Job/Properties" arguments="{job:job}" />
+        <f:link.action action="list" pageUid="{settings.job.returnToPid}">Back to list</f:link.action>
+    </f:if>
+
+</f:section>
+
 </html>

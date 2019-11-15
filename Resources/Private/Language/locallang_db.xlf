@@ -108,6 +108,33 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_year">
 				<source>Year</source>
 			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.path_segment">
+				<source>Speaking URL path segment</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.fal_media">
+				<source>Media Files</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.fal_media.add">
+				<source>Add media file</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.fal_related_files">
+				<source>Related Files</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.fal_related_files.add">
+				<source>Add related file</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.alternative_title">
+				<source>Alternative title</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.notes">
+				<source>Notes</source>
+			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.structured_data">
+				<source>Structured data</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

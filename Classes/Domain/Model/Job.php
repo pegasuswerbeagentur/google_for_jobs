@@ -170,6 +170,196 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $applicantLocationRequirements = '';
 
     /**
+     * @var string
+     */
+    protected $pathSegment;
+
+    /**
+     * Fal media items
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $falMedia;
+
+    /**
+     * Fal related files
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $falRelatedFiles;
+
+    /**
+     * @var string
+     */
+    protected $author;
+
+    /**
+     * @var string
+     */
+    protected $alternativeTitle;
+
+    /**
+     * @var string
+     */
+    protected $category;
+
+    /** @var string */
+    protected $notes;
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        $this->initStorageObjects();
+    }
+
+    /**
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->falMedia = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->falRelatedFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Get path segment
+     *
+     * @return string
+     */
+    public function getPathSegment()
+    {
+        return $this->pathSegment;
+    }
+
+    /**
+     * Set path segment
+     *
+     * @param string $pathSegment
+     */
+    public function setPathSegment($pathSegment)
+    {
+        $this->pathSegment = $pathSegment;
+    }
+
+    /**
+     * Get the Fal media items
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falMedia
+     */
+    public function getFalMedia()
+    {
+        return $this->falMedia;
+    }
+
+    /**
+     * Set Fal media relation
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falMedia
+     */
+    public function setFalMedia(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $falMedia)
+    {
+        $this->falMedia = $falMedia;
+    }
+
+    /**
+     * Get FAL related files
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falRelatedFiles
+     */
+    public function getFalRelatedFiles()
+    {
+        return $this->falRelatedFiles;
+    }
+
+    /**
+     * Set FAL related files
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falRelatedFiles
+     */
+    public function setFalRelatedFiles($falRelatedFiles)
+    {
+        $this->falRelatedFiles = $falRelatedFiles;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Get alternative title
+     *
+     * @return string
+     */
+    public function getAlternativeTitle()
+    {
+        return $this->alternativeTitle;
+    }
+
+    /**
+     * Set alternative title
+     *
+     * @param string $alternativeTitle
+     */
+    public function setAlternativeTitle($alternativeTitle)
+    {
+        $this->alternativeTitle = $alternativeTitle;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * @param string $notes
+     */
+    public function setNotes(string $notes)
+    {
+        $this->notes = $notes;
+    }
+
+    /**
      * Returns the datePosted
      * 
      * @return \DateTime $datePosted
