@@ -58,6 +58,30 @@ plugin.tx_seo.config {
   }
 }
 ```
+
+### 4) Routing Enhancer
+
+Add the following code to your config.yaml
+```
+routeEnhancers:
+  JobsPlugin:
+    type: Extbase
+    extension: GoogleForJobs
+    plugin: Job
+    routes:
+      -
+        routePath: '/{job_title}'
+        _controller: 'Job::show'
+        _arguments:
+          job_title: job
+    defaultController: 'Job::show'
+    aspects:
+      job_title:
+        type: PersistedAliasMapper
+        tableName: tx_googleforjobs_domain_model_job
+        routeFieldName: path_segment
+```
+
 ## 3. Administration
 
 ### 3.1. Versions and support
