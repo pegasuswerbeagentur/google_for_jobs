@@ -27,6 +27,37 @@ Download and install the extension with the extension manager module.
 2) Create some job records on a sysfolder.
 3) Create a plugin on a page and select at least the sysfolder as startingpoint.
 
+### 3) Sitemap
+
+Add the following code to your setup.typoscript
+```
+plugin.tx_seo.config {
+  xmlSitemap {
+    sitemaps {
+      jobs {
+        provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+        config {
+          table = tx_googleforjobs_domain_model_job
+          sortField = uid
+          lastModifiedField = tstamp
+          pid = <page id containing news records>
+          url {
+            pageId = <your detail page id>
+            fieldToParameterMap {
+              uid = tx_googleforjobs_job[job]
+            }
+            additionalGetParameters {
+              tx_googleforjobs_job.controller = Job
+              tx_googleforjobs_job.action = show
+            }
+            useCacheHash = 1
+          }
+        }
+      }
+    }
+  }
+}
+```
 ## 3. Administration
 
 ### 3.1. Versions and support
