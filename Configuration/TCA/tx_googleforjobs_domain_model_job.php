@@ -338,9 +338,20 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.path_segment',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'nospace,alphanum_x,lower,unique',
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['title'],
+                    'fieldSeparator' => '/',
+                    'prefixParentPageSlug' => true,
+                    'replacements' => [
+                        '/' => '-',
+                        '(' => '-',
+                        ')' => '-',
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => ''
             ],
         ],
         'fal_media' => [
