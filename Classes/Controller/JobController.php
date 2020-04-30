@@ -42,14 +42,19 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * action show
      * 
+     * Renders the job detail template and renders the jobs
+     * structured data script tag to the html head. 
+     * 
      * @param \Pegasus\GoogleForJobs\Domain\Model\Job $job
      * @return void
      */
     public function showAction(\Pegasus\GoogleForJobs\Domain\Model\Job $job)
     {   
         $structuredData = $job->createStructuredData();
-        $this->view->assign('structuredData', $structuredData);
-        
+        /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
+        $pageRenderer = $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        $pageRenderer->addHeaderData($structuredData);
+
         if($this->settings['job']['renderDetailTemplate']) {
             $this->view->assign('job', $job);
         }
