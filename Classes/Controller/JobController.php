@@ -1,5 +1,11 @@
 <?php
+declare(strict_types=1);
+
 namespace Pegasus\GoogleForJobs\Controller;
+
+use \Pegasus\GoogleForJobs\Domain\Model\Job;
+use \Pegasus\GoogleForJobs\Domain\Repository\JobRepository;
+use \TYPO3\CMS\Core\Page\PageRenderer;
 
 /***
  *
@@ -30,7 +36,7 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * 
      * @return void
      */
-    public function listAction()
+    public function listAction(): void
     {   
         if ($this->settings['job']['renderType'] != 'list') {
             $this->redirect('noJobFound');
@@ -45,14 +51,14 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * Renders the job detail template and renders the jobs
      * structured data script tag to the html head. 
      * 
-     * @param \Pegasus\GoogleForJobs\Domain\Model\Job $job
+     * @param Job $job
      * @return void
      */
-    public function showAction(\Pegasus\GoogleForJobs\Domain\Model\Job $job)
+    public function showAction(Job $job): void
     {   
         $structuredData = $job->createStructuredData();
-        /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
-        $pageRenderer = $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        /** @var PageRenderer $pageRenderer */
+        $pageRenderer = $this->objectManager->get(PageRenderer::class);
         $pageRenderer->addHeaderData($structuredData);
 
         if($this->settings['job']['renderDetailTemplate']) {
@@ -65,7 +71,7 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * 
      * @return void 
      */
-    protected function noJobFoundAction()
+    protected function noJobFoundAction(): void
     {
     }
 }
