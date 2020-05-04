@@ -5,6 +5,7 @@ namespace Pegasus\GoogleForJobs\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Pegasus\GoogleForJobs\Domain\Model\JobLocation;
 
 /***
  *
@@ -67,46 +68,12 @@ class Job extends AbstractEntity
     protected $hiringOrganizationLogoUrl = '';
 
     /**
-     * The Street and No. of the business where the employee will report to work.
+     * The physical location(s) of the business where the employee will report to work.
      * 
-     * @var string
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pegasus\GoogleForJobs\Domain\Model\JobLocation>
      * @validate NotEmpty
      */
-    protected $jobLocationStreetAddress = '';
-
-    /**
-     * The city of the business where the employee will report to work.
-     * 
-     * @var string
-     * @validate NotEmpty
-     */
-    protected $jobLocationCity = '';
-
-    /**
-     * The postal code of the business where the employee will report to work.
-     * 
-     * @var string
-     * @validate NotEmpty
-     */
-    protected $jobLocationPostalCode = '';
-
-    /**
-     * The region of the business where the employee will report to work. For example,
-     * California or another appropriate first-level Administrative division.
-     * 
-     * @var string
-     * @validate NotEmpty
-     */
-    protected $jobLocationRegion = '';
-
-    /**
-     * The country of the business where the employee will report to work. For example,
-     * USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
-     * 
-     * @var string
-     * @validate NotEmpty
-     */
-    protected $jobLocationCountry = '';
+    protected $jobLocations = null;
 
     /**
      * The title of the job. For example, "Software Engineer" or "Barista".
@@ -227,6 +194,8 @@ class Job extends AbstractEntity
     {
         $this->falMedia = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->falRelatedFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->jobLocations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
     }
 
     /**
@@ -482,108 +451,24 @@ class Job extends AbstractEntity
     }
 
     /**
-     * Returns the jobLocationStreetAddress
+     * Returns the jobLocations
      * 
-     * @return string $jobLocationStreetAddress
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pegasus\GoogleForJobs\Domain\Model\JobLocation>
      */
-    public function getJobLocationStreetAddress(): string
+    public function getJobLocations(): ObjectStorage
     {
-        return $this->jobLocationStreetAddress;
+        return $this->jobLocations;
     }
 
     /**
-     * Sets the jobLocationStreetAddress
+     * Sets the jobLocations
      * 
-     * @param string $jobLocationStreetAddress
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pegasus\GoogleForJobs\Domain\Model\JobLocation>
      * @return void
      */
-    public function setJobLocationStreetAddress(string $jobLocationStreetAddress): void
+    public function setJobLocations(ObjectStorage $jobLocations): void
     {
-        $this->jobLocationStreetAddress = $jobLocationStreetAddress;
-    }
-
-    /**
-     * Returns the jobLocationCity
-     * 
-     * @return string $jobLocationCity
-     */
-    public function getJobLocationCity(): string
-    {
-        return $this->jobLocationCity;
-    }
-
-    /**
-     * Sets the jobLocationCity
-     * 
-     * @param string $jobLocationCity
-     * @return void
-     */
-    public function setJobLocationCity(string $jobLocationCity): void
-    {
-        $this->jobLocationCity = $jobLocationCity;
-    }
-
-    /**
-     * Returns the jobLocationPostalCode
-     * 
-     * @return string $jobLocationPostalCode
-     */
-    public function getJobLocationPostalCode(): string
-    {
-        return $this->jobLocationPostalCode;
-    }
-
-    /**
-     * Sets the jobLocationPostalCode
-     * 
-     * @param string $jobLocationPostalCode
-     * @return void
-     */
-    public function setJobLocationPostalCode(string $jobLocationPostalCode): void
-    {
-        $this->jobLocationPostalCode = $jobLocationPostalCode;
-    }
-
-    /**
-     * Returns the jobLocationRegion
-     * 
-     * @return string $jobLocationRegion
-     */
-    public function getJobLocationRegion(): string
-    {
-        return $this->jobLocationRegion;
-    }
-
-    /**
-     * Sets the jobLocationRegion
-     * 
-     * @param string $jobLocationRegion
-     * @return void
-     */
-    public function setJobLocationRegion(string $jobLocationRegion): void
-    {
-        $this->jobLocationRegion = $jobLocationRegion;
-    }
-
-    /**
-     * Returns the jobLocationCountry
-     * 
-     * @return string $jobLocationCountry
-     */
-    public function getJobLocationCountry(): string
-    {
-        return $this->jobLocationCountry;
-    }
-
-    /**
-     * Sets the jobLocationCountry
-     * 
-     * @param string $jobLocationCountry
-     * @return void
-     */
-    public function setJobLocationCountry(string $jobLocationCountry): void
-    {
-        $this->jobLocationCountry = $jobLocationCountry;
+        $this->jobLocations = $jobLocations;
     }
 
     /**
@@ -790,21 +675,27 @@ class Job extends AbstractEntity
         $data['hiringOrganization']['name'] = $this->getHiringOrganizationName();
         // website of the hiring organization
         $data['hiringOrganization']['sameAs'] = $this->getHiringOrganizationWebsite();
- 
-        // mandatory key/value
-        $data['jobLocation']['@type'] = 'Place';
-        // mandatory key/value
-        $data['jobLocation']['address']['@type'] = 'PostalAddress';
-        // street and no. of the job location
-        $data['jobLocation']['address']['streetAddress'] = $this->getJobLocationStreetAddress();
-        // city of the job location
-        $data['jobLocation']['address']['addressLocality'] = $this->getJobLocationCity();
-        // region of the job location
-        $data['jobLocation']['address']['addressRegion'] = $this->getJobLocationRegion();
-        // postal code of the job location
-        $data['jobLocation']['address']['postalCode'] = $this->getJobLocationPostalCode();
-        // country of the job location
-        $data['jobLocation']['address']['addressCountry'] = $this->getJobLocationCountry();
+        
+        foreach ($this->getJobLocations() as $jobLocation) {
+            
+            $location = [];
+            // mandatory key/value
+            $location['@type'] = 'Place';
+            // mandatory key/value
+            $location['address']['@type'] = 'PostalAddress';
+            // street and no. of the job location
+            $location['address']['streetAddress'] = $jobLocation->getJobLocationStreetAddress();
+            // city of the job location
+            $location['address']['addressLocality'] = $jobLocation->getJobLocationCity();
+            // region of the job location
+            $location['address']['addressRegion'] = $jobLocation->getJobLocationRegion();
+            // postal code of the job location
+            $location['address']['postalCode'] = $jobLocation->getJobLocationPostalCode();
+            // country of the job location
+            $location['address']['addressCountry'] = $jobLocation->getJobLocationCountry();
+
+            $data['jobLocation'][] = $location;
+        }
 
         $data['baseSalary']['@type'] = 'MonetaryAmount';
         $data['baseSalary']['currency'] = $this->getBaseSalaryCurrency();

@@ -16,6 +16,8 @@ call_user_func(
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_googleforjobs_domain_model_job', 'EXT:google_for_jobs/Resources/Private/Language/locallang_csh_tx_googleforjobs_domain_model_job.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_googleforjobs_domain_model_job');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_googleforjobs_domain_model_joblocation', 'EXT:google_for_jobs/Resources/Private/Language/locallang_csh_tx_googleforjobs_domain_model_joblocation.xlf');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_googleforjobs_domain_model_joblocation');
 
     }
 );
