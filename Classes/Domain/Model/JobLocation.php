@@ -24,7 +24,7 @@ class JobLocation extends AbstractEntity
      * The Street and No. of the business where the employee will report to work.
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $jobLocationStreetAddress = '';
 
@@ -32,7 +32,7 @@ class JobLocation extends AbstractEntity
      * The city of the business where the employee will report to work.
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $jobLocationCity = '';
 
@@ -40,7 +40,7 @@ class JobLocation extends AbstractEntity
      * The postal code of the business where the employee will report to work.
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $jobLocationPostalCode = '';
 
@@ -49,7 +49,7 @@ class JobLocation extends AbstractEntity
      * California or another appropriate first-level Administrative division.
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $jobLocationRegion = '';
 
@@ -58,7 +58,7 @@ class JobLocation extends AbstractEntity
      * USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $jobLocationCountry = '';
 
