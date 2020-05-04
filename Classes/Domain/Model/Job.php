@@ -28,7 +28,7 @@ class Job extends AbstractEntity
      * "2017-01-24" or "2017-01-24T19:33:17+00:00".
      * 
      * @var \DateTime
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $datePosted = null;
 
@@ -47,7 +47,7 @@ class Job extends AbstractEntity
      * company, and not the specific location that is hiring.
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $hiringOrganizationName = '';
 
@@ -55,7 +55,7 @@ class Job extends AbstractEntity
      * The website of the organization offering the job position.
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $hiringOrganizationWebsite = '';
 
@@ -71,7 +71,7 @@ class Job extends AbstractEntity
      * The physical location(s) of the business where the employee will report to work.
      * 
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pegasus\GoogleForJobs\Domain\Model\JobLocation>
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $jobLocations = null;
 
@@ -79,7 +79,7 @@ class Job extends AbstractEntity
      * The title of the job. For example, "Software Engineer" or "Barista".
      * 
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $title = '';
 
