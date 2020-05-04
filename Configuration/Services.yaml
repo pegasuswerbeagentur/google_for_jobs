@@ -1,8 +1,8 @@
 services:
-    _defaults:
-      autowire: true
-      autoconfigure: true
-      public: false
-  
-      Pegasus\GoogleForJobs\:
-      resource: '../Classes/*'
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+    
+  Pegasus\GoogleForJobs\:
+    resource: '../Classes/*'
