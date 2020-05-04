@@ -1,6 +1,10 @@
 <?php
+declare(strict_types=1);
+
 namespace Pegasus\GoogleForJobs\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /***
  *
@@ -15,7 +19,7 @@ namespace Pegasus\GoogleForJobs\Domain\Model;
 /**
  * Jobs
  */
-class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Job extends AbstractEntity
 {
 
     /**
@@ -203,7 +207,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $category;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $notes;
 
     /**
@@ -217,7 +223,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return void
      */
-    protected function initStorageObjects()
+    protected function initStorageObjects(): void
     {
         $this->falMedia = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->falRelatedFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -228,7 +234,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string
      */
-    public function getPathSegment()
+    public function getPathSegment(): string
     {
         return $this->pathSegment;
     }
@@ -237,8 +243,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Set path segment
      *
      * @param string $pathSegment
+     * @return void
      */
-    public function setPathSegment($pathSegment)
+    public function setPathSegment(string $pathSegment): void
     {
         $this->pathSegment = $pathSegment;
     }
@@ -246,9 +253,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Get the Fal media items
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falMedia
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
-    public function getFalMedia()
+    public function getFalMedia(): ObjectStorage
     {
         return $this->falMedia;
     }
@@ -257,8 +264,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Set Fal media relation
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falMedia
+     * @return void
      */
-    public function setFalMedia(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $falMedia)
+    public function setFalMedia(ObjectStorage $falMedia): void
     {
         $this->falMedia = $falMedia;
     }
@@ -266,9 +274,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Get FAL related files
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falRelatedFiles
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
-    public function getFalRelatedFiles()
+    public function getFalRelatedFiles(): ObjectStorage
     {
         return $this->falRelatedFiles;
     }
@@ -277,8 +285,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Set FAL related files
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falRelatedFiles
+     * @return void
      */
-    public function setFalRelatedFiles($falRelatedFiles)
+    public function setFalRelatedFiles(ObjectStorage $falRelatedFiles): void
     {
         $this->falRelatedFiles = $falRelatedFiles;
     }
@@ -288,7 +297,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string
      */
-    public function getAuthor()
+    public function getAuthor(): string
     {
         return $this->author;
     }
@@ -297,8 +306,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Set author
      *
      * @param string $author author
+     * @return void
      */
-    public function setAuthor($author)
+    public function setAuthor(string $author): void
     {
         $this->author = $author;
     }
@@ -308,7 +318,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string
      */
-    public function getAlternativeTitle()
+    public function getAlternativeTitle(): string
     {
         return $this->alternativeTitle;
     }
@@ -317,8 +327,9 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Set alternative title
      *
      * @param string $alternativeTitle
+     * @return void
      */
-    public function setAlternativeTitle($alternativeTitle)
+    public function setAlternativeTitle(string $alternativeTitle): void
     {
         $this->alternativeTitle = $alternativeTitle;
     }
@@ -328,7 +339,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->category;
     }
@@ -337,24 +348,30 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Set category
      *
      * @param string $category category
+     * @return void
      */
-    public function setCategory($category)
+    public function setCategory(string $category): void
     {
         $this->category = $category;
     }
 
     /**
+     * Get notes
+     * 
      * @return string
      */
-    public function getNotes()
+    public function getNotes(): string
     {
         return $this->notes;
     }
 
     /**
+     * Set notes
+     * 
      * @param string $notes
+     * @return void
      */
-    public function setNotes(string $notes)
+    public function setNotes(string $notes): void
     {
         $this->notes = $notes;
     }
@@ -364,7 +381,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return \DateTime $datePosted
      */
-    public function getDatePosted()
+    public function getDatePosted(): \DateTime
     {
         return $this->datePosted;
     }
@@ -375,7 +392,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $datePosted
      * @return void
      */
-    public function setDatePosted(\DateTime $datePosted)
+    public function setDatePosted(\DateTime $datePosted): void
     {
         $this->datePosted = $datePosted;
     }
@@ -385,7 +402,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $description
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -396,7 +413,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
@@ -406,7 +423,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $hiringOrganizationName
      */
-    public function getHiringOrganizationName()
+    public function getHiringOrganizationName(): string
     {
         return $this->hiringOrganizationName;
     }
@@ -417,7 +434,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $hiringOrganizationName
      * @return void
      */
-    public function setHiringOrganizationName($hiringOrganizationName)
+    public function setHiringOrganizationName(string $hiringOrganizationName): void
     {
         $this->hiringOrganizationName = $hiringOrganizationName;
     }
@@ -427,7 +444,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $hiringOrganizationWebsite
      */
-    public function getHiringOrganizationWebsite()
+    public function getHiringOrganizationWebsite(): string
     {
         return $this->hiringOrganizationWebsite;
     }
@@ -438,7 +455,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $hiringOrganizationWebsite
      * @return void
      */
-    public function setHiringOrganizationWebsite($hiringOrganizationWebsite)
+    public function setHiringOrganizationWebsite(string $hiringOrganizationWebsite): void
     {
         $this->hiringOrganizationWebsite = $hiringOrganizationWebsite;
     }
@@ -448,7 +465,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $hiringOrganizationLogoUrl
      */
-    public function getHiringOrganizationLogoUrl()
+    public function getHiringOrganizationLogoUrl(): string
     {
         return $this->hiringOrganizationLogoUrl;
     }
@@ -459,7 +476,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $hiringOrganizationLogoUrl
      * @return void
      */
-    public function setHiringOrganizationLogoUrl($hiringOrganizationLogoUrl)
+    public function setHiringOrganizationLogoUrl(string $hiringOrganizationLogoUrl): void
     {
         $this->hiringOrganizationLogoUrl = $hiringOrganizationLogoUrl;
     }
@@ -469,7 +486,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $jobLocationStreetAddress
      */
-    public function getJobLocationStreetAddress()
+    public function getJobLocationStreetAddress(): string
     {
         return $this->jobLocationStreetAddress;
     }
@@ -480,7 +497,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $jobLocationStreetAddress
      * @return void
      */
-    public function setJobLocationStreetAddress($jobLocationStreetAddress)
+    public function setJobLocationStreetAddress(string $jobLocationStreetAddress): void
     {
         $this->jobLocationStreetAddress = $jobLocationStreetAddress;
     }
@@ -490,7 +507,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $jobLocationCity
      */
-    public function getJobLocationCity()
+    public function getJobLocationCity(): string
     {
         return $this->jobLocationCity;
     }
@@ -501,7 +518,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $jobLocationCity
      * @return void
      */
-    public function setJobLocationCity($jobLocationCity)
+    public function setJobLocationCity(string $jobLocationCity): void
     {
         $this->jobLocationCity = $jobLocationCity;
     }
@@ -511,7 +528,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $jobLocationPostalCode
      */
-    public function getJobLocationPostalCode()
+    public function getJobLocationPostalCode(): string
     {
         return $this->jobLocationPostalCode;
     }
@@ -522,7 +539,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $jobLocationPostalCode
      * @return void
      */
-    public function setJobLocationPostalCode($jobLocationPostalCode)
+    public function setJobLocationPostalCode(string $jobLocationPostalCode): void
     {
         $this->jobLocationPostalCode = $jobLocationPostalCode;
     }
@@ -532,7 +549,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $jobLocationRegion
      */
-    public function getJobLocationRegion()
+    public function getJobLocationRegion(): string
     {
         return $this->jobLocationRegion;
     }
@@ -543,7 +560,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $jobLocationRegion
      * @return void
      */
-    public function setJobLocationRegion($jobLocationRegion)
+    public function setJobLocationRegion(string $jobLocationRegion): void
     {
         $this->jobLocationRegion = $jobLocationRegion;
     }
@@ -553,7 +570,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $jobLocationCountry
      */
-    public function getJobLocationCountry()
+    public function getJobLocationCountry(): string
     {
         return $this->jobLocationCountry;
     }
@@ -564,7 +581,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $jobLocationCountry
      * @return void
      */
-    public function setJobLocationCountry($jobLocationCountry)
+    public function setJobLocationCountry(string $jobLocationCountry): void
     {
         $this->jobLocationCountry = $jobLocationCountry;
     }
@@ -574,7 +591,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -585,7 +602,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -595,7 +612,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return \DateTime $validThrough
      */
-    public function getValidThrough()
+    public function getValidThrough(): \DateTime
     {
         return $this->validThrough;
     }
@@ -606,7 +623,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $validThrough
      * @return void
      */
-    public function setValidThrough(\DateTime $validThrough)
+    public function setValidThrough(\DateTime $validThrough): void
     {
         $this->validThrough = $validThrough;
     }
@@ -616,7 +633,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $baseSalaryCurrency
      */
-    public function getBaseSalaryCurrency()
+    public function getBaseSalaryCurrency(): string
     {
         return $this->baseSalaryCurrency;
     }
@@ -627,7 +644,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $baseSalaryCurrency
      * @return void
      */
-    public function setBaseSalaryCurrency($baseSalaryCurrency)
+    public function setBaseSalaryCurrency(string $baseSalaryCurrency): void
     {
         $this->baseSalaryCurrency = $baseSalaryCurrency;
     }
@@ -637,7 +654,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $baseSalaryUnitText
      */
-    public function getBaseSalaryUnitText()
+    public function getBaseSalaryUnitText(): string
     {
         return $this->baseSalaryUnitText;
     }
@@ -648,7 +665,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $baseSalaryUnitText
      * @return void
      */
-    public function setBaseSalaryUnitText($baseSalaryUnitText)
+    public function setBaseSalaryUnitText(string $baseSalaryUnitText): void
     {
         $this->baseSalaryUnitText = $baseSalaryUnitText;
     }
@@ -658,7 +675,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return float $baseSalaryValue
      */
-    public function getBaseSalaryValue()
+    public function getBaseSalaryValue(): float
     {
         return $this->baseSalaryValue;
     }
@@ -669,7 +686,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param float $baseSalaryValue
      * @return void
      */
-    public function setBaseSalaryValue($baseSalaryValue)
+    public function setBaseSalaryValue(float $baseSalaryValue): void
     {
         $this->baseSalaryValue = $baseSalaryValue;
     }
@@ -679,7 +696,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $employmentType
      */
-    public function getEmploymentType()
+    public function getEmploymentType(): string
     {
         return $this->employmentType;
     }
@@ -690,7 +707,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $employmentType
      * @return void
      */
-    public function setEmploymentType($employmentType)
+    public function setEmploymentType(string $employmentType): void
     {
         $this->employmentType = $employmentType;
     }
@@ -700,7 +717,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $jobLocationType
      */
-    public function getJobLocationType()
+    public function getJobLocationType(): string
     {
         return $this->jobLocationType;
     }
@@ -711,7 +728,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $jobLocationType
      * @return void
      */
-    public function setJobLocationType($jobLocationType)
+    public function setJobLocationType(string $jobLocationType): void
     {
         $this->jobLocationType = $jobLocationType;
     }
@@ -721,7 +738,7 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @return string $applicantLocationRequirements
      */
-    public function getApplicantLocationRequirements()
+    public function getApplicantLocationRequirements(): string
     {
         return $this->applicantLocationRequirements;
     }
@@ -732,15 +749,17 @@ class Job extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $applicantLocationRequirements
      * @return void
      */
-    public function setApplicantLocationRequirements($applicantLocationRequirements)
+    public function setApplicantLocationRequirements(string $applicantLocationRequirements): void
     {
         $this->applicantLocationRequirements = $applicantLocationRequirements;
     }
 
     /**
-     * Creates and returns Structured Data JSON string from job data for output 
+     * Creates and returns Structured Data JSON string from job data for output
+     * 
+     * @return string 
      */
-    public function createStructuredData()
+    public function createStructuredData(): string
     {   
         $data = [];
         // mandatory key/value
