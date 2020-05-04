@@ -21,21 +21,6 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_logo_url">
 				<source>Hiring Organization Logo Url</source>
 			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_street_address">
-				<source>Job Location Street Address</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_city">
-				<source>Job Location City</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_postal_code">
-				<source>Job Location Postal Code</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_region">
-				<source>Job Location Region</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_country">
-				<source>Job Location Country</source>
-			</trans-unit>
 			<trans-unit id="tx_googleforjobs_domain_model_job.title">
 				<source>Title</source>
 			</trans-unit>

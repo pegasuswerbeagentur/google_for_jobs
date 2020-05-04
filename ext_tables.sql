@@ -16,6 +16,8 @@ CREATE TABLE tx_googleforjobs_domain_model_job (
 	job_location_postal_code varchar(255) DEFAULT '' NOT NULL,
 	job_location_region varchar(255) DEFAULT '' NOT NULL,
 	job_location_country varchar(255) DEFAULT '' NOT NULL,
+	job_locations int(11) DEFAULT '0' NOT NULL,
+	job_locations_from int(11) DEFAULT '0' NOT NULL,
 	base_salary_enable tinyint(1) DEFAULT '0' NOT NULL,
 	base_salary_currency varchar(255) DEFAULT '' NOT NULL,
 	base_salary_unit_text varchar(255) DEFAULT '' NOT NULL,
@@ -29,4 +31,29 @@ CREATE TABLE tx_googleforjobs_domain_model_job (
 	alternative_title tinytext,
 	category tinytext,
 	notes text
+);
+
+#
+# Table structure for table 'tx_googleforjobs_domain_model_joblocation'
+#
+CREATE TABLE tx_googleforjobs_domain_model_joblocation (
+
+	job_location_street_address varchar(255) DEFAULT '' NOT NULL,
+	job_location_city varchar(255) DEFAULT '' NOT NULL,
+	job_location_postal_code varchar(255) DEFAULT '' NOT NULL,
+	job_location_region varchar(255) DEFAULT '' NOT NULL,
+	job_location_country varchar(255) DEFAULT '' NOT NULL,
+);
+
+#
+# Table structure for table 'tx_googleforjobs_domain_model_job_joblocation_mm'
+#
+
+CREATE TABLE tx_googleforjobs_domain_model_job_joblocation_mm (
+	uid_local int(11) DEFAULT '0' NOT NULL,
+	uid_foreign int(11) DEFAULT '0' NOT NULL,
+	sorting int(11) DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) DEFAULT '0' NOT NULL,
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
 );
