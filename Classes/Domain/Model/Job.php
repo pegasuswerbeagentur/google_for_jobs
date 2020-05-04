@@ -72,6 +72,7 @@ class Job extends AbstractEntity
      * 
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pegasus\GoogleForJobs\Domain\Model\JobLocation>
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $jobLocations = null;
 
