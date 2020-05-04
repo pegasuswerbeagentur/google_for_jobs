@@ -27,9 +27,13 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * jobRepository
      * 
      * @var \Pegasus\GoogleForJobs\Domain\Repository\JobRepository
-     * @inject
      */
     protected $jobRepository = null;
+
+    public function __construct(JobRepository $jobRepository)
+    {
+        $this->jobRepository = $jobRepository;
+    }
 
     /**
      * action list
