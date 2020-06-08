@@ -11,11 +11,6 @@ CREATE TABLE tx_googleforjobs_domain_model_job (
 	hiring_organization_name varchar(255) DEFAULT '' NOT NULL,
 	hiring_organization_website varchar(255) DEFAULT '' NOT NULL,
 	hiring_organization_logo_url varchar(255) DEFAULT '' NOT NULL,
-	job_location_street_address varchar(255) DEFAULT '' NOT NULL,
-	job_location_city varchar(255) DEFAULT '' NOT NULL,
-	job_location_postal_code varchar(255) DEFAULT '' NOT NULL,
-	job_location_region varchar(255) DEFAULT '' NOT NULL,
-	job_location_country varchar(255) DEFAULT '' NOT NULL,
 	job_locations int(11) DEFAULT '0' NOT NULL,
 	job_locations_from int(11) DEFAULT '0' NOT NULL,
 	base_salary_enable tinyint(1) DEFAULT '0' NOT NULL,
@@ -38,11 +33,11 @@ CREATE TABLE tx_googleforjobs_domain_model_job (
 #
 CREATE TABLE tx_googleforjobs_domain_model_joblocation (
 
-	job_location_street_address varchar(255) DEFAULT '' NOT NULL,
-	job_location_city varchar(255) DEFAULT '' NOT NULL,
-	job_location_postal_code varchar(255) DEFAULT '' NOT NULL,
-	job_location_region varchar(255) DEFAULT '' NOT NULL,
-	job_location_country varchar(255) DEFAULT '' NOT NULL,
+	street_address varchar(255) DEFAULT '' NOT NULL,
+	city varchar(255) DEFAULT '' NOT NULL,
+	postal_code varchar(255) DEFAULT '' NOT NULL,
+	region varchar(255) DEFAULT '' NOT NULL,
+	country varchar(255) DEFAULT '' NOT NULL,
 );
 
 #
