@@ -27,19 +27,19 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.job_locations">
 				<source>Job Locations</source>
 			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.job_location_street_address">
+			<trans-unit id="tx_googleforjobs_domain_model_joblocation.street_address">
 				<source>Street Address</source>
 			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.job_location_city">
+			<trans-unit id="tx_googleforjobs_domain_model_joblocation.city">
 				<source>City</source>
 			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.job_location_postal_code">
+			<trans-unit id="tx_googleforjobs_domain_model_joblocation.postal_code">
 				<source>Postal Code</source>
 			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.job_location_region">
+			<trans-unit id="tx_googleforjobs_domain_model_joblocation.region">
 				<source>Region</source>
 			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.job_location_country">
+			<trans-unit id="tx_googleforjobs_domain_model_joblocation.country">
 				<source>Country</source>
 			</trans-unit>
 			<trans-unit id="tx_googleforjobs_domain_model_job.title">

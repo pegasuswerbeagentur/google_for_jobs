@@ -36,13 +36,15 @@ call_user_func(
             }
        }'
     );
-		$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-		
-			$iconRegistry->registerIcon(
-				'google_for_jobs-plugin-job',
-				\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-				['source' => 'EXT:google_for_jobs/Resources/Public/Icons/user_plugin_job.svg']
-			);
+    
+    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+    $iconRegistry->registerIcon(
+        'google_for_jobs-plugin-job',
+        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        ['source' => 'EXT:google_for_jobs/Resources/Public/Icons/user_plugin_job.svg']
+    );
 		
     }
 );
+// register location migration update wizard
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['migrateLocationsUpdate'] = \Pegasus\GoogleForJobs\Updates\MigrateLocationsUpdate::class;

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Pegasus\GoogleForJobs\Controller;
 
-use \Pegasus\GoogleForJobs\Domain\Model\Job;
-use \Pegasus\GoogleForJobs\Domain\Repository\JobRepository;
-use \TYPO3\CMS\Core\Page\PageRenderer;
+use Pegasus\GoogleForJobs\Domain\Model\Job;
+use Pegasus\GoogleForJobs\Domain\Repository\JobRepository;
+use TYPO3\CMS\Core\Page\PageRenderer;
 
 /***
  *

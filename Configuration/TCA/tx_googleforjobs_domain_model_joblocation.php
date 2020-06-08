@@ -2,9 +2,9 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation',
-        'default_sortby' => 'job_location_street_address',
-        'label' => 'job_location_street_address',
-        'label_alt' => 'job_location_city',
+        'default_sortby' => 'street_address',
+        'label' => 'street_address',
+        'label_alt' => 'city',
         'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -19,16 +19,16 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'job_location_street_address,job_location_city,job_location_postal_code,job_location_region,job_location_country',
+        'searchFields' => 'street_address,city,postal_code,region,country',
         'iconfile' => 'EXT:google_for_jobs/Resources/Public/Icons/tx_googleforjobs_domain_model_job.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, job_location_street_address, job_location_city, job_location_postal_code, job_location_region, job_location_country',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, street_address, city, postal_code, region, country',
     ],
     'types' => [
         '1' => [
             'showitem' => 
-                'sys_language_uid, l10n_parent, l10n_diffsource, hidden, job_location_street_address, job_location_city, job_location_postal_code, job_location_region, job_location_country, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, job_location_type, applicant_location_requirements'
+                'sys_language_uid, l10n_parent, l10n_diffsource, hidden, street_address, city, postal_code, region, country, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, type, applicant_location_requirements'
             ],
     ],
     'columns' => [
@@ -121,45 +121,45 @@ return [
                 ]
             ],
         ],
-        'job_location_street_address' => [
+        'street_address' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.job_location_street_address',
+            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.street_address',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
         ],
-        'job_location_city' => [
+        'city' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.job_location_city',
+            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.city',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
         ],
-        'job_location_postal_code' => [
+        'postal_code' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.job_location_postal_code',
+            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.postal_code',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
         ],
-        'job_location_region' => [
+        'region' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.job_location_region',
+            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.region',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
         ],
-        'job_location_country' => [
+        'country' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.job_location_country',
+            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.country',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
