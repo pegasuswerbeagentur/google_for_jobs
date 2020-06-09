@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.
 - Render structured data to html head as recommended by Google
 
 ### Important
-- [!!!] Run Upgrade Wizard and update fluid templates. See [here](./README.md#update-from-1.3-to-higher-Versions)
+- [!!!] Run Upgrade Wizard and update fluid templates. See [here](./README.md#update-from-13-to-higher-Versions)
 
 ## [1.3.0] - 2019-11-22
 ### Added
