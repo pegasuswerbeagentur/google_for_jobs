@@ -684,15 +684,15 @@ class Job extends AbstractEntity
             // mandatory key/value
             $location['address']['@type'] = 'PostalAddress';
             // street and no. of the job location
-            $location['address']['streetAddress'] = $jobLocation->getJobLocationStreetAddress();
+            $location['address']['streetAddress'] = $jobLocation->getStreetAddress();
             // city of the job location
-            $location['address']['addressLocality'] = $jobLocation->getJobLocationCity();
+            $location['address']['addressLocality'] = $jobLocation->getCity();
             // region of the job location
-            $location['address']['addressRegion'] = $jobLocation->getJobLocationRegion();
+            $location['address']['addressRegion'] = $jobLocation->getRegion();
             // postal code of the job location
-            $location['address']['postalCode'] = $jobLocation->getJobLocationPostalCode();
+            $location['address']['postalCode'] = $jobLocation->getPostalCode();
             // country of the job location
-            $location['address']['addressCountry'] = $jobLocation->getJobLocationCountry();
+            $location['address']['addressCountry'] = $jobLocation->getCountry();
 
             $data['jobLocation'][] = $location;
         }
