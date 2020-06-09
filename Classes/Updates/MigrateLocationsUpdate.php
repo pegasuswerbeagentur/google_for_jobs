@@ -134,26 +134,28 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
 
         foreach ($jobs as $job) {
             // get location data for database insertion 
-            $joblocation = [
-                'pid' => $job['pid'],
+            $identifiers = [
                 'street_address' => $job['job_location_street_address'],
                 'city' => $job['job_location_city'],
                 'postal_code' => $job['job_location_postal_code'],
                 'region' => $job['job_location_region'],
                 'country' => $job['job_location_country']
             ];
+            $joblocation = $identifiers;
+            $joblocation['pid'] = $job['pid'];
+            
             // check if location doesn't already exist and write it into location table
             $locationExists = false;
-            $locationExists = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $joblocation)->fetchAll();
+            $locationExists = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $identifiers)->fetchAll();
             if (!$locationExists) {
                 $connectionJoblocations->insert('tx_googleforjobs_domain_model_joblocation', $joblocation);
             }
 
             // set mn relation
-            $locationUid = $connectionJoblocations->lastInsertId();
+            $locationUid = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $identifiers)->fetch();
             $connectionJoblocationsMM->insert(
                 'tx_googleforjobs_domain_model_job_joblocation_mm',
-                ['uid_local' => $locationUid, 'uid_foreign' => $job['uid'],
+                ['uid_local' => $locationUid['uid'], 'uid_foreign' => $job['uid'],
                 'sorting_foreign' => 1]
             );
         }
