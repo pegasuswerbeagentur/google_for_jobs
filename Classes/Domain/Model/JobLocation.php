@@ -26,7 +26,7 @@ class JobLocation extends AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $jobLocationStreetAddress = '';
+    protected $streetAddress = '';
 
     /**
      * The city of the business where the employee will report to work.
@@ -34,7 +34,7 @@ class JobLocation extends AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $jobLocationCity = '';
+    protected $city = '';
 
     /**
      * The postal code of the business where the employee will report to work.
@@ -42,7 +42,7 @@ class JobLocation extends AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $jobLocationPostalCode = '';
+    protected $postalCode = '';
 
     /**
      * The region of the business where the employee will report to work. For example,
@@ -51,7 +51,7 @@ class JobLocation extends AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $jobLocationRegion = '';
+    protected $region = '';
 
     /**
      * The country of the business where the employee will report to work. For example,
@@ -60,110 +60,110 @@ class JobLocation extends AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $jobLocationCountry = '';
+    protected $country = '';
 
     /**
-     * Returns the jobLocationStreetAddress
+     * Returns the streetAddress
      * 
-     * @return string $jobLocationStreetAddress
+     * @return string $streetAddress
      */
-    public function getJobLocationStreetAddress(): string
+    public function getStreetAddress(): string
     {
-        return $this->jobLocationStreetAddress;
+        return $this->streetAddress;
     }
 
     /**
-     * Sets the jobLocationStreetAddress
+     * Sets the streetAddress
      * 
-     * @param string $jobLocationStreetAddress
+     * @param string $streetAddress
      * @return void
      */
-    public function setJobLocationStreetAddress(string $jobLocationStreetAddress): void
+    public function setStreetAddress(string $streetAddress): void
     {
-        $this->jobLocationStreetAddress = $jobLocationStreetAddress;
+        $this->streetAddress = $streetAddress;
     }
 
     /**
-     * Returns the jobLocationCity
+     * Returns the city
      * 
-     * @return string $jobLocationCity
+     * @return string $city
      */
-    public function getJobLocationCity(): string
+    public function getCity(): string
     {
-        return $this->jobLocationCity;
+        return $this->city;
     }
 
     /**
-     * Sets the jobLocationCity
+     * Sets the city
      * 
-     * @param string $jobLocationCity
+     * @param string $city
      * @return void
      */
-    public function setJobLocationCity(string $jobLocationCity): void
+    public function setCity(string $city): void
     {
-        $this->jobLocationCity = $jobLocationCity;
+        $this->city = $city;
     }
 
     /**
-     * Returns the jobLocationPostalCode
+     * Returns the postalCode
      * 
-     * @return string $jobLocationPostalCode
+     * @return string $postalCode
      */
-    public function getJobLocationPostalCode(): string
+    public function getPostalCode(): string
     {
-        return $this->jobLocationPostalCode;
+        return $this->postalCode;
     }
 
     /**
-     * Sets the jobLocationPostalCode
+     * Sets the postalCode
      * 
-     * @param string $jobLocationPostalCode
+     * @param string $postalCode
      * @return void
      */
-    public function setJobLocationPostalCode(string $jobLocationPostalCode): void
+    public function setPostalCode(string $postalCode): void
     {
-        $this->jobLocationPostalCode = $jobLocationPostalCode;
+        $this->postalCode = $postalCode;
     }
 
     /**
-     * Returns the jobLocationRegion
+     * Returns the region
      * 
-     * @return string $jobLocationRegion
+     * @return string $region
      */
-    public function getJobLocationRegion(): string
+    public function getRegion(): string
     {
-        return $this->jobLocationRegion;
+        return $this->region;
     }
 
     /**
-     * Sets the jobLocationRegion
+     * Sets the region
      * 
-     * @param string $jobLocationRegion
+     * @param string $region
      * @return void
      */
-    public function setJobLocationRegion(string $jobLocationRegion): void
+    public function setRegion(string $region): void
     {
-        $this->jobLocationRegion = $jobLocationRegion;
+        $this->region = $region;
     }
 
     /**
-     * Returns the jobLocationCountry
+     * Returns the country
      * 
-     * @return string $jobLocationCountry
+     * @return string $country
      */
-    public function getJobLocationCountry(): string
+    public function getCountry(): string
     {
-        return $this->jobLocationCountry;
+        return $this->country;
     }
 
     /**
-     * Sets the jobLocationCountry
+     * Sets the country
      * 
-     * @param string $jobLocationCountry
+     * @param string $country
      * @return void
      */
-    public function setJobLocationCountry(string $jobLocationCountry): void
+    public function setCountry(string $country): void
     {
-        $this->jobLocationCountry = $jobLocationCountry;
+        $this->country = $country;
     }
 }

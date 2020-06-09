@@ -37,24 +37,24 @@
 
         Location {iterator.cycle}:
         <div>
-            <f:format.raw>{joblocation.joblocationcity}</f:format.raw>
+            <f:format.raw>{joblocation.city}</f:format.raw>
         </div>
         <div>
-            <f:format.raw>{joblocation.joblocationstreetaddress}</f:format.raw>
+            <f:format.raw>{joblocation.streetaddress}</f:format.raw>
         </div>
         <div>
-            <f:format.raw>{joblocation.joblocationpostalcode}</f:format.raw>
+            <f:format.raw>{joblocation.postalcode}</f:format.raw>
         </div>
         <div>
-            <f:format.raw>{joblocation.joblocationregion}</f:format.raw>
+            <f:format.raw>{joblocation.region}</f:format.raw>
         </div>
         <div>
-            <f:format.raw>{joblocation.joblocationtype}</f:format.raw>
-        </div>
-        <div>
-            <f:format.raw>{joblocation.joblocationcountry}</f:format.raw>
+            <f:format.raw>{joblocation.country}</f:format.raw>
         </div><br />
     </f:for>
+    <div>
+        <f:format.raw>{job.joblocationtype}</f:format.raw>
+    </div>
     
     <div>
         <f:format.date format="%d. %B %Y">{job.validthrough}</f:format.date>
