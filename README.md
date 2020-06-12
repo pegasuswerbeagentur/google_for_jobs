@@ -40,7 +40,7 @@ plugin.tx_seo.config {
           table = tx_googleforjobs_domain_model_job
           sortField = uid
           lastModifiedField = tstamp
-          pid = <page id containing news records>
+          pid = <page id containing job records>
           url {
             pageId = <your detail page id>
             fieldToParameterMap {
