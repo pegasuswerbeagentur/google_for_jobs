@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-09-19T13:34:19Z" product-name="google_for_jobs">
+		<header/>
+		<body>
+			<trans-unit id="street_address.description">
+				<source>The Street and No. of the business where the employee will report to work.</source>
+			</trans-unit>
+			<trans-unit id="city.description">
+				<source>The city of the business where the employee will report to work.</source>
+			</trans-unit>
+			<trans-unit id="postal_code.description">
+				<source>The postal code of the business where the employee will report to work.</source>
+			</trans-unit>
+			<trans-unit id="region.description">
+				<source>The region of the business where the employee will report to work. For example, California or another appropriate first-level Administrative division.</source>
+			</trans-unit>
+			<trans-unit id="country.description">
+				<source>The country of the business where the employee will report to work. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

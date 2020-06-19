@@ -24,7 +24,7 @@ Download and install the extension with the extension manager module.
 ### 2) Setup
 
 1) Include the static TypoScript of the extension.
-2) Create some job records on a sysfolder.
+2) Create some location and job records on a sysfolder.
 3) Create a plugin on a page and select at least the sysfolder as startingpoint.
 
 ### 3) Sitemap
@@ -40,7 +40,7 @@ plugin.tx_seo.config {
           table = tx_googleforjobs_domain_model_job
           sortField = uid
           lastModifiedField = tstamp
-          pid = <page id containing news records>
+          pid = <page id containing job records>
           url {
             pageId = <your detail page id>
             fieldToParameterMap {
@@ -88,9 +88,14 @@ routeEnhancers:
 
 | google_for_jobs  | TYPO3      | PHP       | Support/Development                     |
 | ---------------- | ---------- | ----------|---------------------------------------- |
-| 2.x (coming soon)| 8.7 - 9.x  | 7.0 - 7.2 | Features, Bugfixes, Security Updates    |
-| 1.x              | 9.x        | 7.0 - 7.2 | Bugfixes, Security Updates              |
+| 2.x              | 10.4.x     | 7.2 - 7.4 | Features, Bugfixes, Security Updates    |
+| 1.x              | 9.5.x      | 7.0 - 7.2 | Bugfixes, Security Updates              |
 
+#### Update from 1.3 to higher Versions
+- Install Update via composer or from TYPO3 TER
+- Run the Upgrade Wizard from Admin Tools > Upgrade > Upgrade Wizard. You will be promted to create missing tables and fields, please do so
+- Next, execute the "Google For Jobs: migrate locations into seperate table" wizard. This will migrate your existing job locations into a seperate table
+- Modify your fluid templates accordingly
 
 ### 3.2. Contribution
 
