@@ -1,5 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+
+## [2.0.1] - 2020-06-19
+### Fixed
+- move flexform registration to tt_content overrides
+
 ## [2.0.0] - 2020-06-09
 ### Added
 - Added support for TYPO3 10
