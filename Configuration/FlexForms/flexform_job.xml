@@ -15,22 +15,90 @@
                             </config>
                         </TCEforms>
                     </settings.job.renderDetailTemplate>
-                    <settings.job.renderType>
+                    <switchableControllerActions>
                         <label>What to display</label>
+                        <onChange>reload</onChange>
                         <config>
                             <type>select</type>
+                            <default>Job->list;Job->show</default>
                             <items type="array">
-                                <numIndex index="0" type="array">
-                                    <numIndex index="0">List View</numIndex>
-                                    <numIndex index="1">list</numIndex>
-                                </numIndex>
                                 <numIndex index="1" type="array">
+                                    <numIndex index="0">List View</numIndex>
+                                    <numIndex index="1">Job->list;Job->show</numIndex>
+                                </numIndex>
+                                <numIndex index="2" type="array">
                                     <numIndex index="0">Detail View</numIndex>
-                                    <numIndex index="1">show</numIndex>
+                                    <numIndex index="1">Job->show</numIndex>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <numIndex index="0">List of selected Jobs</numIndex>
+                                    <numIndex index="1">Job->listSelected</numIndex>
                                 </numIndex>
                             </items>
                         </config>
-                    </settings.job.renderType>
+                    </switchableControllerActions>
+
+
+                    <!-- order -->
+                    <settings.job.orderBy>
+                        <TCEforms>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->list;Job->show</displayCond>
+                            <label>Order By</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Last edited</numIndex>
+                                        <numIndex index="1">tstamp</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Given date/time</numIndex>
+                                        <numIndex index="1">date_posted</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">Created</numIndex>
+                                        <numIndex index="1">crdate</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4">
+                                        <numIndex index="0">Title</numIndex>
+                                        <numIndex index="1">title</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.job.orderBy>
+
+                    <!-- order direction  -->
+                    <settings.job.orderDirection>
+                        <TCEforms>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->list;Job->show</displayCond>
+                            <label>Sort Direction</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Ascending</numIndex>
+                                        <numIndex index="1">asc</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Descending</numIndex>
+                                        <numIndex index="1">desc</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.job.orderDirection>
+
                     <settings.job.detailPid>
                         <label>PageId for single job display</label>
                         <config>
@@ -55,6 +123,22 @@
                             <show_thumbs>1</show_thumbs>
                         </config>
                     </settings.job.returnToPid>
+
+                    <!-- selectedList -->
+                    <settings.job.listSelected>
+                        <TCEforms>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->listSelected</displayCond>
+                            <label>List of Jobs</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>tx_googleforjobs_domain_model_job</allowed>
+                                <size>3</size>
+                                <maxitems>50</maxitems>
+                                <minitems>1</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.job.listSelected>
                 </el>
             </ROOT>
         </sDEF>

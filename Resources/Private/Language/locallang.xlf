@@ -48,6 +48,9 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.no_job_found">
 				<source>This job is not available anymore.</source>
 			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.no_jobs_selected">
+				<source>No active jobs selected for this list.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
