@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Pegasus\GoogleForJobs\Updates;
@@ -28,7 +29,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
      */
     public function getIdentifier(): string
     {
-      return 'migrateLocationsUpdate';
+        return 'migrateLocationsUpdate';
     }
 
     /**
@@ -38,7 +39,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
      */
     public function getTitle(): string
     {
-      return 'Google For Jobs: migrate locations into seperate table';
+        return 'Google For Jobs: migrate locations into seperate table';
     }
 
     /**
@@ -48,7 +49,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
      */
     public function getDescription(): string
     {
-      return 'This wizard migrates the job location data from the job records to a dedicated table. This is nessecary, because job locations are now separate objects';
+        return 'This wizard migrates the job location data from the job records to a dedicated table. This is nessecary, because job locations are now separate objects';
     }
 
     /**
@@ -80,7 +81,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
         /** @var ConnectionPool $connectionPool */
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $connection = $connectionPool->getConnectionByName('Default');
-        
+
         // check if location table exists
         if ($connection->getSchemaManager()->tablesExist('tx_googleforjobs_domain_model_joblocation')) {
             $connection = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_joblocation');
@@ -88,7 +89,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
             $query = $query->select('*')->from('tx_googleforjobs_domain_model_joblocation');
             $result = $query->execute();
 
-            //check if joblocation table is empty 
+            //check if joblocation table is empty
             if ($result->fetch() === false) {
                 $connection = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_job');
                 $query = $connection->createQueryBuilder();
@@ -119,8 +120,8 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
 
     /**
      * Reads all jobs, then extracts location data and writes them into the
-     * location table and sets relation between jobs and locations. 
-     * 
+     * location table and sets relation between jobs and locations.
+     *
      * @return bool
      */
     protected function migrateLocationsIntoLocationTable(): bool
@@ -133,7 +134,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
         $jobs =  $this->getJobData();
 
         foreach ($jobs as $job) {
-            // get location data for database insertion 
+            // get location data for database insertion
             $identifiers = [
                 'street_address' => $job['job_location_street_address'],
                 'city' => $job['job_location_city'],
@@ -143,7 +144,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
             ];
             $joblocation = $identifiers;
             $joblocation['pid'] = $job['pid'];
-            
+
             // check if location doesn't already exist and write it into location table
             $locationExists = false;
             $locationExists = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $identifiers)->fetchAll();
@@ -155,18 +156,20 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
             $locationUid = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $identifiers)->fetch();
             $connectionJoblocationsMM->insert(
                 'tx_googleforjobs_domain_model_job_joblocation_mm',
-                ['uid_local' => $locationUid['uid'], 'uid_foreign' => $job['uid'],
-                'sorting_foreign' => 1]
+                [
+                    'uid_local' => $locationUid['uid'], 'uid_foreign' => $job['uid'],
+                    'sorting_foreign' => 1
+                ]
             );
         }
-            
+
         return true;
     }
 
     /**
      * Connects to jobs table and returns all jobs (incl. hidden, deleted)
      * as array.
-     * 
+     *
      * @return array Returns all jobs (incl. hidden, deleted)
      * as array.
      */
@@ -178,13 +181,13 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
 
         $queryBuilder = $connectionJobs->createQueryBuilder();
         $queryBuilder->getRestrictions()->removeAll();
-        
+
         $jobs =  $queryBuilder->select('*')
             ->from('tx_googleforjobs_domain_model_job')
             ->orderBy('uid')
             ->execute()
             ->fetchAll();
-        
+
         return $jobs;
     }
 }

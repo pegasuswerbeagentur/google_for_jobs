@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Pegasus\GoogleForJobs\Controller;
 
 use Pegasus\GoogleForJobs\Domain\Model\Job;
-use Pegasus\GoogleForJobs\Domain\Repository\JobRepository;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -26,7 +26,7 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * jobRepository
-     * 
+     *
      * @var \Pegasus\GoogleForJobs\Domain\Repository\JobRepository
      * @inject
      */
@@ -40,14 +40,14 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * action list
-     * 
+     *
      * @return void
      */
     public function listAction(): void
     {
         if ($this->settings['job']['renderType'] != 'list') {
             $this->redirect('noJobFound');
-        } 
+        }
 
         $categories = $this->settings['job']['categories'];
         $categoryConjunction = $this->settings['job']['categoryConjunction'];
@@ -58,21 +58,21 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * action show
-     * 
+     *
      * Renders the job detail template and renders the jobs
-     * structured data script tag to the html head. 
-     * 
+     * structured data script tag to the html head.
+     *
      * @param Job $job
      * @return void
      */
     public function showAction(Job $job): void
-    {   
+    {
         $structuredData = $job->createStructuredData();
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = $this->objectManager->get(PageRenderer::class);
         $pageRenderer->addHeaderData($structuredData);
 
-        if($this->settings['job']['renderDetailTemplate']) {
+        if ($this->settings['job']['renderDetailTemplate']) {
             $this->view->assign('job', $job);
         }
     }
@@ -101,8 +101,8 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * Render no job found template
-     * 
-     * @return void 
+     *
+     * @return void
      */
     protected function noJobFoundAction(): void
     {

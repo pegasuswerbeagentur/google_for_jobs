@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Pegasus\GoogleForJobs\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /***
  *
@@ -20,7 +22,14 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class JobRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    public function findByCategories($categories, $categorieConjunction)
+    /**
+     * Returns a list of jobs by categories and their conjunction
+     *
+     * @param string $categories A comma seperated string of category Id's
+     * @param string $categoryConjunction The logical conjunction for the categories
+     * @return QueryResultInterface
+     */
+    public function findByCategories(string $categories, string $categorieConjunction): QueryResultInterface
     {
         $categoryConstraints = [];
         $categorieConjunction = $categorieConjunction ?? '';
