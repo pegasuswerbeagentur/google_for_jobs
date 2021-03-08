@@ -48,8 +48,11 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if ($this->settings['job']['renderType'] != 'list') {
             $this->redirect('noJobFound');
         } 
+
+        $categories = $this->settings['job']['categories'];
+        $categoryConjunction = $this->settings['job']['categoryConjunction'];
         $this->setRepositoryOrderings();
-        $jobs = $this->jobRepository->findAll();
+        $jobs = $this->jobRepository->findByCategories($categories, $categoryConjunction);
         $this->view->assign('jobs', $jobs);
     }
 
