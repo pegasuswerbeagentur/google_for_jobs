@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Pegasus\GoogleForJobs\Domain\Model;
@@ -22,7 +23,7 @@ class JobLocation extends AbstractEntity
 {
     /**
      * The Street and No. of the business where the employee will report to work.
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -30,7 +31,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * The city of the business where the employee will report to work.
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -38,7 +39,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * The postal code of the business where the employee will report to work.
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -47,7 +48,7 @@ class JobLocation extends AbstractEntity
     /**
      * The region of the business where the employee will report to work. For example,
      * California or another appropriate first-level Administrative division.
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -56,7 +57,7 @@ class JobLocation extends AbstractEntity
     /**
      * The country of the business where the employee will report to work. For example,
      * USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -64,7 +65,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Returns the streetAddress
-     * 
+     *
      * @return string $streetAddress
      */
     public function getStreetAddress(): string
@@ -74,7 +75,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the streetAddress
-     * 
+     *
      * @param string $streetAddress
      * @return void
      */
@@ -85,7 +86,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Returns the city
-     * 
+     *
      * @return string $city
      */
     public function getCity(): string
@@ -95,7 +96,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the city
-     * 
+     *
      * @param string $city
      * @return void
      */
@@ -106,7 +107,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Returns the postalCode
-     * 
+     *
      * @return string $postalCode
      */
     public function getPostalCode(): string
@@ -116,7 +117,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the postalCode
-     * 
+     *
      * @param string $postalCode
      * @return void
      */
@@ -127,7 +128,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Returns the region
-     * 
+     *
      * @return string $region
      */
     public function getRegion(): string
@@ -137,7 +138,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the region
-     * 
+     *
      * @param string $region
      * @return void
      */
@@ -148,7 +149,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Returns the country
-     * 
+     *
      * @return string $country
      */
     public function getCountry(): string
@@ -158,7 +159,7 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the country
-     * 
+     *
      * @param string $country
      * @return void
      */

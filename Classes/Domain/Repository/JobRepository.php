@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Pegasus\GoogleForJobs\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /***
  *
