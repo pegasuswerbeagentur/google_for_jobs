@@ -6,6 +6,7 @@ namespace Pegasus\GoogleForJobs\Controller;
 use Pegasus\GoogleForJobs\Domain\Model\Job;
 use Pegasus\GoogleForJobs\Domain\Repository\JobRepository;
 use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /***
  *
@@ -35,6 +36,12 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->jobRepository = $jobRepository;
     }
 
+    public function indexAction(): void
+    {
+        $action = $this->settings['job']['renderType'];
+        $this->redirect($action);
+    }
+
     /**
      * action list
      * 
@@ -45,6 +52,7 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if ($this->settings['job']['renderType'] != 'list') {
             $this->redirect('noJobFound');
         }
+        $this->setRepositoryOrderings();
         $jobs = $this->jobRepository->findAll();
         $this->view->assign('jobs', $jobs);
     }
@@ -77,5 +85,48 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     protected function noJobFoundAction(): void
     {
+    }
+
+    /**
+     * action listSelected
+     *
+     * Renders a list view of selected jobs.
+     * @return void
+     */
+    public function listSelectedAction(): void
+    {
+        /** @var Job[] $jobs */
+        $jobs = [];
+        $selectedJobIds = GeneralUtility::trimExplode(',', $this->settings['job']['listSelected'], true);
+
+        foreach ($selectedJobIds as $id) {
+            $job = $this->jobRepository->findByIdentifier($id);
+            if ($job) {
+                $jobs[] = $job;
+            }
+        }
+
+        $this->view->assign('jobs', $jobs);
+    }
+
+    /**
+     * Get orderings from plugin and set them in repository
+     *
+     * @return void
+     */
+    private function setRepositoryOrderings(): void
+    {
+        $orderBy = 'uid';
+        $orderDirection = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+
+        if ($this->settings['job']['orderBy']) {
+            $orderBy = $this->settings['job']['orderBy'];
+        }
+        if ($this->settings['job']['orderDirection'] == 'desc') {
+            $orderDirection = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING;
+        }
+        $defaultOrderings = [$orderBy => $orderDirection];
+
+        $this->jobRepository->setDefaultOrderings($defaultOrderings);
     }
 }

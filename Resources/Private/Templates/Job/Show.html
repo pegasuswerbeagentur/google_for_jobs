@@ -6,7 +6,7 @@
     <f:if condition="{job}">
         <f:flashMessages />
         <f:render partial="Job/Properties" arguments="{job:job}" />
-        <f:link.action action="list" pageUid="{settings.job.returnToPid}">Back to list</f:link.action>
+        <f:link.page pageUid="{settings.job.returnToPid}">Back to list</f:link.page>
     </f:if>
 
 </f:section>

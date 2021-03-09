@@ -70,7 +70,7 @@
 				<source>Applicant Location Requirements (Country)</source>
 			</trans-unit>
 			<trans-unit id="tx_google_for_jobs_job.name">
-				<source>Job (Google for Jobs)</source>
+				<source>Jobs (Google for Jobs)</source>
 			</trans-unit>
 			<trans-unit id="tx_google_for_jobs_job.description">
 				<source></source>

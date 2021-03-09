@@ -495,9 +495,9 @@ class Job extends AbstractEntity
     /**
      * Returns the validThrough
      * 
-     * @return \DateTime $validThrough
+     * @return \DateTime|null $validThrough
      */
-    public function getValidThrough(): \DateTime
+    public function getValidThrough(): ?\DateTime
     {
         return $this->validThrough;
     }
@@ -658,7 +658,10 @@ class Job extends AbstractEntity
         // Creation date of the job offer, converts crdate field (unix time) to Y-m-d format
         $data['datePosted'] = $this->getDatePosted()->format('Y-m-d');
         // date through which the offer is valid (format: Y-m-d)
-        $data['validThrough'] = $this->getValidThrough()->format('Y-m-d');
+        $validThrough =  $this->getValidThrough();
+        if ($validThrough) {
+            $data['validThrough'] = $validThrough->format('Y-m-d');
+        }
         // type of employment (valid values: FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER)
         $data['employmentType'] = explode(',', $this->getEmploymentType());
  
