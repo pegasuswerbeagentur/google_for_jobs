@@ -1,6 +1,23 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2021-03-08
+### Sponsor
+- Many thanks to [Cybertrading](https://cybertrading.de/) for sponsoring this update!
+
+### Added
+- Support for sytem categories in job records
+- Support for list of selected job entries
+- Support for setting the order in list view by title, last edited, created and published
+- Translation support for Plugin
+
+### Important
+- [!!!] Analyze and update database structure after installation
+
+### Fixed
+- render missing organization logo url to structured data output
+- make validThrough nullable in job model
+
 ## [2.0.1] - 2020-06-19
 ### Fixed
 - move flexform registration to tt_content overrides
