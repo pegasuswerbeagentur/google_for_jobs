@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [1.5.0] - 2021-03-08
+### Sponsor
+- Many thanks to [Cybertrading](https://cybertrading.de/) for sponsoring this update!
 ### Added
 - Support for sytem categories in job records
 - Support for list of selected job entries
