@@ -99,6 +99,65 @@
                         </TCEforms>
                     </settings.job.orderDirection>
 
+                    <!-- Category Mode -->
+					<settings.job.categoryConjunction>
+						<TCEforms>
+                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
+							<label>category conjunction</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">all</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">or</numIndex>
+										<numIndex index="1">or</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">and</numIndex>
+										<numIndex index="1">and</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">notor</numIndex>
+										<numIndex index="1">notor</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">notand</numIndex>
+										<numIndex index="1">notand</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.job.categoryConjunction>
+
+                    <!-- Categories -->
+                    <settings.job.categories>
+                        <TCEforms>
+                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
+                            <label>CAT</label>
+                            <config>
+                                <type>select</type>
+                                <renderMode>tree</renderMode>
+                                <renderType>selectTree</renderType>
+                                <treeConfig>
+                                    <appearance>
+                                        <expandAll>1</expandAll>
+                                        <showHeader>1</showHeader>
+                                    </appearance>
+                                    <parentField>parent</parentField>
+                                </treeConfig>
+                                <foreign_table>sys_category</foreign_table>
+                                <foreign_table_where>AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting</foreign_table_where>
+                                <size>10</size>
+                                <minitems>0</minitems>
+                                <maxitems>99</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.job.categories>
+
                     <settings.job.detailPid>
                         <label>PageId for single job display</label>
                         <config>
