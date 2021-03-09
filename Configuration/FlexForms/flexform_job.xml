@@ -20,6 +20,7 @@
                         <onChange>reload</onChange>
                         <config>
                             <type>select</type>
+                            <renderType>selectSingle</renderType>
                             <default>list</default>
                             <items type="array">
                                 <numIndex index="1" type="array">
@@ -101,6 +102,7 @@
                     <!-- Category Mode -->
 					<settings.job.categoryConjunction>
 						<TCEforms>
+                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
 							<label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.label</label>
 							<config>
 								<type>select</type>
@@ -134,6 +136,7 @@
                     <!-- Categories -->
                     <settings.job.categories>
                         <TCEforms>
+                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
                             <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categories.label</label>
                             <config>
                                 <type>select</type>
