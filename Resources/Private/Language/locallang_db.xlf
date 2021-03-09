@@ -141,6 +141,78 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.structured_data">
 				<source>Structured data</source>
 			</trans-unit>
+			<trans-unit id="flexforms.sheetTitle">
+				<source>Jobs Configuration</source>
+			</trans-unit>
+			<trans-unit id="flexforms.renderDetailTemplate.label">
+				<source>Render Detail Template</source>
+			</trans-unit>
+			<trans-unit id="flexforms.renderType.label">
+				<source>What to display</source>
+			</trans-unit>
+			<trans-unit id="flexforms.renderType.list">
+				<source>List View</source>
+			</trans-unit>
+			<trans-unit id="flexforms.renderType.show">
+				<source>Detail View</source>
+			</trans-unit>
+			<trans-unit id="flexforms.renderType.listSelected">
+				<source>List of Selected Jobs</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderBy.label">
+				<source>Order By</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderBy.tstamp">
+				<source>Last Edited</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderBy.datePosted">
+				<source>Given date/time</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderBy.crdate">
+				<source>Created</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderBy.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderDirection.label">
+				<source>Sort Direction</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderDirection.asc">
+				<source>Ascending</source>
+			</trans-unit>
+			<trans-unit id="flexforms.orderDirection.desc">
+				<source>Descending</source>
+			</trans-unit>
+			<trans-unit id="flexforms.categoryConjunction.label">
+				<source>Category Mode</source>
+			</trans-unit>
+			<trans-unit id="flexforms.categoryConjunction.all">
+				<source>Show all (ignore categories)</source>
+			</trans-unit>
+			<trans-unit id="flexforms.categoryConjunction.or">
+				<source>Show items with one or more of the selected categories</source>
+			</trans-unit>
+			<trans-unit id="flexforms.categoryConjunction.and">
+				<source>Show items with all of the selected categories</source>
+			</trans-unit>
+			<trans-unit id="flexforms.categoryConjunction.notor">
+				<source>Exclude items with one ore more of the selected categories</source>
+			</trans-unit>
+			<trans-unit id="flexforms.categoryConjunction.notand">
+				<source>Show items with none of the selected categories</source>
+			</trans-unit>
+			<trans-unit id="flexforms.categories.label">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="flexforms.detailPid.label">
+				<source>PageId for single job display</source>
+			</trans-unit>
+			<trans-unit id="flexforms.returnToPid.label">
+				<source>PageId to return to</source>
+			</trans-unit>
+			<trans-unit id="flexforms.listSelected.label">
+				<source>Job items to display</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

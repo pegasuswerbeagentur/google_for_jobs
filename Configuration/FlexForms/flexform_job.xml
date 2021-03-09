@@ -3,47 +3,46 @@
         <sDEF>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>Jobs Configuration</sheetTitle>
+                    <sheetTitle>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.sheetTitle</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
                     <settings.job.renderDetailTemplate>
                         <TCEforms>
-                            <label>Render Detail Template</label>
+                            <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderDetailTemplate.label</label>
                             <config>
                                 <type>check</type>
                             </config>
                         </TCEforms>
                     </settings.job.renderDetailTemplate>
                     <settings.job.renderType>
-                        <label>What to display</label>
+                        <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.label</label>
                         <onChange>reload</onChange>
                         <config>
                             <type>select</type>
                             <default>list</default>
-                            <renderType>selectSingle</renderType>
                             <items type="array">
-                                <numIndex index="0" type="array">
-                                    <numIndex index="0">List View</numIndex>
+                                <numIndex index="1" type="array">
+                                    <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.list</numIndex>
                                     <numIndex index="1">list</numIndex>
                                 </numIndex>
-                                <numIndex index="1" type="array">
-                                    <numIndex index="0">Detail View</numIndex>
+                                <numIndex index="2" type="array">
+                                    <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.show</numIndex>
                                     <numIndex index="1">show</numIndex>
                                 </numIndex>
-                                <numIndex index="2" type="array">
-                                    <numIndex index="0">List of selected Jobs</numIndex>
+                                <numIndex index="3" type="array">
+                                    <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.listSelected</numIndex>
                                     <numIndex index="1">listSelected</numIndex>
                                 </numIndex>
                             </items>
                         </config>
                     </settings.job.renderType>
 
-                     <!-- order -->
+                    <!-- order -->
                     <settings.job.orderBy>
                         <TCEforms>
                             <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
-                            <label>Order By</label>
+                            <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderBy.label</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
@@ -53,22 +52,22 @@
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">Last edited</numIndex>
+                                        <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderBy.tstamp</numIndex>
                                         <numIndex index="1">tstamp</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
-                                        <numIndex index="0">Given date/time</numIndex>
+                                        <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderBy.datePosted</numIndex>
                                         <numIndex index="1">date_posted</numIndex>
                                     </numIndex>
                                     <numIndex index="3">
-                                        <numIndex index="0">Created</numIndex>
+                                        <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderBy.crdate</numIndex>
                                         <numIndex index="1">crdate</numIndex>
                                     </numIndex>
                                     <numIndex index="4">
-                                        <numIndex index="0">Title</numIndex>
+                                        <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderBy.title</numIndex>
                                         <numIndex index="1">title</numIndex>
                                     </numIndex>
-                                </items>
+                                </items>Created
                             </config>
                         </TCEforms>
                     </settings.job.orderBy>
@@ -77,7 +76,7 @@
                     <settings.job.orderDirection>
                         <TCEforms>
                             <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
-                            <label>Sort Direction</label>
+                            <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderDirection.label</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
@@ -87,11 +86,11 @@
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">Ascending</numIndex>
+                                        <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderDirection.asc</numIndex>
                                         <numIndex index="1">asc</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
-                                        <numIndex index="0">Descending</numIndex>
+                                        <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderDirection.desc</numIndex>
                                         <numIndex index="1">desc</numIndex>
                                     </numIndex>
                                 </items>
@@ -102,30 +101,29 @@
                     <!-- Category Mode -->
 					<settings.job.categoryConjunction>
 						<TCEforms>
-                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
-							<label>category conjunction</label>
+							<label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.label</label>
 							<config>
 								<type>select</type>
 								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="0" type="array">
-										<numIndex index="0">all</numIndex>
+										<numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.all</numIndex>
 										<numIndex index="1"></numIndex>
 									</numIndex>
 									<numIndex index="1">
-										<numIndex index="0">or</numIndex>
+										<numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.or</numIndex>
 										<numIndex index="1">or</numIndex>
 									</numIndex>
 									<numIndex index="2">
-										<numIndex index="0">and</numIndex>
+										<numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.and</numIndex>
 										<numIndex index="1">and</numIndex>
 									</numIndex>
 									<numIndex index="3">
-										<numIndex index="0">notor</numIndex>
+										<numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.notor</numIndex>
 										<numIndex index="1">notor</numIndex>
 									</numIndex>
 									<numIndex index="4">
-										<numIndex index="0">notand</numIndex>
+										<numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.notand</numIndex>
 										<numIndex index="1">notand</numIndex>
 									</numIndex>
 								</items>
@@ -136,8 +134,7 @@
                     <!-- Categories -->
                     <settings.job.categories>
                         <TCEforms>
-                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
-                            <label>CAT</label>
+                            <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categories.label</label>
                             <config>
                                 <type>select</type>
                                 <renderMode>tree</renderMode>
@@ -159,7 +156,7 @@
                     </settings.job.categories>
 
                     <settings.job.detailPid>
-                        <label>PageId for single job display</label>
+                        <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.detailPid.label</label>
                         <config>
                             <type>group</type>
                             <internal_type>db</internal_type>
@@ -171,7 +168,7 @@
                         </config>
                     </settings.job.detailPid>
                     <settings.job.returnToPid>
-                        <label>PageId to return to</label>
+                        <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.returnToPid.label</label>
                         <config>
                             <type>group</type>
                             <internal_type>db</internal_type>
@@ -187,7 +184,7 @@
                     <settings.job.listSelected>
                         <TCEforms>
                             <displayCond>FIELD:settings.job.renderType:=:listSelected</displayCond>
-                            <label>List of Jobs</label>
+                            <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.listSelected.label</label>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
