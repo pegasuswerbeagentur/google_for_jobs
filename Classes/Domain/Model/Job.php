@@ -678,7 +678,9 @@ class Job extends AbstractEntity
         $data['hiringOrganization']['name'] = $this->getHiringOrganizationName();
         // website of the hiring organization
         $data['hiringOrganization']['sameAs'] = $this->getHiringOrganizationWebsite();
-        
+        // logo of the hiring organization
+        $data['hiringOrganization']['logo'] = $this->getHiringOrganizationLogoUrl();
+
         foreach ($this->getJobLocations() as $jobLocation) {
             
             $location = [];
