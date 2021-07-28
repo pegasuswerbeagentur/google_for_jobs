@@ -22,13 +22,22 @@ return [
         'searchFields' => 'street_address,city,postal_code,region,country',
         'iconfile' => 'EXT:google_for_jobs/Resources/Public/Icons/tx_googleforjobs_domain_model_job.gif'
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, street_address, city, postal_code, region, country',
+    'palettes' => [
+        'language' => ['showitem' => 'sys_language_uid, l10n_parent'],
+        'address' => ['showitem' => 'street_address,--linebreak--,city, postal_code,--linebreak--,region, country,'],
     ],
     'types' => [
         '1' => [
-            'showitem' => 
-                'sys_language_uid, l10n_parent, l10n_diffsource, hidden, street_address, city, postal_code, region, country, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, type, applicant_location_requirements'
+            'showitem' =>
+                '
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+                    --palette--;;address,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+                    --palette--;;language,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                    hidden,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
+            '
             ],
     ],
     'columns' => [
@@ -51,7 +60,6 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
