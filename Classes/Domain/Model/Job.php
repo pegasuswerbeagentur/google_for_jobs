@@ -181,6 +181,12 @@ class Job extends AbstractEntity
     protected $notes;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     */
+    protected $categories;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -196,6 +202,7 @@ class Job extends AbstractEntity
         $this->falMedia = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->falRelatedFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->jobLocations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -664,14 +671,14 @@ class Job extends AbstractEntity
         }
         // type of employment (valid values: FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER)
         $data['employmentType'] = explode(',', $this->getEmploymentType());
- 
+
         // mandatory key/value
         $data['identifier']['@type'] = 'PropertyValue';
         // name of the offering organization
         $data['identifier']['name'] = $this->getHiringOrganizationName();
         // unique ID for the job offer, uses the CE uid converted to a string
         $data['identifier']['value'] = $this->getUid();
- 
+
         // mandatory key/value
         $data['hiringOrganization']['@type'] = 'Organization';
         // name of the offering organization
@@ -712,7 +719,7 @@ class Job extends AbstractEntity
             $data['applicantLocationRequirement']['@type'] = 'Country';
             $data['applicantLocationRequirement']['name'] = $this->getApplicantLocationRequirements();
         }
- 
+
         // convert data to JSON format while keeping certain characters unescaped
         // JSON_UNESCAPED_UNICODE: Don't escape unicode characters (e.g "&")
         // JSON_UNESCAPED_SLASHES: Don't escape slashes
@@ -723,4 +730,28 @@ class Job extends AbstractEntity
 
         return $sturcturedData;
     }
+
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @return ?\TYPO3\CMS\Extbase\Domain\Model\Category
+     */
+    public function getFirstCategory()
+    {
+        $categories = $this->categories;
+        if (!$categories) {
+            return null;
+        }
+        foreach ($categories as $category) {
+            return $category;
+        }
+    }
+
 }
