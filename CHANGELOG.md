@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2021-08-23
+Security release: update as soon as possilbe to close a possible XSS vulnerability
+
+### Security
+- escape structured data JSON output 
+- escape all rendered job properties in fluid templates
+
 ## [1.5.0] - 2021-03-08
 ### Sponsor
 - Many thanks to [Cybertrading](https://cybertrading.de/) for sponsoring this update!
