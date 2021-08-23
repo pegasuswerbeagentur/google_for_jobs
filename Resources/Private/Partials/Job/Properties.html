@@ -6,7 +6,7 @@
 
     <f:if condition="{job.alternativeTitle}">
         <div>
-            <f:format.raw>{job.alternativeTitle}</f:format.raw>
+            {job.alternativeTitle}
         </div>
     </f:if>
 
@@ -16,7 +16,7 @@
     <f:comment>Structured data</f:comment>
 
     <div>
-        <f:format.raw>{job.title}</f:format.raw>
+        {job.title}
     </div>
     <div>
         <f:format.html>{job.description}</f:format.html>
@@ -28,7 +28,7 @@
         <f:link.typolink parameter="{job.hiringorganizationlogourl}">{job.hiringorganizationlogourl}</f:link.typolink>
     </div>
     <div>
-        <f:format.raw>{job.hiringorganizationname}</f:format.raw>
+        {job.hiringorganizationname}
     </div>
     <div>
         <f:link.typolink parameter="{job.hiringorganizationwebsite}">{job.hiringorganizationwebsite}</f:link.typolink>
@@ -37,42 +37,42 @@
 
         Location {iterator.cycle}:
         <div>
-            <f:format.raw>{joblocation.city}</f:format.raw>
+            {joblocation.city}
         </div>
         <div>
-            <f:format.raw>{joblocation.streetaddress}</f:format.raw>
+            {joblocation.streetaddress}
         </div>
         <div>
-            <f:format.raw>{joblocation.postalcode}</f:format.raw>
+            {joblocation.postalcode}
         </div>
         <div>
-            <f:format.raw>{joblocation.region}</f:format.raw>
+            {joblocation.region}
         </div>
         <div>
-            <f:format.raw>{joblocation.country}</f:format.raw>
+            {joblocation.country}
         </div><br />
     </f:for>
     <div>
-        <f:format.raw>{job.joblocationtype}</f:format.raw>
+        {job.joblocationtype}
     </div>
     
     <div>
         <f:format.date format="%d. %B %Y">{job.validthrough}</f:format.date>
     </div>
     <div>
-        <f:format.raw>{job.basesalarycurrency}</f:format.raw>
+        {job.basesalarycurrency}
     </div>
     <div>
-        <f:format.raw>{job.basesalaryunittext}</f:format.raw>
+        {job.basesalaryunittext}
     </div>
     <div>
         <f:format.currency>{job.basesalaryvalue}</f:format.currency>
     </div>
     <div>
-        <f:format.raw>{job.employmenttype}</f:format.raw>
+        {job.employmenttype}
     </div>
     <div>
-        <f:format.raw>{job.applicantlocationrequirements}</f:format.raw>
+        {job.applicantlocationrequirements}
     </div>
 
     <f:comment>/Structured data</f:comment>
@@ -109,12 +109,12 @@
 
     <f:if condition="{job.author}">
         <div>
-            <f:format.raw>{job.author}</f:format.raw>
+            {job.author}
         </div>
     </f:if>
     <f:if condition="{job.category}">
         <div>
-            <f:format.raw>{job.category}</f:format.raw>
+            {job.category}
         </div>
     </f:if>
 
