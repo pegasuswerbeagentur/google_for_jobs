@@ -652,34 +652,34 @@ class Job extends AbstractEntity
         // mandatory key/value
         $data['@type'] = 'JobPosting';
         // title of the job offer
-        $data['title'] = $this->getTitle();
+        $data['title'] = htmlspecialchars($this->getTitle());
         // Full HTML description of the job offer
-        $data['description'] = $this->getDescription();
+        $data['description'] = htmlspecialchars($this->getDescription());
         // Creation date of the job offer, converts crdate field (unix time) to Y-m-d format
-        $data['datePosted'] = $this->getDatePosted()->format('Y-m-d');
+        $data['datePosted'] = htmlspecialchars($this->getDatePosted()->format('Y-m-d'));
         // date through which the offer is valid (format: Y-m-d)
         $validThrough =  $this->getValidThrough();
         if ($validThrough) {
-            $data['validThrough'] = $validThrough->format('Y-m-d');
+            $data['validThrough'] = htmlspecialchars($validThrough->format('Y-m-d'));
         }
         // type of employment (valid values: FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER)
-        $data['employmentType'] = explode(',', $this->getEmploymentType());
+        $data['employmentType'] = explode(',', htmlspecialchars($this->getEmploymentType()));
 
         // mandatory key/value
         $data['identifier']['@type'] = 'PropertyValue';
         // name of the offering organization
-        $data['identifier']['name'] = $this->getHiringOrganizationName();
+        $data['identifier']['name'] = htmlspecialchars($this->getHiringOrganizationName());
         // unique ID for the job offer, uses the CE uid converted to a string
         $data['identifier']['value'] = $this->getUid();
 
         // mandatory key/value
         $data['hiringOrganization']['@type'] = 'Organization';
         // name of the offering organization
-        $data['hiringOrganization']['name'] = $this->getHiringOrganizationName();
+        $data['hiringOrganization']['name'] = htmlspecialchars($this->getHiringOrganizationName());
         // website of the hiring organization
-        $data['hiringOrganization']['sameAs'] = $this->getHiringOrganizationWebsite();
+        $data['hiringOrganization']['sameAs'] = htmlspecialchars($this->getHiringOrganizationWebsite());
         // logo of the hiring organization
-        $data['hiringOrganization']['logo'] = $this->getHiringOrganizationLogoUrl();
+        $data['hiringOrganization']['logo'] = htmlspecialchars($this->getHiringOrganizationLogoUrl());
 
         foreach ($this->getJobLocations() as $jobLocation) {
             $location = [];
@@ -688,35 +688,32 @@ class Job extends AbstractEntity
             // mandatory key/value
             $location['address']['@type'] = 'PostalAddress';
             // street and no. of the job location
-            $location['address']['streetAddress'] = $jobLocation->getStreetAddress();
+            $location['address']['streetAddress'] = htmlspecialchars($jobLocation->getStreetAddress());
             // city of the job location
-            $location['address']['addressLocality'] = $jobLocation->getCity();
+            $location['address']['addressLocality'] = htmlspecialchars($jobLocation->getCity());
             // region of the job location
-            $location['address']['addressRegion'] = $jobLocation->getRegion();
+            $location['address']['addressRegion'] = htmlspecialchars($jobLocation->getRegion());
             // postal code of the job location
-            $location['address']['postalCode'] = $jobLocation->getPostalCode();
+            $location['address']['postalCode'] = htmlspecialchars($jobLocation->getPostalCode());
             // country of the job location
-            $location['address']['addressCountry'] = $jobLocation->getCountry();
+            $location['address']['addressCountry'] = htmlspecialchars($jobLocation->getCountry());
 
             $data['jobLocation'][] = $location;
         }
 
         $data['baseSalary']['@type'] = 'MonetaryAmount';
-        $data['baseSalary']['currency'] = $this->getBaseSalaryCurrency();
+        $data['baseSalary']['currency'] = htmlspecialchars($this->getBaseSalaryCurrency());
         $data['baseSalary']['value']['@type'] = 'QuantitativeValue';
         $data['baseSalary']['value']['value'] = $this->getBaseSalaryValue();
-        $data['baseSalary']['value']['unitText'] = $this->getBaseSalaryUnitText();
+        $data['baseSalary']['value']['unitText'] = htmlspecialchars($this->getBaseSalaryUnitText());
 
         if ($this->getJobLocationType()) {
             $data['jobLocationType'] = 'TELECOMMUTE';
             $data['applicantLocationRequirement']['@type'] = 'Country';
-            $data['applicantLocationRequirement']['name'] = $this->getApplicantLocationRequirements();
+            $data['applicantLocationRequirement']['name'] = htmlspecialchars($this->getApplicantLocationRequirements());
         }
 
-        // convert data to JSON format while keeping certain characters unescaped
-        // JSON_UNESCAPED_UNICODE: Don't escape unicode characters (e.g "&")
-        // JSON_UNESCAPED_SLASHES: Don't escape slashes
-        $jsonData = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $jsonData = json_encode($data);
 
         // add script tag
         $sturcturedData = '<script type="application/ld+json">' . $jsonData . '</script>';
