@@ -37,12 +37,6 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->jobRepository = $jobRepository;
     }
 
-    public function indexAction(): void
-    {
-        $action = $this->settings['job']['renderType'];
-        $this->redirect($action);
-    }
-
     /**
      * actio list
      *
@@ -77,9 +71,7 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $pageRenderer = $this->objectManager->get(PageRenderer::class);
         $pageRenderer->addHeaderData($structuredData);
 
-        if ($this->settings['job']['renderDetailTemplate']) {
-            $this->view->assign('job', $job);
-        }
+        $this->view->assign('job', $job);
     }
 
     /**

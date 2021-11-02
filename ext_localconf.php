@@ -9,7 +9,7 @@ call_user_func(
             'Pegasus.GoogleForJobs',
             'Job',
             [
-                'Job' => 'index, list, show, listSelected, noJobFound'
+                'Job' => 'list, show, listSelected, noJobFound'
             ],
             // non-cacheable actions
             [
@@ -36,14 +36,14 @@ call_user_func(
             }
        }'
     );
-    
+
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
     $iconRegistry->registerIcon(
         'google_for_jobs-plugin-job',
         \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
         ['source' => 'EXT:google_for_jobs/Resources/Public/Icons/user_plugin_job.svg']
     );
-		
+
     }
 );
 // register location migration update wizard

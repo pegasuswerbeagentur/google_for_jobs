@@ -7,15 +7,7 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
-                    <settings.job.renderDetailTemplate>
-                        <TCEforms>
-                            <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderDetailTemplate.label</label>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
-                    </settings.job.renderDetailTemplate>
-                    <settings.job.renderType>
+                    <switchableControllerActions>
                         <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.label</label>
                         <onChange>reload</onChange>
                         <config>
@@ -25,24 +17,24 @@
                             <items type="array">
                                 <numIndex index="1" type="array">
                                     <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.list</numIndex>
-                                    <numIndex index="1">list</numIndex>
+                                    <numIndex index="1">Job->list</numIndex>
                                 </numIndex>
                                 <numIndex index="2" type="array">
                                     <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.show</numIndex>
-                                    <numIndex index="1">show</numIndex>
+                                    <numIndex index="1">Job->show</numIndex>
                                 </numIndex>
                                 <numIndex index="3" type="array">
                                     <numIndex index="0">LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.renderType.listSelected</numIndex>
-                                    <numIndex index="1">listSelected</numIndex>
+                                    <numIndex index="1">Job->listSelected</numIndex>
                                 </numIndex>
                             </items>
                         </config>
-                    </settings.job.renderType>
+                    </switchableControllerActions>
 
                     <!-- order -->
                     <settings.job.orderBy>
                         <TCEforms>
-                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->list</displayCond>
                             <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderBy.label</label>
                             <config>
                                 <type>select</type>
@@ -76,7 +68,7 @@
                     <!-- order direction  -->
                     <settings.job.orderDirection>
                         <TCEforms>
-                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->list</displayCond>
                             <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderDirection.label</label>
                             <config>
                                 <type>select</type>
@@ -102,7 +94,7 @@
                     <!-- Category Mode -->
 					<settings.job.categoryConjunction>
 						<TCEforms>
-                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->list</displayCond>
 							<label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categoryConjunction.label</label>
 							<config>
 								<type>select</type>
@@ -136,7 +128,7 @@
                     <!-- Categories -->
                     <settings.job.categories>
                         <TCEforms>
-                            <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->list</displayCond>
                             <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categories.label</label>
                             <config>
                                 <type>select</type>
@@ -186,7 +178,7 @@
                     <!-- selectedList -->
                     <settings.job.listSelected>
                         <TCEforms>
-                            <displayCond>FIELD:settings.job.renderType:=:listSelected</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Job->listSelected</displayCond>
                             <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.listSelected.label</label>
                             <config>
                                 <type>group</type>
