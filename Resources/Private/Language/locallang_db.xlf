@@ -69,6 +69,9 @@
 			<trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements">
 				<source>Applicant Location Requirements (Country)</source>
 			</trans-unit>
+			<trans-unit id="tx_googleforjobs_domain_model_job.direct_apply">
+				<source>Direct Apply</source>
+			</trans-unit>
 			<trans-unit id="tx_google_for_jobs_job.name">
 				<source>Jobs (Google for Jobs)</source>
 			</trans-unit>
