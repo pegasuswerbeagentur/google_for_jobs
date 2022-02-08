@@ -149,8 +149,7 @@ class Job extends AbstractEntity
     protected $applicantLocationRequirements = '';
 
     /**
-     * Indicates if an application directly on the website is possble
-     * job.
+     * Indicates if an application directly on the website is possible.
      *
      * @var string
      */
