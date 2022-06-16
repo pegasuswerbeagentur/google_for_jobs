@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2022-06-16
+- compatibility for TYPO3 11
+
 ## [2.1.1] - 2021-08-23
 Security release: update as soon as possilbe to close a possible XSS vulnerability
 
