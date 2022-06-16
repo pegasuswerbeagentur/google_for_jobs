@@ -9,11 +9,11 @@ call_user_func(
             'Pegasus.GoogleForJobs',
             'Job',
             [
-                'Job' => 'index, list, show, listSelected, noJobFound'
+                \Pegasus\GoogleForJobs\Controller\JobController::class => 'index, list, show, listSelected, noJobFound'
             ],
             // non-cacheable actions
             [
-                'Job' => ''
+                \Pegasus\GoogleForJobs\Controller\JobController::class => ''
             ]
         );
 
