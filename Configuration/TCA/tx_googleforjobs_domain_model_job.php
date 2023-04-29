@@ -22,14 +22,14 @@ return [
         'iconfile' => 'EXT:google_for_jobs/Resources/Public/Icons/tx_googleforjobs_domain_model_job.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, date_posted, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_locations, valid_through, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, employment_type, job_location_type, applicant_location_requirements',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, date_posted, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_locations, valid_through, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, employment_type, job_location_type, applicant_location_requirements, direct_apply',
     ],
     'types' => [
         '1' => [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden, alternative_title, path_segment,
                 --div--;LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.structured_data,
-                title, description, employment_type, date_posted, valid_through, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_locations, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, job_location_type, applicant_location_requirements,
+                title, description, employment_type, date_posted, valid_through, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_locations, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, job_location_type, applicant_location_requirements, direct_apply,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.media,
                 fal_media,fal_related_files,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.metadata,
@@ -332,6 +332,14 @@ return [
                 'eval' => 'trim,required'
             ],
             'displayCond' => 'FIELD:job_location_type:=:1',
+        ],
+        'direct_apply' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.direct_apply',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle'
+            ],
         ],
         'path_segment' => [
             'exclude' => true,

@@ -47,6 +47,9 @@
 			<trans-unit id="applicant_location_requirements.description">
 				<source>The country in which employees may be located for to be eligible for the remote job.</source>
 			</trans-unit>
+			<trans-unit id="direct_apply.description">
+				<source>Indicates whether the URL that's associated with this job posting enables direct application for the job.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

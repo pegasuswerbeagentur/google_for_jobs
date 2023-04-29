@@ -93,6 +93,13 @@ class Job extends AbstractEntity
     protected $validThrough = null;
 
     /**
+     * If salary data is availible
+     *
+     * @var string
+     */
+    protected $baseSalaryEnable = '';
+
+    /**
      * The currency of the base salary for the job.
      *
      * @var string
@@ -140,6 +147,13 @@ class Job extends AbstractEntity
      * @var string
      */
     protected $applicantLocationRequirements = '';
+
+    /**
+     * Indicates if an application directly on the website is possible.
+     *
+     * @var string
+     */
+    protected $directApply = '';
 
     /**
      * @var string
@@ -514,6 +528,16 @@ class Job extends AbstractEntity
     }
 
     /**
+     * Returns the baseSalaryEnable
+     *
+     * @return string $baseSalaryEnable
+     */
+    public function getBaseSalaryEnable(): string
+    {
+        return $this->baseSalaryEnable;
+    }
+
+    /**
      * Returns the baseSalaryCurrency
      *
      * @return string $baseSalaryCurrency
@@ -542,6 +566,17 @@ class Job extends AbstractEntity
     public function getBaseSalaryUnitText(): string
     {
         return $this->baseSalaryUnitText;
+    }
+
+    /**
+     * Sets the baseSalaryEnable
+     *
+     * @param string $baseSalaryEnable
+     * @return void
+     */
+    public function setBaseSalaryEnable(string $baseSalaryUnitText): void
+    {
+        $this->baseSalaryEnable = $baseSalaryEnable;
     }
 
     /**
@@ -640,6 +675,27 @@ class Job extends AbstractEntity
     }
 
     /**
+     * Returns the directApply
+     *
+     * @return string $directApply
+     */
+    public function getDirectApply(): string
+    {
+        return $this->directApply;
+    }
+
+    /**
+     * Sets the directApply
+     *
+     * @param string $directApply
+     * @return void
+     */
+    public function setDirectApply(string $directApply): void
+    {
+        $this->directApply = $directApply;
+    }
+
+    /**
      * Creates and returns Structured Data JSON string from job data for output
      *
      * @return string
@@ -701,17 +757,22 @@ class Job extends AbstractEntity
             $data['jobLocation'][] = $location;
         }
 
-        $data['baseSalary']['@type'] = 'MonetaryAmount';
-        $data['baseSalary']['currency'] = htmlspecialchars($this->getBaseSalaryCurrency());
-        $data['baseSalary']['value']['@type'] = 'QuantitativeValue';
-        $data['baseSalary']['value']['value'] = $this->getBaseSalaryValue();
-        $data['baseSalary']['value']['unitText'] = htmlspecialchars($this->getBaseSalaryUnitText());
+        if($this->getBaseSalaryEnable()) {
+            $data['baseSalary']['@type'] = 'MonetaryAmount';
+            $data['baseSalary']['currency'] = htmlspecialchars($this->getBaseSalaryCurrency());
+            $data['baseSalary']['value']['@type'] = 'QuantitativeValue';
+            $data['baseSalary']['value']['value'] = $this->getBaseSalaryValue();
+            $data['baseSalary']['value']['unitText'] = htmlspecialchars($this->getBaseSalaryUnitText());
+        }
+
 
         if ($this->getJobLocationType()) {
             $data['jobLocationType'] = 'TELECOMMUTE';
             $data['applicantLocationRequirement']['@type'] = 'Country';
             $data['applicantLocationRequirement']['name'] = htmlspecialchars($this->getApplicantLocationRequirements());
         }
+
+        $data['directApply'] = $this->getDirectApply() ? true : false;
  
         $jsonData = json_encode($data);
 

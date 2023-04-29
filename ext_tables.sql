@@ -19,6 +19,7 @@ CREATE TABLE tx_googleforjobs_domain_model_job (
 	base_salary_value double(11,2) DEFAULT '0.00' NOT NULL,
 	job_location_type tinyint(1) DEFAULT '0' NOT NULL,
 	applicant_location_requirements varchar(255) DEFAULT '' NOT NULL,
+	direct_apply tinyint(1) DEFAULT '0' NOT NULL,
 	path_segment varchar(2048),
 	fal_media int(11) unsigned DEFAULT '0',
 	fal_related_files int(11) unsigned DEFAULT '0',
