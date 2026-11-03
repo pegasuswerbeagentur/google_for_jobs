@@ -6,118 +6,96 @@ namespace Pegasus\GoogleForJobs\Controller;
 
 use Pegasus\GoogleForJobs\Domain\Model\Job;
 use Pegasus\GoogleForJobs\Domain\Repository\JobRepository;
+use Pegasus\GoogleForJobs\StructuredData\JobPostingBuilder;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
 
-/***
- *
- * This file is part of the "Google for Jobs" Extension for TYPO3 CMS.
+/*
+ * This file is part of the "Google for Jobs" extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- *  (c) 2019 Michael Kunst <kunst@pega-sus.de>, PEGASUS Werbeagentur GmbH
- *
- ***/
-/**
- * JobController
+ * LICENSE file that was distributed with this source code.
  */
-class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+
+class JobController extends ActionController
 {
-    /**
-     * jobRepository
-     *
-     * @var \Pegasus\GoogleForJobs\Domain\Repository\JobRepository
-     */
-    protected $jobRepository = null;
+    private const RENDER_TYPES = ['list', 'show', 'listSelected'];
 
-    public function __construct(JobRepository $jobRepository)
-    {
-        $this->jobRepository = $jobRepository;
-    }
-
-    public function indexAction(): void
-    {
-        $action = $this->settings['job']['renderType'];
-        $this->redirect($action);
-    }
+    public function __construct(
+        protected readonly JobRepository $jobRepository,
+        protected readonly JobPostingBuilder $jobPostingBuilder,
+        protected readonly PageRenderer $pageRenderer,
+    ) {}
 
     /**
-     * actio list
+     * Dispatches to the view selected in the plugin settings without
+     * a redirect, so no additional parameters end up in the URL.
      */
-    public function listAction(): void
+    public function indexAction(): ResponseInterface
     {
-        if ($this->settings['job']['renderType'] != 'list') {
-            $this->redirect('noJobFound');
+        $renderType = (string)($this->settings['job']['renderType'] ?? '');
+        if (!in_array($renderType, self::RENDER_TYPES, true)) {
+            $renderType = 'list';
         }
-
-        $categories = $this->settings['job']['categories'];
-        $categoryConjunction = $this->settings['job']['categoryConjunction'];
-        $this->setRepositoryOrderings();
-        $jobs = $this->jobRepository->findByCategories($categories, $categoryConjunction);
-        $this->view->assign('jobs', $jobs);
+        return new ForwardResponse($renderType);
     }
 
-    /**
-     * action show
-     *
-     * Renders the job detail template and renders the jobs
-     * structured data script tag to the html head.
-     */
-    public function showAction(Job $job): void
+    public function listAction(): ResponseInterface
     {
-        $structuredData = $job->createStructuredData();
-        /** @var PageRenderer $pageRenderer */
-        $pageRenderer = $this->objectManager->get(PageRenderer::class);
-        $pageRenderer->addHeaderData($structuredData);
+        $settings = $this->settings['job'] ?? [];
+        $jobs = $this->jobRepository->findForList(
+            GeneralUtility::intExplode(',', (string)($settings['categories'] ?? ''), true),
+            (string)($settings['categoryConjunction'] ?? ''),
+            (bool)($settings['hideExpired'] ?? true),
+            (string)($settings['orderBy'] ?? ''),
+            (string)($settings['orderDirection'] ?? ''),
+        );
+        $this->view->assign('jobs', $jobs);
+        return $this->htmlResponse();
+    }
 
-        if ($this->settings['job']['renderDetailTemplate']) {
+    public function listSelectedAction(): ResponseInterface
+    {
+        $uids = GeneralUtility::intExplode(',', (string)($this->settings['job']['listSelected'] ?? ''), true);
+        $this->view->assign('jobs', $this->jobRepository->findByUids($uids));
+        return $this->htmlResponse();
+    }
+
+    public function initializeShowAction(): void
+    {
+        if (!$this->request->hasArgument('job')) {
+            $this->throwPageNotFound('No job given');
+        }
+        $job = $this->request->getArgument('job');
+        if (!is_scalar($job) || $this->jobRepository->findByUid((int)$job) === null) {
+            $this->throwPageNotFound('Job not found');
+        }
+    }
+
+    public function showAction(Job $job): ResponseInterface
+    {
+        $this->pageRenderer->addHeaderData(
+            $this->jobPostingBuilder->render($this->jobPostingBuilder->build($job)),
+        );
+
+        if ((bool)($this->settings['job']['renderDetailTemplate'] ?? true)) {
             $this->view->assign('job', $job);
         }
+        return $this->htmlResponse();
     }
 
     /**
-     * Render no job found template
+     * @throws PropagateResponseException
      */
-    protected function noJobFoundAction(): void {}
-
-    /**
-     * action listSelected
-     *
-     * Renders a list view of selected jobs.
-     */
-    public function listSelectedAction(): void
+    protected function throwPageNotFound(string $reason): never
     {
-        /** @var Job[] $jobs */
-        $jobs = [];
-        $selectedJobIds = GeneralUtility::trimExplode(',', $this->settings['job']['listSelected'], true);
-
-        foreach ($selectedJobIds as $id) {
-            $job = $this->jobRepository->findByIdentifier($id);
-            if ($job) {
-                $jobs[] = $job;
-            }
-        }
-
-        $this->view->assign('jobs', $jobs);
-    }
-
-    /**
-     * Get orderings from plugin and set them in repository
-     */
-    private function setRepositoryOrderings(): void
-    {
-        $orderBy = 'uid';
-        $orderDirection = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
-
-        if ($this->settings['job']['orderBy']) {
-            $orderBy = $this->settings['job']['orderBy'];
-        }
-        if ($this->settings['job']['orderDirection'] == 'desc') {
-            $orderDirection = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING;
-        }
-        $defaultOrderings = [$orderBy => $orderDirection];
-
-        $this->jobRepository->setDefaultOrderings($defaultOrderings);
+        $response = GeneralUtility::makeInstance(ErrorController::class)
+            ->pageNotFoundAction($this->request, $reason);
+        throw new PropagateResponseException($response, 1730714400);
     }
 }

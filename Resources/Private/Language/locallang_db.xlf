@@ -85,7 +85,7 @@
                 <source>Valid through</source>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.valid_through.description">
-                <source>Output as "validThrough" (ISO 8601, end of the selected day). Required by Google if the posting has an expiry date. Leave empty if the job has no deadline.</source>
+                <source>Output as "validThrough" (ISO 8601, end of the selected day). Required by Google if the posting has an expiry date. Leave empty if the job has no deadline. Expired jobs are hidden in lists by default.</source>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_name">
                 <source>Organization name</source>
@@ -230,6 +230,9 @@
             </trans-unit>
             <trans-unit id="flexforms.renderDetailTemplate.label">
                 <source>Render detail template (structured data is always added)</source>
+            </trans-unit>
+            <trans-unit id="flexforms.hideExpired.label">
+                <source>Hide expired jobs (valid through in the past)</source>
             </trans-unit>
             <trans-unit id="flexforms.orderBy.label">
                 <source>Order by</source>

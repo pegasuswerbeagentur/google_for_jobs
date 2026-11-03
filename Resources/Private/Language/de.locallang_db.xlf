@@ -112,8 +112,8 @@
                 <target>Gültig bis</target>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.valid_through.description" approved="yes">
-                <source>Output as "validThrough" (ISO 8601, end of the selected day). Required by Google if the posting has an expiry date. Leave empty if the job has no deadline.</source>
-                <target>Wird als „validThrough“ (ISO 8601, Ende des gewählten Tages) ausgegeben. Laut Google Pflicht, wenn die Anzeige ein Ablaufdatum hat. Leer lassen, wenn es keine Frist gibt.</target>
+                <source>Output as "validThrough" (ISO 8601, end of the selected day). Required by Google if the posting has an expiry date. Leave empty if the job has no deadline. Expired jobs are hidden in lists by default.</source>
+                <target>Wird als „validThrough“ (ISO 8601, Ende des gewählten Tages) ausgegeben. Laut Google Pflicht, wenn die Anzeige ein Ablaufdatum hat. Leer lassen, wenn es keine Frist gibt. Abgelaufene Stellen werden in Listen standardmäßig ausgeblendet.</target>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_name" approved="yes">
                 <source>Organization name</source>
@@ -306,6 +306,10 @@
             <trans-unit id="flexforms.renderDetailTemplate.label" approved="yes">
                 <source>Render detail template (structured data is always added)</source>
                 <target>Detail-Template ausgeben (strukturierte Daten werden immer ergänzt)</target>
+            </trans-unit>
+            <trans-unit id="flexforms.hideExpired.label" approved="yes">
+                <source>Hide expired jobs (valid through in the past)</source>
+                <target>Abgelaufene Stellen ausblenden (Gültig bis liegt in der Vergangenheit)</target>
             </trans-unit>
             <trans-unit id="flexforms.orderBy.label" approved="yes">
                 <source>Order by</source>

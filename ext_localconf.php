@@ -11,7 +11,7 @@ ExtensionUtility::configurePlugin(
     'GoogleForJobs',
     'Job',
     [
-        JobController::class => 'index, list, show, listSelected, noJobFound',
+        JobController::class => 'index, list, show, listSelected',
     ],
     [],
     ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,

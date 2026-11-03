@@ -36,6 +36,14 @@
                             <default>1</default>
                         </config>
                     </settings.job.renderDetailTemplate>
+                    <settings.job.hideExpired>
+                        <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.hideExpired.label</label>
+                        <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
+                    </settings.job.hideExpired>
                     <settings.job.orderBy>
                         <label>LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.orderBy.label</label>
                         <displayCond>FIELD:settings.job.renderType:=:list</displayCond>
