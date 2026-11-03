@@ -88,6 +88,7 @@ final class JobPluginTest extends FunctionalTestCase
         self::assertStringNotContainsString('Expired Job', $body);
         self::assertStringNotContainsString('tx_googleforjobs_job%5Baction%5D', $body);
         self::assertStringNotContainsString('application/ld+json', $body);
+        self::assertStringContainsString('<title>Jobs</title>', $body);
     }
 
     #[Test]
@@ -97,6 +98,7 @@ final class JobPluginTest extends FunctionalTestCase
         $body = (string)$response->getBody();
 
         self::assertSame(200, $response->getStatusCode());
+        self::assertStringContainsString('<title>Software Engineer</title>', $body);
         self::assertStringContainsString('Software Engineer', $body);
         self::assertStringContainsString('Berlin', $body);
         self::assertMatchesRegularExpression('#<head>.*<script type="application/ld\+json">.*</script>.*</head>#s', $body);

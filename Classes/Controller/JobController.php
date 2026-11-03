@@ -6,6 +6,7 @@ namespace Pegasus\GoogleForJobs\Controller;
 
 use Pegasus\GoogleForJobs\Domain\Model\Job;
 use Pegasus\GoogleForJobs\Domain\Repository\JobRepository;
+use Pegasus\GoogleForJobs\PageTitle\JobPageTitleProvider;
 use Pegasus\GoogleForJobs\StructuredData\JobPostingBuilder;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
@@ -31,6 +32,7 @@ class JobController extends ActionController
         protected readonly JobRepository $jobRepository,
         protected readonly JobPostingBuilder $jobPostingBuilder,
         protected readonly PageRenderer $pageRenderer,
+        protected readonly JobPageTitleProvider $pageTitleProvider,
     ) {}
 
     /**
@@ -83,6 +85,10 @@ class JobController extends ActionController
         $this->pageRenderer->addHeaderData(
             $this->jobPostingBuilder->render($this->jobPostingBuilder->build($job, $this->createUrlResolver())),
         );
+
+        if ((bool)($this->settings['job']['setPageTitle'] ?? true)) {
+            $this->pageTitleProvider->setTitle($job->getTitle());
+        }
 
         if ((bool)($this->settings['job']['renderDetailTemplate'] ?? true)) {
             $this->view->assign('job', $job);

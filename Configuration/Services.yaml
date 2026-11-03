@@ -10,3 +10,6 @@ services:
       - '../Classes/Compatibility/*'
       - '../Classes/Domain/Model/*'
       - '../Classes/Updates/*'
+
+  Pegasus\GoogleForJobs\PageTitle\JobPageTitleProvider:
+    public: true

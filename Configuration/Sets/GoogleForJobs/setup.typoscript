@@ -9,6 +9,14 @@ plugin.tx_googleforjobs_job {
         job {
             renderDetailTemplate = 1
             hideExpired = 1
+            setPageTitle = 1
         }
+    }
+}
+
+config.pageTitleProviders {
+    googleForJobs {
+        provider = Pegasus\GoogleForJobs\PageTitle\JobPageTitleProvider
+        before = record, seo
     }
 }
