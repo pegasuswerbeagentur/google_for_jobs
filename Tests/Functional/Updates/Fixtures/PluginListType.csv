@@ -1,0 +1,8 @@
+"tt_content"
+,"uid","pid","CType","list_type","pi_flexform","header"
+,1,1,"list","googleforjobs_job","<?xml version=""1.0"" encoding=""utf-8"" standalone=""yes"" ?><T3FlexForms><data><sheet index=""sDEF""><language index=""lDEF""><field index=""settings.job.renderType""><value index=""vDEF"">show</value></field></language></sheet></data></T3FlexForms>","Job detail"
+,2,1,"list","other_plugin","","Other plugin"
+,3,1,"text","","","Text"
+"be_groups"
+,"uid","pid","title","explicit_allowdeny"
+,1,0,"Editors","tt_content:CType:text,tt_content:list_type:googleforjobs_job"

@@ -6,3 +6,7 @@ services:
 
   Pegasus\GoogleForJobs\:
     resource: '../Classes/*'
+    exclude:
+      - '../Classes/Compatibility/*'
+      - '../Classes/Domain/Model/*'
+      - '../Classes/Updates/*'

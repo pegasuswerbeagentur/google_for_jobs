@@ -1,0 +1,18 @@
+{
+	"name": "pegasus/google-for-jobs-legacy-schema",
+	"type": "typo3-cms-extension",
+	"description": "Test fixture: database columns of former versions",
+	"license": "GPL-3.0-or-later",
+	"require": {
+		"typo3/cms-core": "*"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "google_for_jobs_legacy_schema",
+			"version": "1.0.0",
+			"Package": {
+				"providesPackages": {}
+			}
+		}
+	}
+}
