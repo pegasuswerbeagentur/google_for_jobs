@@ -22,6 +22,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Job extends AbstractEntity
 {
+    public const DIRECT_APPLY_UNSPECIFIED = 0;
+    public const DIRECT_APPLY_YES = 1;
+    public const DIRECT_APPLY_NO = 2;
+
+    public const NO_REQUIREMENTS = 'no requirements';
+
     protected string $title = '';
 
     protected string $alternativeTitle = '';
@@ -59,6 +65,20 @@ class Job extends AbstractEntity
     protected string $baseSalaryUnitText = '';
 
     protected float $baseSalaryValue = 0.0;
+
+    protected float $baseSalaryMinValue = 0.0;
+
+    protected float $baseSalaryMaxValue = 0.0;
+
+    protected int $directApply = self::DIRECT_APPLY_UNSPECIFIED;
+
+    protected string $identifier = '';
+
+    protected string $educationRequirements = '';
+
+    protected ?int $experienceMonths = null;
+
+    protected bool $experienceInPlaceOfEducation = false;
 
     /**
      * @var ObjectStorage<FileReference>
@@ -295,6 +315,87 @@ class Job extends AbstractEntity
     public function setBaseSalaryValue(float $baseSalaryValue): void
     {
         $this->baseSalaryValue = $baseSalaryValue;
+    }
+
+    public function getBaseSalaryMinValue(): float
+    {
+        return $this->baseSalaryMinValue;
+    }
+
+    public function setBaseSalaryMinValue(float $baseSalaryMinValue): void
+    {
+        $this->baseSalaryMinValue = $baseSalaryMinValue;
+    }
+
+    public function getBaseSalaryMaxValue(): float
+    {
+        return $this->baseSalaryMaxValue;
+    }
+
+    public function setBaseSalaryMaxValue(float $baseSalaryMaxValue): void
+    {
+        $this->baseSalaryMaxValue = $baseSalaryMaxValue;
+    }
+
+    public function getDirectApply(): int
+    {
+        return $this->directApply;
+    }
+
+    public function setDirectApply(int $directApply): void
+    {
+        $this->directApply = $directApply;
+    }
+
+    public function getIdentifier(): string
+    {
+        return $this->identifier;
+    }
+
+    public function setIdentifier(string $identifier): void
+    {
+        $this->identifier = $identifier;
+    }
+
+    public function getEducationRequirements(): string
+    {
+        return $this->educationRequirements;
+    }
+
+    public function setEducationRequirements(string $educationRequirements): void
+    {
+        $this->educationRequirements = $educationRequirements;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function getEducationRequirementsList(): array
+    {
+        return array_values(array_filter(array_map('trim', explode(',', $this->educationRequirements))));
+    }
+
+    /**
+     * Minimum months of experience; null if not specified, 0 if no experience is required.
+     */
+    public function getExperienceMonths(): ?int
+    {
+        return $this->experienceMonths;
+    }
+
+    public function setExperienceMonths(?int $experienceMonths): void
+    {
+        $this->experienceMonths = $experienceMonths;
+    }
+
+    public function getExperienceInPlaceOfEducation(): bool
+    {
+        return $this->experienceInPlaceOfEducation;
+    }
+
+    public function setExperienceInPlaceOfEducation(bool $experienceInPlaceOfEducation): void
+    {
+        $this->experienceInPlaceOfEducation = $experienceInPlaceOfEducation;
     }
 
     /**

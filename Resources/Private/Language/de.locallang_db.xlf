@@ -212,8 +212,112 @@
                 <target>Genaues Gehalt</target>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_value.description" approved="yes">
-                <source>Output as "baseSalary.value.value". Actual base salary as stated by the employer, not an estimate.</source>
-                <target>Wird als „baseSalary.value.value“ ausgegeben. Tatsächliches Grundgehalt laut Arbeitgeber, keine Schätzung.</target>
+                <source>Output as "baseSalary.value.value". Actual base salary as stated by the employer, not an estimate. Leave at 0 if you specify a range.</source>
+                <target>Wird als „baseSalary.value.value“ ausgegeben. Tatsächliches Grundgehalt laut Arbeitgeber, keine Schätzung. Bei einer Gehaltsspanne auf 0 lassen.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_min_value" approved="yes">
+                <source>Salary from</source>
+                <target>Gehalt von</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_min_value.description" approved="yes">
+                <source>Output as "baseSalary.value.minValue". Use "from" and "to" for a salary range instead of an exact salary.</source>
+                <target>Wird als „baseSalary.value.minValue“ ausgegeben. „Von“ und „bis“ für eine Gehaltsspanne statt eines genauen Gehalts verwenden.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_max_value" approved="yes">
+                <source>Salary to</source>
+                <target>Gehalt bis</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_max_value.description" approved="yes">
+                <source>Output as "baseSalary.value.maxValue".</source>
+                <target>Wird als „baseSalary.value.maxValue“ ausgegeben.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.application" approved="yes">
+                <source>Application</source>
+                <target>Bewerbung</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.identifier" approved="yes">
+                <source>Reference number</source>
+                <target>Referenznummer</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.identifier.description" approved="yes">
+                <source>Output as "identifier.value". The organization's unique identifier for the job. If empty, the record uid is used.</source>
+                <target>Wird als „identifier.value“ ausgegeben. Eindeutige Kennung der Stelle beim Arbeitgeber. Ist das Feld leer, wird die Datensatz-ID verwendet.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply" approved="yes">
+                <source>Direct application</source>
+                <target>Direktbewerbung</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.description" approved="yes">
+                <source>Output as "directApply". "Yes" means candidates can apply on the page of this job with a short and simple process, without being sent elsewhere.</source>
+                <target>Wird als „directApply“ ausgegeben. „Ja“ bedeutet: Bewerbende können sich auf der Seite dieser Stelle mit einem kurzen, einfachen Ablauf bewerben, ohne weitergeleitet zu werden.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.unspecified" approved="yes">
+                <source>Not specified</source>
+                <target>Keine Angabe</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.yes" approved="yes">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.no" approved="yes">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.requirements" approved="yes">
+                <source>Requirements</source>
+                <target>Anforderungen</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.requirements.description" approved="yes">
+                <source>These properties are in beta at Google and may not be shown in all regions.</source>
+                <target>Diese Angaben sind bei Google in der Beta-Phase und werden eventuell nicht in allen Regionen angezeigt.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements" approved="yes">
+                <source>Education requirements</source>
+                <target>Bildungsanforderungen</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.description" approved="yes">
+                <source>Output as "educationRequirements" with "credentialCategory". Select "No requirements" if no specific education is needed.</source>
+                <target>Wird als „educationRequirements“ mit „credentialCategory“ ausgegeben. „Keine Anforderungen“ wählen, wenn keine bestimmte Ausbildung nötig ist.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.no_requirements" approved="yes">
+                <source>No requirements</source>
+                <target>Keine Anforderungen</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.high_school" approved="yes">
+                <source>High school</source>
+                <target>Schulabschluss</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.associate_degree" approved="yes">
+                <source>Associate degree</source>
+                <target>Berufsausbildung / Kurzstudium</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.bachelor_degree" approved="yes">
+                <source>Bachelor degree</source>
+                <target>Bachelor</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.professional_certificate" approved="yes">
+                <source>Professional certificate</source>
+                <target>Berufszertifikat</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.postgraduate_degree" approved="yes">
+                <source>Postgraduate degree</source>
+                <target>Master / Promotion</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_months" approved="yes">
+                <source>Experience (months)</source>
+                <target>Berufserfahrung (Monate)</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_months.description" approved="yes">
+                <source>Output as "experienceRequirements.monthsOfExperience". Enter 0 if no experience is required, leave empty if not specified.</source>
+                <target>Wird als „experienceRequirements.monthsOfExperience“ ausgegeben. 0 eintragen, wenn keine Erfahrung nötig ist; leer lassen, wenn keine Angabe gemacht werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_in_place_of_education" approved="yes">
+                <source>Experience may replace education</source>
+                <target>Erfahrung ersetzt Ausbildung</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_in_place_of_education.description" approved="yes">
+                <source>Output as "experienceInPlaceOfEducation". Only output if both education and experience requirements are set.</source>
+                <target>Wird als „experienceInPlaceOfEducation“ ausgegeben. Nur wirksam, wenn Bildungs- und Erfahrungsanforderungen gesetzt sind.</target>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.fal_media" approved="yes">
                 <source>Media</source>

@@ -99,7 +99,28 @@ final class JobPluginTest extends FunctionalTestCase
         self::assertSame(200, $response->getStatusCode());
         self::assertStringContainsString('Software Engineer', $body);
         self::assertStringContainsString('Berlin', $body);
-        self::assertMatchesRegularExpression('#<head>.*<script type="application/ld\+json">.*"@type":"JobPosting".*</script>.*</head>#s', $body);
+        self::assertMatchesRegularExpression('#<head>.*<script type="application/ld\+json">.*</script>.*</head>#s', $body);
+
+        preg_match('#<script type="application/ld\+json">(.*?)</script>#s', $body, $matches);
+        $data = json_decode($matches[1], true, 512, JSON_THROW_ON_ERROR);
+        self::assertSame('JobPosting', $data['@type']);
+        self::assertSame('<p>Build things &amp; ship them.</p><ul><li>PHP</li></ul>', $data['description']);
+        self::assertSame('https://example.com/', $data['hiringOrganization']['sameAs']);
+        self::assertSame('https://www.example.com/logo.png', $data['hiringOrganization']['logo']);
+        self::assertSame(['FULL_TIME', 'PART_TIME'], $data['employmentType']);
+        self::assertSame('Berlin', $data['jobLocation']['address']['addressLocality']);
+        self::assertEquals(['@type' => 'QuantitativeValue', 'value' => 55000, 'unitText' => 'YEAR'], $data['baseSalary']['value']);
+    }
+
+    #[Test]
+    public function expiredJobKeepsDetailPageAndSignalsExpiryToGoogle(): void
+    {
+        $response = $this->executeFrontendSubRequest(new InternalRequest('https://example.com/job/expired-job'));
+        $body = (string)$response->getBody();
+
+        self::assertSame(200, $response->getStatusCode());
+        self::assertStringContainsString('"validThrough":"2020-06-30T23:59:59', $body);
+        self::assertStringNotContainsString('"baseSalary"', $body);
     }
 
     #[Test]

@@ -13,6 +13,7 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 /*
@@ -80,13 +81,28 @@ class JobController extends ActionController
     public function showAction(Job $job): ResponseInterface
     {
         $this->pageRenderer->addHeaderData(
-            $this->jobPostingBuilder->render($this->jobPostingBuilder->build($job)),
+            $this->jobPostingBuilder->render($this->jobPostingBuilder->build($job, $this->createUrlResolver())),
         );
 
         if ((bool)($this->settings['job']['renderDetailTemplate'] ?? true)) {
             $this->view->assign('job', $job);
         }
         return $this->htmlResponse();
+    }
+
+    /**
+     * @return (\Closure(string): string)|null
+     */
+    protected function createUrlResolver(): ?\Closure
+    {
+        $contentObject = $this->request->getAttribute('currentContentObject');
+        if (!$contentObject instanceof ContentObjectRenderer) {
+            return null;
+        }
+        return static fn(string $link): string => $contentObject->createUrl([
+            'parameter' => $link,
+            'forceAbsoluteUrl' => true,
+        ]);
     }
 
     /**

@@ -160,7 +160,85 @@
                 <source>Exact salary</source>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_value.description">
-                <source>Output as "baseSalary.value.value". Actual base salary as stated by the employer, not an estimate.</source>
+                <source>Output as "baseSalary.value.value". Actual base salary as stated by the employer, not an estimate. Leave at 0 if you specify a range.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_min_value">
+                <source>Salary from</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_min_value.description">
+                <source>Output as "baseSalary.value.minValue". Use "from" and "to" for a salary range instead of an exact salary.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_max_value">
+                <source>Salary to</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_max_value.description">
+                <source>Output as "baseSalary.value.maxValue".</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.application">
+                <source>Application</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.identifier">
+                <source>Reference number</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.identifier.description">
+                <source>Output as "identifier.value". The organization's unique identifier for the job. If empty, the record uid is used.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply">
+                <source>Direct application</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.description">
+                <source>Output as "directApply". "Yes" means candidates can apply on the page of this job with a short and simple process, without being sent elsewhere.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.unspecified">
+                <source>Not specified</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.yes">
+                <source>Yes</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.direct_apply.no">
+                <source>No</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.requirements">
+                <source>Requirements</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.requirements.description">
+                <source>These properties are in beta at Google and may not be shown in all regions.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements">
+                <source>Education requirements</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.description">
+                <source>Output as "educationRequirements" with "credentialCategory". Select "No requirements" if no specific education is needed.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.no_requirements">
+                <source>No requirements</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.high_school">
+                <source>High school</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.associate_degree">
+                <source>Associate degree</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.bachelor_degree">
+                <source>Bachelor degree</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.professional_certificate">
+                <source>Professional certificate</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.education_requirements.postgraduate_degree">
+                <source>Postgraduate degree</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_months">
+                <source>Experience (months)</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_months.description">
+                <source>Output as "experienceRequirements.monthsOfExperience". Enter 0 if no experience is required, leave empty if not specified.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_in_place_of_education">
+                <source>Experience may replace education</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.experience_in_place_of_education.description">
+                <source>Output as "experienceInPlaceOfEducation". Only output if both education and experience requirements are set.</source>
             </trans-unit>
             <trans-unit id="tx_googleforjobs_domain_model_job.fal_media">
                 <source>Media</source>
