@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.0.1] - 2026-11-03
+### Fixed
+- On TYPO3 13, plugins of version 2.x keep rendering until the upgrade wizard has migrated them. Before, such content elements failed to render after the update.
+- Job and job location records can be edited again on MySQL and MariaDB. The relation fields used an ordering that the backend could not process, which led to a database error in the form.
+
 ## [3.0.0] - 2026-11-03
 Compatibility release for TYPO3 13.4 LTS and 14.3 LTS. The structured data
 output now follows the current Google requirements for job postings.

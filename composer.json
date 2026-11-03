@@ -63,7 +63,7 @@
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "google_for_jobs",
-			"version": "3.0.0",
+			"version": "3.0.1",
 			"Package": {
 				"providesPackages": {}
 			},
