@@ -84,7 +84,9 @@ final class JobPluginTest extends FunctionalTestCase
         $body = (string)$response->getBody();
 
         self::assertSame(200, $response->getStatusCode());
-        self::assertStringContainsString('href="/job/software-engineer"', $body);
+        self::assertStringContainsString('<a href="/job/software-engineer">Developer (m/w/d)</a>', $body);
+        self::assertStringContainsString('Full time', $body);
+        self::assertStringContainsString('10115 Berlin', $body);
         self::assertStringNotContainsString('Expired Job', $body);
         self::assertStringNotContainsString('tx_googleforjobs_job%5Baction%5D', $body);
         self::assertStringNotContainsString('application/ld+json', $body);
@@ -100,7 +102,13 @@ final class JobPluginTest extends FunctionalTestCase
         self::assertSame(200, $response->getStatusCode());
         self::assertStringContainsString('<title>Software Engineer</title>', $body);
         self::assertStringContainsString('Software Engineer', $body);
-        self::assertStringContainsString('Berlin', $body);
+        self::assertStringContainsString('<h1>Software Engineer</h1>', $body);
+        self::assertStringContainsString('<p>Build things &amp; ship them.</p>', $body);
+        self::assertStringContainsString('01.10.2026', $body);
+        self::assertStringContainsString('SE-17', $body);
+        self::assertStringContainsString('Hauptstraße 1', $body);
+        self::assertMatchesRegularExpression('#55,000\.00\s+EUR\s+/\s+Year#', $body);
+        self::assertStringContainsString('<a href="/">Back to list</a>', $body);
         self::assertMatchesRegularExpression('#<head>.*<script type="application/ld\+json">.*</script>.*</head>#s', $body);
 
         preg_match('#<script type="application/ld\+json">(.*?)</script>#s', $body, $matches);
@@ -112,6 +120,10 @@ final class JobPluginTest extends FunctionalTestCase
         self::assertSame(['FULL_TIME', 'PART_TIME'], $data['employmentType']);
         self::assertSame('Berlin', $data['jobLocation']['address']['addressLocality']);
         self::assertEquals(['@type' => 'QuantitativeValue', 'value' => 55000, 'unitText' => 'YEAR'], $data['baseSalary']['value']);
+        self::assertSame('SE-17', $data['identifier']['value']);
+        self::assertTrue($data['directApply']);
+        self::assertSame(['@type' => 'EducationalOccupationalCredential', 'credentialCategory' => 'bachelor degree'], $data['educationRequirements']);
+        self::assertSame(['@type' => 'OccupationalExperienceRequirements', 'monthsOfExperience' => 24], $data['experienceRequirements']);
     }
 
     #[Test]

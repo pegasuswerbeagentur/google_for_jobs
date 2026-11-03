@@ -1,125 +1,149 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:variable name="ll" value="LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job" />
 
-<div class="tx_googleforjobs-single">
-
-    <f:comment>General</f:comment>
-
+<div class="tx-google-for-jobs-single">
+    <h1>{job.title}</h1>
     <f:if condition="{job.alternativeTitle}">
-        <div>
-            {job.alternativeTitle}
-        </div>
+        <p>{job.alternativeTitle}</p>
     </f:if>
 
-    <f:comment>/General</f:comment>
-
-
-    <f:comment>Structured data</f:comment>
-
-    <div>
-        {job.title}
-    </div>
-    <div>
+    <div class="job-description">
         <f:format.html>{job.description}</f:format.html>
     </div>
-    <div>
-        <f:format.date format="%d. %B %Y">{job.dateposted}</f:format.date>
-    </div>
-    <div>
-        <f:link.typolink parameter="{job.hiringorganizationlogourl}">{job.hiringorganizationlogourl}</f:link.typolink>
-    </div>
-    <div>
-        {job.hiringorganizationname}
-    </div>
-    <div>
-        <f:link.typolink parameter="{job.hiringorganizationwebsite}">{job.hiringorganizationwebsite}</f:link.typolink>
-    </div><br />
-    <f:for each="{job.jobLocations}" as="joblocation" iteration="iterator">
 
-        Location {iterator.cycle}:
-        <div>
-            {joblocation.city}
-        </div>
-        <div>
-            {joblocation.streetaddress}
-        </div>
-        <div>
-            {joblocation.postalcode}
-        </div>
-        <div>
-            {joblocation.region}
-        </div>
-        <div>
-            {joblocation.country}
-        </div><br />
+    <dl>
+        <f:if condition="{job.employmentTypes}">
+            <dt><f:translate key="{ll}.employment_type" /></dt>
+            <dd>
+                <f:for each="{job.employmentTypes}" as="employmentType" iteration="iteration">
+                    <f:translate key="{ll}.employment_type_{employmentType -> f:format.case(mode: 'lower')}" default="{employmentType}" />{f:if(condition: iteration.isLast, else: ', ')}
+                </f:for>
+            </dd>
+        </f:if>
+
+        <f:if condition="{job.datePosted}">
+            <dt><f:translate key="{ll}.date_posted" /></dt>
+            <dd><f:format.date format="d.m.Y">{job.datePosted}</f:format.date></dd>
+        </f:if>
+
+        <f:if condition="{job.validThrough}">
+            <dt><f:translate key="{ll}.valid_through" /></dt>
+            <dd><f:format.date format="d.m.Y">{job.validThrough}</f:format.date></dd>
+        </f:if>
+
+        <f:if condition="{job.identifier}">
+            <dt><f:translate key="{ll}.identifier" /></dt>
+            <dd>{job.identifier}</dd>
+        </f:if>
+
+        <dt><f:translate key="{ll}.hiring_organization_name" /></dt>
+        <dd>{job.hiringOrganizationName}</dd>
+
+        <f:if condition="{job.hiringOrganizationWebsite}">
+            <dt><f:translate key="{ll}.hiring_organization_website" /></dt>
+            <dd><f:link.typolink parameter="{job.hiringOrganizationWebsite}" /></dd>
+        </f:if>
+
+        <f:if condition="{job.hiringOrganizationLogoUrl}">
+            <dt><f:translate key="{ll}.hiring_organization_logo_url" /></dt>
+            <dd><f:link.typolink parameter="{job.hiringOrganizationLogoUrl}" /></dd>
+        </f:if>
+
+        <f:if condition="{job.jobLocations}">
+            <dt><f:translate key="{ll}.job_locations" /></dt>
+            <f:for each="{job.jobLocations}" as="jobLocation">
+                <dd>
+                    <f:if condition="{jobLocation.streetAddress}">{jobLocation.streetAddress}<br /></f:if>
+                    {jobLocation.postalCode} {jobLocation.city}<br />
+                    <f:if condition="{jobLocation.region}">{jobLocation.region}<br /></f:if>
+                    {jobLocation.country}
+                </dd>
+            </f:for>
+        </f:if>
+
+        <f:if condition="{job.remote}">
+            <dt><f:translate key="{ll}.job_location_type" /></dt>
+            <dd><f:translate key="LLL:EXT:google_for_jobs/Resources/Private/Language/locallang.xlf:show.yes" /></dd>
+            <f:if condition="{job.applicantLocationRequirementsList}">
+                <dt><f:translate key="{ll}.applicant_location_requirements" /></dt>
+                <dd><f:for each="{job.applicantLocationRequirementsList}" as="country" iteration="iteration">{country}{f:if(condition: iteration.isLast, else: ', ')}</f:for></dd>
+            </f:if>
+        </f:if>
+
+        <f:if condition="{job.baseSalaryEnable}">
+            <dt><f:translate key="{ll}.palette.salary" /></dt>
+            <dd>
+                <f:if condition="{job.baseSalaryMinValue} && {job.baseSalaryMaxValue}">
+                    <f:then>
+                        <f:format.number decimals="2">{job.baseSalaryMinValue}</f:format.number> – <f:format.number decimals="2">{job.baseSalaryMaxValue}</f:format.number>
+                    </f:then>
+                    <f:else if="{job.baseSalaryValue}">
+                        <f:format.number decimals="2">{job.baseSalaryValue}</f:format.number>
+                    </f:else>
+                    <f:else if="{job.baseSalaryMinValue}">
+                        <f:format.number decimals="2">{job.baseSalaryMinValue}</f:format.number>
+                    </f:else>
+                </f:if>
+                {job.baseSalaryCurrency}
+                <f:if condition="{job.baseSalaryUnitText}">
+                    / <f:translate key="{ll}.base_salary_unit_{job.baseSalaryUnitText -> f:format.case(mode: 'lower')}" default="{job.baseSalaryUnitText}" />
+                </f:if>
+            </dd>
+        </f:if>
+
+        <f:if condition="{job.directApply} == 1">
+            <dt><f:translate key="{ll}.direct_apply" /></dt>
+            <dd><f:translate key="{ll}.direct_apply.yes" /></dd>
+        </f:if>
+        <f:if condition="{job.directApply} == 2">
+            <dt><f:translate key="{ll}.direct_apply" /></dt>
+            <dd><f:translate key="{ll}.direct_apply.no" /></dd>
+        </f:if>
+
+        <f:if condition="{job.educationRequirementsList}">
+            <dt><f:translate key="{ll}.education_requirements" /></dt>
+            <dd><f:for each="{job.educationRequirementsList}" as="requirement" iteration="iteration">{requirement}{f:if(condition: iteration.isLast, else: ', ')}</f:for></dd>
+        </f:if>
+
+        <f:if condition="{job.experienceSpecified}">
+            <dt><f:translate key="{ll}.experience_months" /></dt>
+            <dd>{job.experienceMonths}</dd>
+        </f:if>
+
+        <f:if condition="{job.experienceInPlaceOfEducation}">
+            <dt><f:translate key="{ll}.experience_in_place_of_education" /></dt>
+            <dd><f:translate key="LLL:EXT:google_for_jobs/Resources/Private/Language/locallang.xlf:show.yes" /></dd>
+        </f:if>
+
+        <f:if condition="{job.categories}">
+            <dt><f:translate key="LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:flexforms.categories.label" /></dt>
+            <dd><f:for each="{job.categories}" as="category" iteration="iteration">{category.title}{f:if(condition: iteration.isLast, else: ', ')}</f:for></dd>
+        </f:if>
+
+        <f:if condition="{job.category}">
+            <dt><f:translate key="{ll}.category" /></dt>
+            <dd>{job.category}</dd>
+        </f:if>
+
+        <f:if condition="{job.author}">
+            <dt><f:translate key="LLL:EXT:google_for_jobs/Resources/Private/Language/locallang.xlf:show.author" /></dt>
+            <dd>{job.author}</dd>
+        </f:if>
+    </dl>
+
+    <f:for each="{job.falMedia}" as="mediaFile">
+        <f:media file="{mediaFile}" alt="{mediaFile.alternative}" title="{mediaFile.title}" />
     </f:for>
-    <div>
-        {job.joblocationtype}
-    </div>
-    
-    <div>
-        <f:format.date format="%d. %B %Y">{job.validthrough}</f:format.date>
-    </div>
-    <div>
-        {job.basesalarycurrency}
-    </div>
-    <div>
-        {job.basesalaryunittext}
-    </div>
-    <div>
-        <f:format.currency>{job.basesalaryvalue}</f:format.currency>
-    </div>
-    <div>
-        {job.employmenttype}
-    </div>
-    <div>
-        {job.applicantlocationrequirements}
-    </div>
 
-    <f:comment>/Structured data</f:comment>
-
-
-    <f:comment>Media</f:comment>
-
-    <f:if condition="{job.falMedia}">
-        <f:for each="{job.falMedia}" as="mediaFile">
-            <div>
-                <f:image image="{mediaFile}" title="{mediaFile.title}" alt="{mediaFile.alternative}" />
-            </div>
-        </f:for>
-    </f:if>
     <f:if condition="{job.falRelatedFiles}">
         <ul>
             <f:for each="{job.falRelatedFiles}" as="relatedFile">
                 <li>
-                    <a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
-								{f:if(condition:relatedFile.originalResource.title, then:relatedFile.originalResource.title, else:relatedFile.originalResource.name)}
-							</a>
-                    <span>
-								{relatedFile.originalResource.size -> f:format.bytes()}
-						</span>
+                    <a href="{relatedFile.originalResource.publicUrl}">{f:if(condition: relatedFile.originalResource.title, then: relatedFile.originalResource.title, else: relatedFile.originalResource.name)}</a>
+                    ({relatedFile.originalResource.size -> f:format.bytes()})
                 </li>
             </f:for>
         </ul>
     </f:if>
-
-    <f:comment>/Media</f:comment>
-
-
-    <f:comment>Metadata</f:comment>
-
-    <f:if condition="{job.author}">
-        <div>
-            {job.author}
-        </div>
-    </f:if>
-    <f:if condition="{job.category}">
-        <div>
-            {job.category}
-        </div>
-    </f:if>
-
-    <f:comment>/Metadata</f:comment>
-
 </div>
-
 </html>

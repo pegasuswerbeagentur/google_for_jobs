@@ -1,56 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-09-19T13:34:19Z" product-name="google_for_jobs">
-		<header/>
-		<body>
-			<trans-unit id="tx_googleforjobs_domain_model_job">
-				<source>Job</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.date_posted">
-				<source>Date Posted</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_name">
-				<source>Hiring Organization Name</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_website">
-				<source>Hiring Organization Website</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_logo_url">
-				<source>Hiring Organization Logo Url</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.valid_through">
-				<source>Valid Through</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_currency">
-				<source>Base Salary Currency</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_text">
-				<source>Base Salary Unit Text</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_value">
-				<source>Base Salary Value</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type">
-				<source>Employment Type</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_type">
-				<source>Job Location Type</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements">
-				<source>Applicant Location Requirements</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.no_job_found">
-				<source>This job is not available anymore.</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.no_jobs_selected">
-				<source>No active jobs selected for this list.</source>
-			</trans-unit>
-		</body>
-	</file>
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:google_for_jobs/Resources/Private/Language/locallang.xlf" product-name="google_for_jobs">
+        <header/>
+        <body>
+            <trans-unit id="list.empty">
+                <source>There are currently no job offers.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.no_jobs_selected">
+                <source>No active jobs selected for this list.</source>
+            </trans-unit>
+            <trans-unit id="show.backToList">
+                <source>Back to list</source>
+            </trans-unit>
+            <trans-unit id="show.author">
+                <source>Contact</source>
+            </trans-unit>
+            <trans-unit id="show.yes">
+                <source>Yes</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

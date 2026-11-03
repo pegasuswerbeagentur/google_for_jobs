@@ -388,6 +388,11 @@ class Job extends AbstractEntity
         $this->experienceMonths = $experienceMonths;
     }
 
+    public function isExperienceSpecified(): bool
+    {
+        return $this->experienceMonths !== null && $this->experienceMonths >= 0;
+    }
+
     public function getExperienceInPlaceOfEducation(): bool
     {
         return $this->experienceInPlaceOfEducation;

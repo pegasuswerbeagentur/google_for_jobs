@@ -2,13 +2,13 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-
     <f:if condition="{job}">
-        <f:flashMessages />
-        <f:render partial="Job/Properties" arguments="{job:job}" />
-        <f:link.page pageUid="{settings.job.returnToPid}">Back to list</f:link.page>
+        <f:render partial="Job/Properties" arguments="{job: job}" />
+        <f:if condition="{settings.job.returnToPid}">
+            <p>
+                <f:link.page pageUid="{settings.job.returnToPid}"><f:translate key="LLL:EXT:google_for_jobs/Resources/Private/Language/locallang.xlf:show.backToList" /></f:link.page>
+            </p>
+        </f:if>
     </f:if>
-
 </f:section>
-
 </html>

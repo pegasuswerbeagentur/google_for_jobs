@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:google_for_jobs/Resources/Private/Language/locallang.xlf" product-name="google_for_jobs">
+        <header/>
+        <body>
+            <trans-unit id="list.empty" approved="yes">
+                <source>There are currently no job offers.</source>
+                <target>Zurzeit gibt es keine Stellenangebote.</target>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.no_jobs_selected" approved="yes">
+                <source>No active jobs selected for this list.</source>
+                <target>Für diese Liste sind keine aktiven Stellen ausgewählt.</target>
+            </trans-unit>
+            <trans-unit id="show.backToList" approved="yes">
+                <source>Back to list</source>
+                <target>Zurück zur Übersicht</target>
+            </trans-unit>
+            <trans-unit id="show.author" approved="yes">
+                <source>Contact</source>
+                <target>Ansprechperson</target>
+            </trans-unit>
+            <trans-unit id="show.yes" approved="yes">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
