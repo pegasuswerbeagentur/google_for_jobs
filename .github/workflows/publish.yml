@@ -9,7 +9,14 @@ permissions:
   contents: read
 
 jobs:
+  verify:
+    name: Verify release with CI
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+
   publish:
+    needs: verify
     name: Publish version ${{ github.ref_name }}
     runs-on: ubuntu-latest
     env:
