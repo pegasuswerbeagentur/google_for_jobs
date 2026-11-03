@@ -114,7 +114,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_googleforjobs_domain_model_job',
-                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_job}.{#sys_language_uid} IN (-1,0) ORDER BY {#tx_googleforjobs_domain_model_job}.{#title}',
+                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_job}.{#sys_language_uid} IN (-1,0) ORDER BY tx_googleforjobs_domain_model_job.title',
                 'MM' => 'tx_googleforjobs_domain_model_job_joblocation_mm',
                 'size' => 5,
                 'maxitems' => 9999,

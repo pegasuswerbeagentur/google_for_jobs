@@ -228,7 +228,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_googleforjobs_domain_model_joblocation',
-                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_joblocation}.{#sys_language_uid} IN (-1,0) ORDER BY {#tx_googleforjobs_domain_model_joblocation}.{#city}',
+                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_joblocation}.{#sys_language_uid} IN (-1,0) ORDER BY tx_googleforjobs_domain_model_joblocation.city, tx_googleforjobs_domain_model_joblocation.street_address',
                 'MM' => 'tx_googleforjobs_domain_model_job_joblocation_mm',
                 'MM_opposite_field' => 'jobs',
                 'size' => 5,
