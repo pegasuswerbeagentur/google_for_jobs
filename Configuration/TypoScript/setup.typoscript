@@ -1,0 +1,9 @@
+@import 'EXT:google_for_jobs/Configuration/Sets/GoogleForJobs/setup.typoscript'
+
+plugin.tx_googleforjobs_job {
+    view {
+        templateRootPaths.1 = {$plugin.tx_googleforjobs_job.view.templateRootPath}
+        partialRootPaths.1 = {$plugin.tx_googleforjobs_job.view.partialRootPath}
+        layoutRootPaths.1 = {$plugin.tx_googleforjobs_job.view.layoutRootPath}
+    }
+}

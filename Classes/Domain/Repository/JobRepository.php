@@ -26,10 +26,7 @@ class JobRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Returns a list of jobs by categories and their conjunction
      *
      * @param string $categories A comma seperated string of category Id's
-     * @param string $categoryConjunction The logical conjunction for the categories
      * @param string|null $categories A comma seperated string of category Id's
-     * @param string|null $categoryConjunction The logical conjunction for the categories
-     * @return QueryResultInterface
      */
     public function findByCategories(?string $categories, ?string $categorieConjunction): QueryResultInterface
     {
@@ -40,7 +37,7 @@ class JobRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         $categoryConstraints = [];
-        $categorieConjunction = $categorieConjunction ?? '';
+        $categorieConjunction ??= '';
         $categories = GeneralUtility::intExplode(',', $categories, true);
 
         foreach ($categories as $category) {

@@ -22,7 +22,6 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Job extends AbstractEntity
 {
-
     /**
      * The original date that employer posted the job in ISO 8601 format. For example,
      * "2017-01-24" or "2017-01-24T19:33:17+00:00".
@@ -188,9 +187,6 @@ class Job extends AbstractEntity
         $this->initStorageObjects();
     }
 
-    /**
-     * @return void
-     */
     protected function initStorageObjects(): void
     {
         $this->falMedia = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -200,8 +196,6 @@ class Job extends AbstractEntity
 
     /**
      * Get path segment
-     *
-     * @return string
      */
     public function getPathSegment(): string
     {
@@ -210,9 +204,6 @@ class Job extends AbstractEntity
 
     /**
      * Set path segment
-     *
-     * @param string $pathSegment
-     * @return void
      */
     public function setPathSegment(string $pathSegment): void
     {
@@ -233,7 +224,6 @@ class Job extends AbstractEntity
      * Set Fal media relation
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falMedia
-     * @return void
      */
     public function setFalMedia(ObjectStorage $falMedia): void
     {
@@ -254,7 +244,6 @@ class Job extends AbstractEntity
      * Set FAL related files
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $falRelatedFiles
-     * @return void
      */
     public function setFalRelatedFiles(ObjectStorage $falRelatedFiles): void
     {
@@ -263,8 +252,6 @@ class Job extends AbstractEntity
 
     /**
      * Get author
-     *
-     * @return string
      */
     public function getAuthor(): string
     {
@@ -275,7 +262,6 @@ class Job extends AbstractEntity
      * Set author
      *
      * @param string $author author
-     * @return void
      */
     public function setAuthor(string $author): void
     {
@@ -284,8 +270,6 @@ class Job extends AbstractEntity
 
     /**
      * Get alternative title
-     *
-     * @return string
      */
     public function getAlternativeTitle(): string
     {
@@ -294,9 +278,6 @@ class Job extends AbstractEntity
 
     /**
      * Set alternative title
-     *
-     * @param string $alternativeTitle
-     * @return void
      */
     public function setAlternativeTitle(string $alternativeTitle): void
     {
@@ -305,8 +286,6 @@ class Job extends AbstractEntity
 
     /**
      * Get category
-     *
-     * @return string
      */
     public function getCategory(): string
     {
@@ -317,7 +296,6 @@ class Job extends AbstractEntity
      * Set category
      *
      * @param string $category category
-     * @return void
      */
     public function setCategory(string $category): void
     {
@@ -326,8 +304,6 @@ class Job extends AbstractEntity
 
     /**
      * Get notes
-     *
-     * @return string
      */
     public function getNotes(): string
     {
@@ -336,9 +312,6 @@ class Job extends AbstractEntity
 
     /**
      * Set notes
-     *
-     * @param string $notes
-     * @return void
      */
     public function setNotes(string $notes): void
     {
@@ -357,9 +330,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the datePosted
-     *
-     * @param \DateTime $datePosted
-     * @return void
      */
     public function setDatePosted(\DateTime $datePosted): void
     {
@@ -378,9 +348,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the description
-     *
-     * @param string $description
-     * @return void
      */
     public function setDescription(string $description): void
     {
@@ -399,9 +366,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the hiringOrganizationName
-     *
-     * @param string $hiringOrganizationName
-     * @return void
      */
     public function setHiringOrganizationName(string $hiringOrganizationName): void
     {
@@ -420,9 +384,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the hiringOrganizationWebsite
-     *
-     * @param string $hiringOrganizationWebsite
-     * @return void
      */
     public function setHiringOrganizationWebsite(string $hiringOrganizationWebsite): void
     {
@@ -441,9 +402,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the hiringOrganizationLogoUrl
-     *
-     * @param string $hiringOrganizationLogoUrl
-     * @return void
      */
     public function setHiringOrganizationLogoUrl(string $hiringOrganizationLogoUrl): void
     {
@@ -464,7 +422,6 @@ class Job extends AbstractEntity
      * Sets the jobLocations
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pegasus\GoogleForJobs\Domain\Model\JobLocation>
-     * @return void
      */
     public function setJobLocations(ObjectStorage $jobLocations): void
     {
@@ -483,9 +440,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the title
-     *
-     * @param string $title
-     * @return void
      */
     public function setTitle(string $title): void
     {
@@ -504,9 +458,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the validThrough
-     *
-     * @param \DateTime $validThrough
-     * @return void
      */
     public function setValidThrough(\DateTime $validThrough): void
     {
@@ -525,9 +476,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the baseSalaryCurrency
-     *
-     * @param string $baseSalaryCurrency
-     * @return void
      */
     public function setBaseSalaryCurrency(string $baseSalaryCurrency): void
     {
@@ -546,9 +494,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the baseSalaryUnitText
-     *
-     * @param string $baseSalaryUnitText
-     * @return void
      */
     public function setBaseSalaryUnitText(string $baseSalaryUnitText): void
     {
@@ -567,9 +512,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the baseSalaryValue
-     *
-     * @param float $baseSalaryValue
-     * @return void
      */
     public function setBaseSalaryValue(float $baseSalaryValue): void
     {
@@ -588,9 +530,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the employmentType
-     *
-     * @param string $employmentType
-     * @return void
      */
     public function setEmploymentType(string $employmentType): void
     {
@@ -609,9 +548,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the jobLocationType
-     *
-     * @param string $jobLocationType
-     * @return void
      */
     public function setJobLocationType(string $jobLocationType): void
     {
@@ -630,9 +566,6 @@ class Job extends AbstractEntity
 
     /**
      * Sets the applicantLocationRequirements
-     *
-     * @param string $applicantLocationRequirements
-     * @return void
      */
     public function setApplicantLocationRequirements(string $applicantLocationRequirements): void
     {
@@ -641,14 +574,12 @@ class Job extends AbstractEntity
 
     /**
      * Creates and returns Structured Data JSON string from job data for output
-     *
-     * @return string
      */
     public function createStructuredData(): string
     {
         $data = [];
         // mandatory key/value
-        $data['@context'] = "https://schema.org/";
+        $data['@context'] = 'https://schema.org/';
         // mandatory key/value
         $data['@type'] = 'JobPosting';
         // title of the job offer
@@ -664,14 +595,14 @@ class Job extends AbstractEntity
         }
         // type of employment (valid values: FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER)
         $data['employmentType'] = explode(',', htmlspecialchars($this->getEmploymentType()));
- 
+
         // mandatory key/value
         $data['identifier']['@type'] = 'PropertyValue';
         // name of the offering organization
         $data['identifier']['name'] = htmlspecialchars($this->getHiringOrganizationName());
         // unique ID for the job offer, uses the CE uid converted to a string
         $data['identifier']['value'] = $this->getUid();
- 
+
         // mandatory key/value
         $data['hiringOrganization']['@type'] = 'Organization';
         // name of the offering organization
@@ -712,7 +643,7 @@ class Job extends AbstractEntity
             $data['applicantLocationRequirement']['@type'] = 'Country';
             $data['applicantLocationRequirement']['name'] = htmlspecialchars($this->getApplicantLocationRequirements());
         }
- 
+
         $jsonData = json_encode($data);
 
         // add script tag

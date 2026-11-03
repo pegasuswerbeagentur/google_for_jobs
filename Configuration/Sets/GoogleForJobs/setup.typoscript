@@ -1,0 +1,13 @@
+plugin.tx_googleforjobs_job {
+    view {
+        templateRootPaths.0 = EXT:google_for_jobs/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:google_for_jobs/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:google_for_jobs/Resources/Private/Layouts/
+    }
+
+    settings {
+        job {
+            renderDetailTemplate = 1
+        }
+    }
+}

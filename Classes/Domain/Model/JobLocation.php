@@ -75,9 +75,6 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the streetAddress
-     *
-     * @param string $streetAddress
-     * @return void
      */
     public function setStreetAddress(string $streetAddress): void
     {
@@ -96,9 +93,6 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the city
-     *
-     * @param string $city
-     * @return void
      */
     public function setCity(string $city): void
     {
@@ -117,9 +111,6 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the postalCode
-     *
-     * @param string $postalCode
-     * @return void
      */
     public function setPostalCode(string $postalCode): void
     {
@@ -138,9 +129,6 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the region
-     *
-     * @param string $region
-     * @return void
      */
     public function setRegion(string $region): void
     {
@@ -159,9 +147,6 @@ class JobLocation extends AbstractEntity
 
     /**
      * Sets the country
-     *
-     * @param string $country
-     * @return void
      */
     public function setCountry(string $country): void
     {

@@ -24,7 +24,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-
     /**
      * jobRepository
      *
@@ -45,8 +44,6 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * actio list
-     *
-     * @return void
      */
     public function listAction(): void
     {
@@ -66,9 +63,6 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * Renders the job detail template and renders the jobs
      * structured data script tag to the html head.
-     *
-     * @param Job $job
-     * @return void
      */
     public function showAction(Job $job): void
     {
@@ -84,18 +78,13 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * Render no job found template
-     *
-     * @return void
      */
-    protected function noJobFoundAction(): void
-    {
-    }
+    protected function noJobFoundAction(): void {}
 
     /**
      * action listSelected
      *
      * Renders a list view of selected jobs.
-     * @return void
      */
     public function listSelectedAction(): void
     {
@@ -115,8 +104,6 @@ class JobController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * Get orderings from plugin and set them in repository
-     *
-     * @return void
      */
     private function setRepositoryOrderings(): void
     {

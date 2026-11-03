@@ -24,8 +24,6 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
     /**
      * Return the identifier for this wizard
      * This should be the same string as used in the ext_localconf class registration
-     *
-     * @return string
      */
     public function getIdentifier(): string
     {
@@ -34,8 +32,6 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
 
     /**
      * Return the speaking name of this wizard
-     *
-     * @return string
      */
     public function getTitle(): string
     {
@@ -44,8 +40,6 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
 
     /**
      * Return the description for this wizard
-     *
-     * @return string
      */
     public function getDescription(): string
     {
@@ -56,8 +50,6 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
      * Execute the update
      *
      * Called when a wizard reports that an update is necessary
-     *
-     * @return bool
      */
     public function executeUpdate(): bool
     {
@@ -71,8 +63,6 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
      *
      * Is used to determine whether a wizard needs to be run.
      * Check if data for migration exists.
-     *
-     * @return bool
      */
     public function updateNecessary(): bool
     {
@@ -81,7 +71,7 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
         /** @var ConnectionPool $connectionPool */
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $connection = $connectionPool->getConnectionByName('Default');
-        
+
         // check if location table exists
         if ($connection->getSchemaManager()->tablesExist('tx_googleforjobs_domain_model_joblocation')) {
             $connection = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_joblocation');
@@ -121,8 +111,6 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
     /**
      * Reads all jobs, then extracts location data and writes them into the
      * location table and sets relation between jobs and locations.
-     *
-     * @return bool
      */
     protected function migrateLocationsIntoLocationTable(): bool
     {
@@ -140,11 +128,11 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
                 'city' => $job['job_location_city'],
                 'postal_code' => $job['job_location_postal_code'],
                 'region' => $job['job_location_region'],
-                'country' => $job['job_location_country']
+                'country' => $job['job_location_country'],
             ];
             $joblocation = $identifiers;
             $joblocation['pid'] = $job['pid'];
-            
+
             // check if location doesn't already exist and write it into location table
             $locationExists = false;
             $locationExists = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $identifiers)->fetchAll();
@@ -157,10 +145,10 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
             $connectionJoblocationsMM->insert(
                 'tx_googleforjobs_domain_model_job_joblocation_mm',
                 ['uid_local' => $locationUid['uid'], 'uid_foreign' => $job['uid'],
-                'sorting_foreign' => 1]
+                    'sorting_foreign' => 1],
             );
         }
-            
+
         return true;
     }
 
@@ -179,13 +167,13 @@ class MigrateLocationsUpdate implements UpgradeWizardInterface
 
         $queryBuilder = $connectionJobs->createQueryBuilder();
         $queryBuilder->getRestrictions()->removeAll();
-        
+
         $jobs =  $queryBuilder->select('*')
             ->from('tx_googleforjobs_domain_model_job')
             ->orderBy('uid')
             ->execute()
             ->fetchAll();
-        
+
         return $jobs;
     }
 }

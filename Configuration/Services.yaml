@@ -3,6 +3,6 @@ services:
     autowire: true
     autoconfigure: true
     public: false
-    
+
   Pegasus\GoogleForJobs\:
     resource: '../Classes/*'
