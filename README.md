@@ -1,6 +1,11 @@
+> **Version 2.x for TYPO3 10.4 and 11.5 is no longer maintained.**
+> For TYPO3 13.4 and 14.3 use version 3.x from the
+> [main branch](https://github.com/pegasuswerbeagentur/google_for_jobs/tree/main).
+> See its changelog for the upgrade steps.
+
 # TYPO3 Extension ``google_for_jobs``
 
-![google for Jobs](https://github.com/pegasuswerbeagentur/google_for_jobs/blob/master/Resources/Public/Icons/git-repo-teaser.JPG)
+![google for Jobs](Resources/Public/Icons/git-repo-teaser.JPG)
 
 ## 1. Features
 
