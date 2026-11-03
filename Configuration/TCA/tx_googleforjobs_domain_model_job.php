@@ -1,356 +1,122 @@
 <?php
 
 declare(strict_types=1);
+
+defined('TYPO3') or die();
+
+$ll = 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job';
+
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job',
-        'default_sortby' => 'title',
+        'title' => $ll,
         'label' => 'title',
+        'default_sortby' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
+        'translationSource' => 'l10n_source',
         'delete' => 'deleted',
+        'descriptionColumn' => 'notes',
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'requestUpdate' => 'job_location_type, base_salary_enable',
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'searchFields' => 'title,description,hiring_organization_name,hiring_organization_website,hiring_organization_logo_url,job_locations,base_salary_currency,base_salary_unit_text,employment_type,job_location_type,applicant_location_requirements',
         'iconfile' => 'EXT:google_for_jobs/Resources/Public/Icons/tx_googleforjobs_domain_model_job.gif',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, date_posted, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_locations, valid_through, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, employment_type, job_location_type, applicant_location_requirements',
+    'palettes' => [
+        'title' => [
+            'showitem' => 'title, --linebreak--, alternative_title, path_segment',
+        ],
+        'dates' => [
+            'label' => $ll . '.palette.dates',
+            'showitem' => 'date_posted, valid_through',
+        ],
+        'organization' => [
+            'label' => $ll . '.palette.organization',
+            'showitem' => 'hiring_organization_name, --linebreak--, hiring_organization_website, hiring_organization_logo_url',
+        ],
+        'remote' => [
+            'label' => $ll . '.palette.remote',
+            'showitem' => 'job_location_type, --linebreak--, applicant_location_requirements',
+        ],
+        'salary' => [
+            'label' => $ll . '.palette.salary',
+            'showitem' => 'base_salary_enable, --linebreak--, base_salary_currency, base_salary_unit_text, base_salary_value',
+        ],
+        'language' => [
+            'showitem' => 'sys_language_uid, l10n_parent',
+        ],
+        'access' => [
+            'showitem' => 'hidden, --linebreak--, starttime, endtime',
+        ],
     ],
     'types' => [
         '1' => [
             'showitem' => '
-                sys_language_uid, l10n_parent, l10n_diffsource, hidden, alternative_title, path_segment,
-                --div--;LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.structured_data,
-                title, description, employment_type, date_posted, valid_through, hiring_organization_name, hiring_organization_website, hiring_organization_logo_url, job_locations, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, job_location_type, applicant_location_requirements,
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.media,
-                fal_media,fal_related_files,
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.metadata,
-                author,category,categories,
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, 
-                starttime, endtime,
-                --div--;LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.notes,
-                notes,
-            ', ],
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+                    --palette--;;title,
+                    description,
+                    employment_type,
+                    --palette--;;dates,
+                    --palette--;;organization,
+                    job_locations,
+                    --palette--;;remote,
+                    --palette--;;salary,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:media,
+                    fal_media,
+                    fal_related_files,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
+                    categories,
+                    category,
+                    author,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+                    --palette--;;language,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                    --palette--;;access,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+                    notes,
+            ',
+        ],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple',
-                    ],
-                ],
-                'default' => 0,
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 0,
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_googleforjobs_domain_model_job',
-                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_job}.{#pid}=###CURRENT_PID### AND {#tx_googleforjobs_domain_model_job}.{#sys_language_uid} IN (-1,0)',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        't3ver_label' => [
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'max' => 255,
-            ],
-        ],
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ],
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ],
-        ],
         'title' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.title',
+            'label' => $ll . '.title',
+            'description' => $ll . '.title.description',
             'config' => [
                 'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
-            ],
-        ],
-        'date_posted' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.date_posted',
-            'config' => [
-                'dbType' => 'date',
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 7,
-                'eval' => 'date,required',
-                'default' => null,
-            ],
-        ],
-        'description' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.description',
-            'config' => [
-                'type' => 'text',
-                'enableRichtext' => true,
-                'richtextConfiguration' => 'default',
-                'fieldControl' => [
-                    'fullScreenRichtext' => [
-                        'disabled' => false,
-                    ],
-                ],
-                'cols' => 40,
-                'rows' => 15,
+                'size' => 50,
+                'max' => 255,
+                'required' => true,
                 'eval' => 'trim',
             ],
-
         ],
-        'hiring_organization_name' => [
+        'alternative_title' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.hiring_organization_name',
+            'label' => $ll . '.alternative_title',
+            'description' => $ll . '.alternative_title.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required',
+                'eval' => 'trim',
             ],
-        ],
-        'hiring_organization_website' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.hiring_organization_website',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
-                'size' => 30,
-                'eval' => 'trim,required,domainname',
-            ],
-        ],
-        'hiring_organization_logo_url' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.hiring_organization_logo_url',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
-                'size' => 30,
-                'eval' => 'trim,domainname',
-            ],
-        ],
-        'job_locations' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.job_locations',
-            'config' => [
-                'type' => 'select',
-                'internal_type' => 'db',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_googleforjobs_domain_model_joblocation',
-                'MM_opposite_field' => 'job_locations_from',
-                'size' => 5,
-                'minitems' => 1,
-                'maxitems' => 100,
-                'MM' => 'tx_googleforjobs_domain_model_job_joblocation_mm',
-                'wizards' => [
-                    'add' => [
-                        'module' => [
-                            'name' => 'wizard_add',
-                        ],
-                        'type' => 'script',
-                        'title' => 'Create new',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
-                        'params' => [
-                            'table' => 'tx_googleforjobs_domain_model_joblocation',
-                            'pid' => '###CURRENT_PID###',
-                        ],
-                    ],
-                ],
-            ],
-        ],
-        'job_locations_from' => [
-            'exclude' => true,
-            'label' => 'joblocations from',
-            'config' => [
-                'type' => 'group',
-                'internal_type' => 'db',
-                'foreign_table' => 'tx_googleforjobs_domain_model_job',
-                'allowed' => 'tx_googleforjobs_domain_model_job',
-                'size' => 5,
-                'maxitems' => 100,
-                'MM' => 'tx_googleforjobs_domain_model_job_joblocation_mm',
-                'readOnly' => 1,
-            ],
-        ],
-        'valid_through' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.valid_through',
-            'config' => [
-                'dbType' => 'date',
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 7,
-                'eval' => 'date',
-                'default' => null,
-            ],
-        ],
-        'base_salary_enable' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_enable',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-            ],
-        ],
-        'base_salary_currency' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_currency',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
-            ],
-            'displayCond' => 'FIELD:base_salary_enable:=:1',
-        ],
-        'base_salary_unit_text' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_text',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_hour', 'HOUR'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_day', 'DAY'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_week', 'WEEK'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_month', 'MONTH'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_unit_year', 'YEAR'],
-                ],
-            ],
-            'displayCond' => 'FIELD:base_salary_enable:=:1',
-        ],
-        'base_salary_value' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.base_salary_value',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'double2,required',
-            ],
-            'displayCond' => 'FIELD:base_salary_enable:=:1',
-        ],
-        'employment_type' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'items' => [
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_contractor', 'CONTRACTOR'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_part_time', 'PART_TIME'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_full_time', 'FULL_TIME'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_temporary', 'TEMPORARY'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_intern', 'INTERN'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_volunteer', 'VOLUNTEER'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_per_diem', 'PER_DIEM'],
-                    ['LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.employment_type_other', 'OTHER'],
-                ],
-            ],
-        ],
-        'job_location_type' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.job_location_type',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-            ],
-        ],
-        'applicant_location_requirements' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.applicant_location_requirements',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
-            ],
-            'displayCond' => 'FIELD:job_location_type:=:1',
         ],
         'path_segment' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.path_segment',
+            'label' => $ll . '.path_segment',
             'config' => [
                 'type' => 'slug',
+                'size' => 50,
                 'generatorOptions' => [
                     'fields' => ['title'],
-                    'fieldSeparator' => '/',
-                    'prefixParentPageSlug' => true,
                     'replacements' => [
                         '/' => '-',
-                        '(' => '-',
-                        ')' => '-',
                     ],
                 ],
                 'fallbackCharacter' => '-',
@@ -358,125 +124,222 @@ return [
                 'default' => '',
             ],
         ],
-        'fal_media' => [
+        'description' => [
+            'label' => $ll . '.description',
+            'description' => $ll . '.description.description',
+            'config' => [
+                'type' => 'text',
+                'enableRichtext' => true,
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+            ],
+        ],
+        'employment_type' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.fal_media',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'fal_media',
-                [
-                    'behaviour' => [
-                        'allowLanguageSynchronization' => true,
+            'label' => $ll . '.employment_type',
+            'description' => $ll . '.employment_type.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'items' => [
+                    ['label' => $ll . '.employment_type_full_time', 'value' => 'FULL_TIME'],
+                    ['label' => $ll . '.employment_type_part_time', 'value' => 'PART_TIME'],
+                    ['label' => $ll . '.employment_type_contractor', 'value' => 'CONTRACTOR'],
+                    ['label' => $ll . '.employment_type_temporary', 'value' => 'TEMPORARY'],
+                    ['label' => $ll . '.employment_type_intern', 'value' => 'INTERN'],
+                    ['label' => $ll . '.employment_type_volunteer', 'value' => 'VOLUNTEER'],
+                    ['label' => $ll . '.employment_type_per_diem', 'value' => 'PER_DIEM'],
+                    ['label' => $ll . '.employment_type_other', 'value' => 'OTHER'],
+                ],
+            ],
+        ],
+        'date_posted' => [
+            'label' => $ll . '.date_posted',
+            'description' => $ll . '.date_posted.description',
+            'config' => [
+                'type' => 'datetime',
+                'format' => 'date',
+                'dbType' => 'date',
+                'required' => true,
+                'nullable' => true,
+                'default' => null,
+            ],
+        ],
+        'valid_through' => [
+            'exclude' => true,
+            'label' => $ll . '.valid_through',
+            'description' => $ll . '.valid_through.description',
+            'config' => [
+                'type' => 'datetime',
+                'format' => 'date',
+                'dbType' => 'date',
+                'nullable' => true,
+                'default' => null,
+            ],
+        ],
+        'hiring_organization_name' => [
+            'label' => $ll . '.hiring_organization_name',
+            'description' => $ll . '.hiring_organization_name.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'max' => 255,
+                'required' => true,
+                'eval' => 'trim',
+            ],
+        ],
+        'hiring_organization_website' => [
+            'label' => $ll . '.hiring_organization_website',
+            'description' => $ll . '.hiring_organization_website.description',
+            'config' => [
+                'type' => 'link',
+                'allowedTypes' => ['url', 'page'],
+                'required' => true,
+            ],
+        ],
+        'hiring_organization_logo_url' => [
+            'exclude' => true,
+            'label' => $ll . '.hiring_organization_logo_url',
+            'description' => $ll . '.hiring_organization_logo_url.description',
+            'config' => [
+                'type' => 'link',
+                'allowedTypes' => ['url', 'file'],
+                'appearance' => [
+                    'allowedFileExtensions' => ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'],
+                ],
+            ],
+        ],
+        'job_locations' => [
+            'label' => $ll . '.job_locations',
+            'description' => $ll . '.job_locations.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_googleforjobs_domain_model_joblocation',
+                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_joblocation}.{#sys_language_uid} IN (-1,0) ORDER BY {#tx_googleforjobs_domain_model_joblocation}.{#city}',
+                'MM' => 'tx_googleforjobs_domain_model_job_joblocation_mm',
+                'MM_opposite_field' => 'jobs',
+                'size' => 5,
+                'minitems' => 0,
+                'maxitems' => 100,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => false,
                     ],
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.fal_media.add',
-                        'showPossibleLocalizationRecords' => true,
-                        'showRemovedLocalizationRecords' => true,
-                        'showAllLocalizationLink' => true,
-                        'showSynchronizationLink' => true,
-                    ],
-                    'foreign_match_fields' => [
-                        'fieldname' => 'fal_media',
-                        'tablenames' => 'tx_googleforjobs_domain_model_job',
-                        'table_local' => 'sys_file',
-                    ],
-                    // custom configuration for displaying fields in the overlay/reference table
-                    // to use the newsPalette and imageoverlayPalette instead of the basicoverlayPalette
-                    'overrideChildTca' => [
-                        'types' => [
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_UNKNOWN => [
-                                'showitem' => '
-                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;newsPalette,
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
-                                'showitem' => '
-                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;newsPalette,
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                                'showitem' => '
-                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;newsPalette,
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
-                                'showitem' => '
-                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;newsPalette,
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
-                                'showitem' => '
-                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;newsPalette,
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
-                                'showitem' => '
-                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;newsPalette,
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                        ],
+                    'editPopup' => [
+                        'disabled' => false,
                     ],
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
-            ),
+            ],
         ],
-        'fal_related_files' => [
+        'job_location_type' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.fal_related_files',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'fal_related_files',
-                [
-                    'behaviour' => [
-                        'allowLanguageSynchronization' => true,
-                    ],
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.fal_related_files.add',
-                        'showPossibleLocalizationRecords' => true,
-                        'showRemovedLocalizationRecords' => true,
-                        'showAllLocalizationLink' => true,
-                        'showSynchronizationLink' => true,
-                    ],
-                    'inline' => [
-                        'inlineOnlineMediaAddButtonStyle' => 'display:none',
-                    ],
-                    'foreign_match_fields' => [
-                        'fieldname' => 'fal_related_files',
-                        'tablenames' => 'tx_googleforjobs_domain_model_job',
-                        'table_local' => 'sys_file',
-                    ],
-                ],
-            ),
+            'label' => $ll . '.job_location_type',
+            'description' => $ll . '.job_location_type.description',
+            'onChange' => 'reload',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'default' => 0,
+            ],
         ],
-        'author' => [
+        'applicant_location_requirements' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.author_formlabel',
+            'label' => $ll . '.applicant_location_requirements',
+            'description' => $ll . '.applicant_location_requirements.description',
+            'displayCond' => 'FIELD:job_location_type:=:1',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
+                'max' => 255,
+                'required' => true,
+                'eval' => 'trim',
+                'placeholder' => 'DE, AT, CH',
+            ],
+        ],
+        'base_salary_enable' => [
+            'exclude' => true,
+            'label' => $ll . '.base_salary_enable',
+            'description' => $ll . '.base_salary_enable.description',
+            'onChange' => 'reload',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'default' => 0,
+            ],
+        ],
+        'base_salary_currency' => [
+            'exclude' => true,
+            'label' => $ll . '.base_salary_currency',
+            'description' => $ll . '.base_salary_currency.description',
+            'displayCond' => 'FIELD:base_salary_enable:=:1',
+            'config' => [
+                'type' => 'input',
+                'size' => 5,
+                'max' => 3,
+                'required' => true,
+                'eval' => 'trim,upper',
+                'placeholder' => 'EUR',
+            ],
+        ],
+        'base_salary_unit_text' => [
+            'exclude' => true,
+            'label' => $ll . '.base_salary_unit_text',
+            'description' => $ll . '.base_salary_unit_text.description',
+            'displayCond' => 'FIELD:base_salary_enable:=:1',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['label' => $ll . '.base_salary_unit_hour', 'value' => 'HOUR'],
+                    ['label' => $ll . '.base_salary_unit_day', 'value' => 'DAY'],
+                    ['label' => $ll . '.base_salary_unit_week', 'value' => 'WEEK'],
+                    ['label' => $ll . '.base_salary_unit_month', 'value' => 'MONTH'],
+                    ['label' => $ll . '.base_salary_unit_year', 'value' => 'YEAR'],
+                ],
+                'default' => 'YEAR',
+            ],
+        ],
+        'base_salary_value' => [
+            'exclude' => true,
+            'label' => $ll . '.base_salary_value',
+            'description' => $ll . '.base_salary_value.description',
+            'displayCond' => 'FIELD:base_salary_enable:=:1',
+            'config' => [
+                'type' => 'number',
+                'format' => 'decimal',
+                'size' => 10,
+                'default' => 0,
+            ],
+        ],
+        'fal_media' => [
+            'exclude' => true,
+            'label' => $ll . '.fal_media',
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-media-types',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
+                'appearance' => [
+                    'createNewRelationLinkTitle' => $ll . '.fal_media.add',
+                    'showPossibleLocalizationRecords' => true,
+                ],
             ],
         ],
-        'alternative_title' => [
+        'fal_related_files' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.alternative_title',
+            'label' => $ll . '.fal_related_files',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-            ],
-        ],
-        'category' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.category',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
+                'type' => 'file',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+                'appearance' => [
+                    'createNewRelationLinkTitle' => $ll . '.fal_related_files.add',
+                    'showPossibleLocalizationRecords' => true,
+                ],
             ],
         ],
         'categories' => [
@@ -486,8 +349,30 @@ return [
                 'type' => 'category',
             ],
         ],
+        'category' => [
+            'exclude' => true,
+            'label' => $ll . '.category',
+            'description' => $ll . '.category.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
+        'author' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.author_formlabel',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
         'notes' => [
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_job.notes',
+            'label' => $ll . '.notes',
             'config' => [
                 'type' => 'text',
                 'rows' => 10,

@@ -1,218 +1,290 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-09-19T13:34:19Z" product-name="google_for_jobs">
-		<header/>
-		<body>
-			<trans-unit id="tx_googleforjobs_domain_model_job">
-				<source>Job</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation">
-				<source>Job Location</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.date_posted">
-				<source>Date Posted</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_name">
-				<source>Hiring Organization Name</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_website">
-				<source>Hiring Organization Website</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_logo_url">
-				<source>Hiring Organization Logo Url</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_locations">
-				<source>Job Locations</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.street_address">
-				<source>Street Address</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.city">
-				<source>City</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.postal_code">
-				<source>Postal Code</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.region">
-				<source>Region</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_joblocation.country">
-				<source>Country</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.valid_through">
-				<source>Valid Through</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_enable">
-				<source>Add Salary Information</source>
-			</trans-unit>			
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_currency">
-				<source>Base Salary Currency (ISO 4217 Currency Format)</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_text">
-				<source>Base Salary Unit Text</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_value">
-				<source>Base Salary Value</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type">
-				<source>Employment Type</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.job_location_type">
-				<source>Remote Job</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements">
-				<source>Applicant Location Requirements (Country)</source>
-			</trans-unit>
-			<trans-unit id="tx_google_for_jobs_job.name">
-				<source>Jobs (Google for Jobs)</source>
-			</trans-unit>
-			<trans-unit id="tx_google_for_jobs_job.description">
-				<source></source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_full_time">
-				<source>Full-time</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_part_time">
-				<source>Part-time</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_contractor">
-				<source>Contractor</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_temporary">
-				<source>Temporary</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_intern">
-				<source>Intern</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_volunteer">
-				<source>Volunteer</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_per_diem">
-				<source>Per diem</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.employment_type_other">
-				<source>Other</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_hour">
-				<source>Hour</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_day">
-				<source>Day</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_week">
-				<source>Week</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_month">
-				<source>Month</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_year">
-				<source>Year</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.path_segment">
-				<source>Speaking URL path segment</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.fal_media">
-				<source>Media Files</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.fal_media.add">
-				<source>Add media file</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.fal_related_files">
-				<source>Related Files</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.fal_related_files.add">
-				<source>Add related file</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.alternative_title">
-				<source>Alternative title</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.category">
-				<source>Category</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.notes">
-				<source>Notes</source>
-			</trans-unit>
-			<trans-unit id="tx_googleforjobs_domain_model_job.structured_data">
-				<source>Structured data</source>
-			</trans-unit>
-			<trans-unit id="flexforms.sheetTitle">
-				<source>Jobs Configuration</source>
-			</trans-unit>
-			<trans-unit id="flexforms.renderDetailTemplate.label">
-				<source>Render Detail Template</source>
-			</trans-unit>
-			<trans-unit id="flexforms.renderType.label">
-				<source>What to display</source>
-			</trans-unit>
-			<trans-unit id="flexforms.renderType.list">
-				<source>List View</source>
-			</trans-unit>
-			<trans-unit id="flexforms.renderType.show">
-				<source>Detail View</source>
-			</trans-unit>
-			<trans-unit id="flexforms.renderType.listSelected">
-				<source>List of Selected Jobs</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderBy.label">
-				<source>Order By</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderBy.tstamp">
-				<source>Last Edited</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderBy.datePosted">
-				<source>Given date/time</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderBy.crdate">
-				<source>Created</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderBy.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderDirection.label">
-				<source>Sort Direction</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderDirection.asc">
-				<source>Ascending</source>
-			</trans-unit>
-			<trans-unit id="flexforms.orderDirection.desc">
-				<source>Descending</source>
-			</trans-unit>
-			<trans-unit id="flexforms.categoryConjunction.label">
-				<source>Category Mode</source>
-			</trans-unit>
-			<trans-unit id="flexforms.categoryConjunction.all">
-				<source>Show all (ignore categories)</source>
-			</trans-unit>
-			<trans-unit id="flexforms.categoryConjunction.or">
-				<source>Show items with one or more of the selected categories</source>
-			</trans-unit>
-			<trans-unit id="flexforms.categoryConjunction.and">
-				<source>Show items with all of the selected categories</source>
-			</trans-unit>
-			<trans-unit id="flexforms.categoryConjunction.notor">
-				<source>Exclude items with one ore more of the selected categories</source>
-			</trans-unit>
-			<trans-unit id="flexforms.categoryConjunction.notand">
-				<source>Show items with none of the selected categories</source>
-			</trans-unit>
-			<trans-unit id="flexforms.categories.label">
-				<source>Categories</source>
-			</trans-unit>
-			<trans-unit id="flexforms.detailPid.label">
-				<source>PageId for single job display</source>
-			</trans-unit>
-			<trans-unit id="flexforms.returnToPid.label">
-				<source>PageId to return to</source>
-			</trans-unit>
-			<trans-unit id="flexforms.listSelected.label">
-				<source>Job items to display</source>
-			</trans-unit>
-		</body>
-	</file>
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf" product-name="google_for_jobs">
+        <header/>
+        <body>
+            <trans-unit id="tx_google_for_jobs_job.name">
+                <source>Jobs (Google for Jobs)</source>
+            </trans-unit>
+            <trans-unit id="tx_google_for_jobs_job.description">
+                <source>Lists job postings and renders the detail view including JobPosting structured data for Google.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job">
+                <source>Job</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.dates">
+                <source>Dates</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.organization">
+                <source>Hiring organization</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.remote">
+                <source>Remote work</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.palette.salary">
+                <source>Base salary</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.title.description">
+                <source>Output as "title". Only the job title, e.g. "Software Engineer" or "Barista". Do not include job codes, addresses, dates, salaries or the company name, and avoid excessive special characters.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.alternative_title">
+                <source>Alternative title</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.alternative_title.description">
+                <source>Shown in the frontend list instead of the title. Not part of the structured data.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.path_segment">
+                <source>URL segment</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.description.description">
+                <source>Required, output as "description" (HTML). Complete description of the job: responsibilities, qualifications, skills, working hours, education and experience requirements. Must differ from the title. Google recognises paragraphs and lists.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type">
+                <source>Employment type</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type.description">
+                <source>Output as "employmentType". One or more of FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_full_time">
+                <source>Full time</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_part_time">
+                <source>Part time</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_contractor">
+                <source>Contractor</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_temporary">
+                <source>Temporary</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_intern">
+                <source>Intern</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_volunteer">
+                <source>Volunteer</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_per_diem">
+                <source>Per diem</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.employment_type_other">
+                <source>Other</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.date_posted">
+                <source>Date posted</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.date_posted.description">
+                <source>Required, output as "datePosted" (ISO 8601). The original date on which the employer posted the job.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.valid_through">
+                <source>Valid through</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.valid_through.description">
+                <source>Output as "validThrough" (ISO 8601, end of the selected day). Required by Google if the posting has an expiry date. Leave empty if the job has no deadline.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_name">
+                <source>Organization name</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_name.description">
+                <source>Required, output as "hiringOrganization.name". Name of the company offering the job, not a specific branch. Use "confidential" for anonymous postings.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_website">
+                <source>Organization website</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_website.description">
+                <source>Output as "hiringOrganization.sameAs" (absolute URL).</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_logo_url">
+                <source>Organization logo</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.hiring_organization_logo_url.description">
+                <source>Output as "hiringOrganization.logo" (absolute URL). Select a file or enter an external URL. Only needed if the logo should differ from the one Google already shows for the organization.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.job_locations">
+                <source>Job locations</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.job_locations.description">
+                <source>Output as "jobLocation". Required unless the job is 100% remote. Each location needs at least a country.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.job_location_type">
+                <source>Fully remote (TELECOMMUTE)</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.job_location_type.description">
+                <source>Outputs "jobLocationType": "TELECOMMUTE". Only for jobs that are 100% remote, not for occasional home office. This must also be clear from the description.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements">
+                <source>Allowed countries for remote work</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.applicant_location_requirements.description">
+                <source>Output as "applicantLocationRequirements". Comma-separated list of countries from which the remote job can be done, e.g. "DE, AT". At least one country is required for remote jobs.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_enable">
+                <source>Specify base salary</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_enable.description">
+                <source>Outputs "baseSalary" only if enabled. Only the employer may state the salary, and it must match the salary shown on the page.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_currency">
+                <source>Currency</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_currency.description">
+                <source>Output as "baseSalary.currency". ISO 4217 code, e.g. EUR.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_text">
+                <source>Per</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_text.description">
+                <source>Output as "baseSalary.value.unitText": HOUR, DAY, WEEK, MONTH or YEAR.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_hour">
+                <source>Hour</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_day">
+                <source>Day</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_week">
+                <source>Week</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_month">
+                <source>Month</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_unit_year">
+                <source>Year</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_value">
+                <source>Exact salary</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.base_salary_value.description">
+                <source>Output as "baseSalary.value.value". Actual base salary as stated by the employer, not an estimate.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.fal_media">
+                <source>Media</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.fal_media.add">
+                <source>Add media file</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.fal_related_files">
+                <source>Related files</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.fal_related_files.add">
+                <source>Add file</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.category">
+                <source>Category (text)</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.category.description">
+                <source>Free text, shown in the frontend only. Use system categories for filtering lists.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_job.notes">
+                <source>Internal notes</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation">
+                <source>Job location</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.street_address">
+                <source>Street and number</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.street_address.description">
+                <source>Output as "address.streetAddress".</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.postal_code">
+                <source>Postal code</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.city">
+                <source>City</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.region">
+                <source>Region</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.region.description">
+                <source>Output as "address.addressRegion", e.g. the federal state.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.country">
+                <source>Country</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.country.description">
+                <source>Required, output as "address.addressCountry". Two-letter ISO 3166-1 code, e.g. DE.</source>
+            </trans-unit>
+            <trans-unit id="tx_googleforjobs_domain_model_joblocation.jobs">
+                <source>Used by jobs</source>
+            </trans-unit>
+            <trans-unit id="flexforms.sheetTitle">
+                <source>Settings</source>
+            </trans-unit>
+            <trans-unit id="flexforms.renderType.label">
+                <source>Display</source>
+            </trans-unit>
+            <trans-unit id="flexforms.renderType.list">
+                <source>List</source>
+            </trans-unit>
+            <trans-unit id="flexforms.renderType.show">
+                <source>Detail view</source>
+            </trans-unit>
+            <trans-unit id="flexforms.renderType.listSelected">
+                <source>List of selected jobs</source>
+            </trans-unit>
+            <trans-unit id="flexforms.renderDetailTemplate.label">
+                <source>Render detail template (structured data is always added)</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderBy.label">
+                <source>Order by</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderBy.tstamp">
+                <source>Last change</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderBy.datePosted">
+                <source>Date posted</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderBy.crdate">
+                <source>Creation date</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderBy.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderDirection.label">
+                <source>Order direction</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderDirection.asc">
+                <source>Ascending</source>
+            </trans-unit>
+            <trans-unit id="flexforms.orderDirection.desc">
+                <source>Descending</source>
+            </trans-unit>
+            <trans-unit id="flexforms.categoryConjunction.label">
+                <source>Category filter</source>
+            </trans-unit>
+            <trans-unit id="flexforms.categoryConjunction.all">
+                <source>Show all jobs</source>
+            </trans-unit>
+            <trans-unit id="flexforms.categoryConjunction.or">
+                <source>At least one of the categories</source>
+            </trans-unit>
+            <trans-unit id="flexforms.categoryConjunction.and">
+                <source>All of the categories</source>
+            </trans-unit>
+            <trans-unit id="flexforms.categoryConjunction.notor">
+                <source>None of the categories</source>
+            </trans-unit>
+            <trans-unit id="flexforms.categoryConjunction.notand">
+                <source>Not all of the categories</source>
+            </trans-unit>
+            <trans-unit id="flexforms.categories.label">
+                <source>Categories</source>
+            </trans-unit>
+            <trans-unit id="flexforms.detailPid.label">
+                <source>Detail page</source>
+            </trans-unit>
+            <trans-unit id="flexforms.returnToPid.label">
+                <source>List page (back link)</source>
+            </trans-unit>
+            <trans-unit id="flexforms.listSelected.label">
+                <source>Selected jobs</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

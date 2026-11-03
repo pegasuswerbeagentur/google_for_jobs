@@ -1,20 +1,25 @@
 <?php
 
 declare(strict_types=1);
+
+defined('TYPO3') or die();
+
+$ll = 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation';
+
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation',
-        'default_sortby' => 'street_address',
+        'title' => $ll,
         'label' => 'street_address',
-        'label_alt' => 'city',
+        'label_alt' => 'postal_code, city',
         'label_alt_force' => true,
+        'default_sortby' => 'city, street_address',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
+        'translationSource' => 'l10n_source',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
@@ -24,151 +29,96 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'searchFields' => 'street_address,city,postal_code,region,country',
         'iconfile' => 'EXT:google_for_jobs/Resources/Public/Icons/tx_googleforjobs_domain_model_job.gif',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, street_address, city, postal_code, region, country',
+    'palettes' => [
+        'address' => [
+            'showitem' => 'street_address, --linebreak--, postal_code, city, --linebreak--, region, country',
+        ],
+        'language' => [
+            'showitem' => 'sys_language_uid, l10n_parent',
+        ],
+        'access' => [
+            'showitem' => 'hidden, --linebreak--, starttime, endtime',
+        ],
     ],
     'types' => [
         '1' => [
-            'showitem' =>
-                'sys_language_uid, l10n_parent, l10n_diffsource, hidden, street_address, city, postal_code, region, country, base_salary_enable, base_salary_currency, base_salary_unit_text, base_salary_value, type, applicant_location_requirements',
+            'showitem' => '
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+                    --palette--;;address,
+                    jobs,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+                    --palette--;;language,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                    --palette--;;access,
+            ',
         ],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
+        'street_address' => [
+            'label' => $ll . '.street_address',
+            'description' => $ll . '.street_address.description',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple',
-                    ],
-                ],
-                'default' => 0,
+                'type' => 'input',
+                'size' => 40,
+                'max' => 255,
+                'eval' => 'trim',
             ],
         ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
+        'postal_code' => [
+            'label' => $ll . '.postal_code',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 0,
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_googleforjobs_domain_model_joblocation',
-                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_joblocation}.{#pid}=###CURRENT_PID### AND {#tx_googleforjobs_domain_model_joblocation}.{#sys_language_uid} IN (-1,0)',
+                'type' => 'input',
+                'size' => 10,
+                'max' => 255,
+                'eval' => 'trim',
             ],
         ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        't3ver_label' => [
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
+        'city' => [
+            'label' => $ll . '.city',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
-            ],
-        ],
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ],
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ],
-        ],
-        'street_address' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.street_address',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
-            ],
-        ],
-        'city' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.city',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
-            ],
-        ],
-        'postal_code' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.postal_code',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
+                'eval' => 'trim',
             ],
         ],
         'region' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.region',
+            'label' => $ll . '.region',
+            'description' => $ll . '.region.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required',
+                'max' => 255,
+                'eval' => 'trim',
             ],
         ],
         'country' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:google_for_jobs/Resources/Private/Language/locallang_db.xlf:tx_googleforjobs_domain_model_joblocation.country',
+            'label' => $ll . '.country',
+            'description' => $ll . '.country.description',
             'config' => [
                 'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
+                'size' => 10,
+                'max' => 255,
+                'required' => true,
+                'eval' => 'trim',
+                'placeholder' => 'DE',
+            ],
+        ],
+        'jobs' => [
+            'exclude' => true,
+            'label' => $ll . '.jobs',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_googleforjobs_domain_model_job',
+                'foreign_table_where' => 'AND {#tx_googleforjobs_domain_model_job}.{#sys_language_uid} IN (-1,0) ORDER BY {#tx_googleforjobs_domain_model_job}.{#title}',
+                'MM' => 'tx_googleforjobs_domain_model_job_joblocation_mm',
+                'size' => 5,
+                'maxitems' => 9999,
+                'readOnly' => true,
             ],
         ],
     ],
