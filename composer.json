@@ -1,86 +1,87 @@
 {
-	"name": "pegasus/google-for-jobs",
-	"type": "typo3-cms-extension",
-	"description": "Job postings for TYPO3 with Google for Jobs structured data (JSON-LD).",
-	"keywords": [
-		"TYPO3",
-		"extension",
-		"jobs",
-		"google for jobs",
-		"structured data",
-		"JobPosting"
-	],
-	"homepage": "https://github.com/pegasuswerbeagentur/google_for_jobs",
-	"license": "GPL-3.0-or-later",
-	"authors": [
-		{
-			"name": "PEGASUS Werbeagentur GmbH",
-			"homepage": "https://www.pega-sus.de",
-			"role": "Developer"
-		}
-	],
-	"support": {
-		"issues": "https://github.com/pegasuswerbeagentur/google_for_jobs/issues",
-		"source": "https://github.com/pegasuswerbeagentur/google_for_jobs"
-	},
-	"require": {
-		"php": "^8.2",
-		"typo3/cms-core": "^13.4.37 || ^14.3.10",
-		"typo3/cms-extbase": "^13.4.37 || ^14.3.10",
-		"typo3/cms-fluid": "^13.4.37 || ^14.3.10",
-		"typo3/cms-frontend": "^13.4.37 || ^14.3.10"
-	},
-	"require-dev": {
-		"friendsofphp/php-cs-fixer": "^3.64",
-		"phpstan/phpstan": "^2.1",
-		"phpunit/phpunit": "^11.5",
-		"typo3/cms-install": "^13.4.37 || ^14.3.10",
-		"typo3/testing-framework": "^9.2"
-	},
-	"suggest": {
-		"typo3/cms-install": "Upgrade wizards for installations of earlier versions",
-		"typo3/cms-seo": "XML sitemap for the job detail pages"
-	},
-	"autoload": {
-		"psr-4": {
-			"Pegasus\\GoogleForJobs\\": "Classes/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Pegasus\\GoogleForJobs\\Tests\\": "Tests/"
-		}
-	},
-	"config": {
-		"allow-plugins": {
-			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true
-		},
-		"bin-dir": ".Build/bin",
-		"sort-packages": true,
-		"vendor-dir": ".Build/vendor"
-	},
-	"extra": {
-		"typo3/cms": {
-			"extension-key": "google_for_jobs",
-			"version": "3.0.1",
-			"Package": {
-				"providesPackages": {}
-			},
-			"web-dir": ".Build/public"
-		}
-	},
-	"scripts": {
-		"ci:cgl": "php-cs-fixer fix --dry-run --diff",
-		"ci:phpstan": "phpstan analyse --no-progress",
-		"ci:tests:functional": "phpunit -c Build/phpunit/FunctionalTests.xml",
-		"ci:tests:unit": "phpunit -c Build/phpunit/UnitTests.xml",
-		"fix:cgl": "php-cs-fixer fix",
-		"ci": [
-			"@ci:cgl",
-			"@ci:phpstan",
-			"@ci:tests:unit",
-			"@ci:tests:functional"
-		]
-	}
+    "name": "pegasus/google-for-jobs",
+    "type": "typo3-cms-extension",
+    "description": "Job postings for TYPO3 with Google for Jobs structured data (JSON-LD).",
+    "keywords": [
+        "TYPO3",
+        "extension",
+        "jobs",
+        "google for jobs",
+        "structured data",
+        "JobPosting"
+    ],
+    "homepage": "https://github.com/pegasuswerbeagentur/google_for_jobs",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "PEGASUS Werbeagentur GmbH",
+            "homepage": "https://www.pega-sus.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/pegasuswerbeagentur/google_for_jobs/issues",
+        "source": "https://github.com/pegasuswerbeagentur/google_for_jobs"
+    },
+    "require": {
+        "php": "^8.2",
+        "typo3/cms-core": "^13.4.37 || ^14.3.10",
+        "typo3/cms-extbase": "^13.4.37 || ^14.3.10",
+        "typo3/cms-fluid": "^13.4.37 || ^14.3.10",
+        "typo3/cms-frontend": "^13.4.37 || ^14.3.10"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5",
+        "typo3/cms-fluid-styled-content": "^13.4.37 || ^14.3.10",
+        "typo3/cms-install": "^13.4.37 || ^14.3.10",
+        "typo3/testing-framework": "^9.2"
+    },
+    "suggest": {
+        "typo3/cms-install": "Upgrade wizards for installations of earlier versions",
+        "typo3/cms-seo": "XML sitemap for the job detail pages"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pegasus\\GoogleForJobs\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pegasus\\GoogleForJobs\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "bin-dir": ".Build/bin",
+        "sort-packages": true,
+        "vendor-dir": ".Build/vendor"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "google_for_jobs",
+            "version": "3.0.1",
+            "Package": {
+                "providesPackages": {}
+            },
+            "web-dir": ".Build/public"
+        }
+    },
+    "scripts": {
+        "ci:cgl": "php-cs-fixer fix --dry-run --diff",
+        "ci:phpstan": "phpstan analyse --no-progress",
+        "ci:tests:functional": "phpunit -c Build/phpunit/FunctionalTests.xml",
+        "ci:tests:unit": "phpunit -c Build/phpunit/UnitTests.xml",
+        "fix:cgl": "php-cs-fixer fix",
+        "ci": [
+            "@ci:cgl",
+            "@ci:phpstan",
+            "@ci:tests:unit",
+            "@ci:tests:functional"
+        ]
+    }
 }
