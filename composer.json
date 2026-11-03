@@ -37,6 +37,10 @@
 		"typo3/cms-install": "^13.4.37 || ^14.3.10",
 		"typo3/testing-framework": "^9.2"
 	},
+	"suggest": {
+		"typo3/cms-install": "Upgrade wizards for installations of earlier versions",
+		"typo3/cms-seo": "XML sitemap for the job detail pages"
+	},
 	"autoload": {
 		"psr-4": {
 			"Pegasus\\GoogleForJobs\\": "Classes/"
