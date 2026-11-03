@@ -1,0 +1,6 @@
+"tx_googleforjobs_domain_model_job"
+,"uid","pid","title","deleted","hidden","job_location_street_address","job_location_city","job_location_postal_code","job_location_region","job_location_country"
+,1,10,"Developer",0,0,"Hauptstraße 1","Berlin","10115","Berlin","DE"
+,2,10,"Designer",0,1,"Hauptstraße 1","Berlin","10115","Berlin","DE"
+,3,10,"Remote",0,0,"","","","",""
+,4,20,"Archived",1,0,"Elbchaussee 2","Hamburg","22763","","DE"

@@ -4,176 +4,157 @@ declare(strict_types=1);
 
 namespace Pegasus\GoogleForJobs\Updates;
 
+use Pegasus\GoogleForJobs\Compatibility\UpgradeWizardInterface;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
-/***
- *
- * This file is part of the "Google for Jobs" Extension for TYPO3 CMS.
+/*
+ * This file is part of the "Google for Jobs" extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- *  (c) 2019 Michael Kunst <kunst@pega-sus.de>, PEGASUS Werbeagentur GmbH
- *
- ***/
+ * LICENSE file that was distributed with this source code.
+ */
 
-class MigrateLocationsUpdate implements UpgradeWizardInterface
+/**
+ * Moves the address data stored directly in job records (version 1.x)
+ * into job location records and relates them to the jobs.
+ *
+ * The class name is kept from version 2.x, so installations that already
+ * executed this wizard keep it marked as done.
+ */
+final class MigrateLocationsUpdate implements UpgradeWizardInterface
 {
-    /**
-     * Return the identifier for this wizard
-     * This should be the same string as used in the ext_localconf class registration
-     */
-    public function getIdentifier(): string
-    {
-        return 'migrateLocationsUpdate';
-    }
+    public const IDENTIFIER = 'migrateLocationsUpdate';
+
+    private const JOB_TABLE = 'tx_googleforjobs_domain_model_job';
+    private const LOCATION_TABLE = 'tx_googleforjobs_domain_model_joblocation';
+    private const RELATION_TABLE = 'tx_googleforjobs_domain_model_job_joblocation_mm';
 
     /**
-     * Return the speaking name of this wizard
+     * Address columns of version 1.x mapped to the columns of the location table.
      */
+    private const LEGACY_COLUMNS = [
+        'job_location_street_address' => 'street_address',
+        'job_location_city' => 'city',
+        'job_location_postal_code' => 'postal_code',
+        'job_location_region' => 'region',
+        'job_location_country' => 'country',
+    ];
+
+    public function __construct(
+        private readonly ConnectionPool $connectionPool,
+    ) {}
+
     public function getTitle(): string
     {
-        return 'Google For Jobs: migrate locations into seperate table';
+        return 'Google for Jobs: Migrate job locations of version 1.x';
     }
 
-    /**
-     * Return the description for this wizard
-     */
     public function getDescription(): string
     {
-        return 'This wizard migrates the job location data from the job records to a dedicated table. This is nessecary, because job locations are now separate objects';
+        return 'Moves the address data stored in job records of version 1.x into separate job location records. '
+            . 'Run this wizard before removing unused database columns.';
     }
 
-    /**
-     * Execute the update
-     *
-     * Called when a wizard reports that an update is necessary
-     */
-    public function executeUpdate(): bool
-    {
-        $migrationSuccessful = $this->migrateLocationsIntoLocationTable();
-
-        return $migrationSuccessful;
-    }
-
-    /**
-     * Is an update necessary?
-     *
-     * Is used to determine whether a wizard needs to be run.
-     * Check if data for migration exists.
-     */
-    public function updateNecessary(): bool
-    {
-        $updateNecessary = false;
-
-        /** @var ConnectionPool $connectionPool */
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $connection = $connectionPool->getConnectionByName('Default');
-
-        // check if location table exists
-        if ($connection->getSchemaManager()->tablesExist('tx_googleforjobs_domain_model_joblocation')) {
-            $connection = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_joblocation');
-            $query = $connection->createQueryBuilder();
-            $query = $query->select('*')->from('tx_googleforjobs_domain_model_joblocation');
-            $result = $query->execute();
-
-            //check if joblocation table is empty
-            if ($result->fetch() === false) {
-                $connection = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_job');
-                $query = $connection->createQueryBuilder();
-                $query = $query->select('*')->from('tx_googleforjobs_domain_model_job');
-                $result = $query->execute();
-
-                // check if job records exist
-                if ($result->fetch()) {
-                    $updateNecessary = true;
-                }
-            }
-        }
-        return $updateNecessary;
-    }
-
-    /**
-     * Returns an array of class names of prerequisite classes
-     *
-     * This way a wizard can define dependencies like "database up-to-date" or
-     * "reference index updated"
-     *
-     * @return string[]
-     */
     public function getPrerequisites(): array
     {
         return [];
     }
 
-    /**
-     * Reads all jobs, then extracts location data and writes them into the
-     * location table and sets relation between jobs and locations.
-     */
-    protected function migrateLocationsIntoLocationTable(): bool
+    public function updateNecessary(): bool
     {
-        /** @var ConnectionPool $connectionPool */
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $connectionJoblocations = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_joblocation');
-        $connectionJoblocationsMM = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_job_joblocation_mm');
+        if (!$this->legacyColumnsExist()) {
+            return false;
+        }
+        return $this->countRows(self::LOCATION_TABLE) === 0 && $this->getJobsWithLegacyAddress() !== [];
+    }
 
-        $jobs =  $this->getJobData();
+    public function executeUpdate(): bool
+    {
+        $locationConnection = $this->connectionPool->getConnectionForTable(self::LOCATION_TABLE);
+        $relationConnection = $this->connectionPool->getConnectionForTable(self::RELATION_TABLE);
+        $jobConnection = $this->connectionPool->getConnectionForTable(self::JOB_TABLE);
+        $locationUsage = [];
 
-        foreach ($jobs as $job) {
-            // get location data for database insertion
-            $identifiers = [
-                'street_address' => $job['job_location_street_address'],
-                'city' => $job['job_location_city'],
-                'postal_code' => $job['job_location_postal_code'],
-                'region' => $job['job_location_region'],
-                'country' => $job['job_location_country'],
-            ];
-            $joblocation = $identifiers;
-            $joblocation['pid'] = $job['pid'];
-
-            // check if location doesn't already exist and write it into location table
-            $locationExists = false;
-            $locationExists = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $identifiers)->fetchAll();
-            if (!$locationExists) {
-                $connectionJoblocations->insert('tx_googleforjobs_domain_model_joblocation', $joblocation);
+        foreach ($this->getJobsWithLegacyAddress() as $job) {
+            $address = [];
+            foreach (self::LEGACY_COLUMNS as $legacyColumn => $column) {
+                $address[$column] = (string)($job[$legacyColumn] ?? '');
             }
 
-            // set mn relation
-            $locationUid = $connectionJoblocations->select(['uid'], 'tx_googleforjobs_domain_model_joblocation', $identifiers)->fetch();
-            $connectionJoblocationsMM->insert(
-                'tx_googleforjobs_domain_model_job_joblocation_mm',
-                ['uid_local' => $locationUid['uid'], 'uid_foreign' => $job['uid'],
-                    'sorting_foreign' => 1],
-            );
+            $locationUid = $locationConnection->select(['uid'], self::LOCATION_TABLE, $address + ['pid' => (int)$job['pid']])
+                ->fetchOne();
+            if ($locationUid === false) {
+                $locationConnection->insert(self::LOCATION_TABLE, $address + [
+                    'pid' => (int)$job['pid'],
+                    'tstamp' => time(),
+                    'crdate' => time(),
+                ]);
+                $locationUid = (int)$locationConnection->lastInsertId();
+            }
+            $locationUid = (int)$locationUid;
+            $locationUsage[$locationUid] = ($locationUsage[$locationUid] ?? 0) + 1;
+
+            // The job record is the opposite side of the relation: uid_local is the location.
+            $relationConnection->insert(self::RELATION_TABLE, [
+                'uid_local' => $locationUid,
+                'uid_foreign' => (int)$job['uid'],
+                'sorting' => $locationUsage[$locationUid],
+                'sorting_foreign' => 1,
+            ]);
+            $jobConnection->update(self::JOB_TABLE, ['job_locations' => 1], ['uid' => (int)$job['uid']]);
+        }
+
+        foreach ($locationUsage as $locationUid => $usage) {
+            $locationConnection->update(self::LOCATION_TABLE, ['jobs' => $usage], ['uid' => $locationUid]);
         }
 
         return true;
     }
 
-    /**
-     * Connects to jobs table and returns all jobs (incl. hidden, deleted)
-     * as array.
-     *
-     * @return array Returns all jobs (incl. hidden, deleted)
-     * as array.
-     */
-    protected function getJobData(): array
+    private function legacyColumnsExist(): bool
     {
-        /** @var ConnectionPool $connectionPool */
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $connectionJobs = $connectionPool->getConnectionForTable('tx_googleforjobs_domain_model_job');
+        $connection = $this->connectionPool->getConnectionForTable(self::JOB_TABLE);
+        $schemaManager = $connection->createSchemaManager();
+        if (!$schemaManager->tablesExist([self::JOB_TABLE, self::LOCATION_TABLE, self::RELATION_TABLE])) {
+            return false;
+        }
+        $columns = array_change_key_case($schemaManager->listTableColumns(self::JOB_TABLE), CASE_LOWER);
+        foreach (array_keys(self::LEGACY_COLUMNS) as $legacyColumn) {
+            if (!isset($columns[$legacyColumn])) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-        $queryBuilder = $connectionJobs->createQueryBuilder();
+    /**
+     * All jobs including hidden and deleted ones, so a later restore keeps its location.
+     *
+     * @return list<array<string, mixed>>
+     */
+    private function getJobsWithLegacyAddress(): array
+    {
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::JOB_TABLE);
         $queryBuilder->getRestrictions()->removeAll();
+        $hasAddress = [];
+        foreach (array_keys(self::LEGACY_COLUMNS) as $legacyColumn) {
+            $hasAddress[] = $queryBuilder->expr()->neq($legacyColumn, $queryBuilder->createNamedParameter('', Connection::PARAM_STR));
+        }
 
-        $jobs =  $queryBuilder->select('*')
-            ->from('tx_googleforjobs_domain_model_job')
+        return $queryBuilder
+            ->select('uid', 'pid', ...array_keys(self::LEGACY_COLUMNS))
+            ->from(self::JOB_TABLE)
+            ->where($queryBuilder->expr()->or(...$hasAddress))
             ->orderBy('uid')
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
+    }
 
-        return $jobs;
+    private function countRows(string $table): int
+    {
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
+        $queryBuilder->getRestrictions()->removeAll();
+        return (int)$queryBuilder->count('uid')->from($table)->executeQuery()->fetchOne();
     }
 }

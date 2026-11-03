@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Pegasus\GoogleForJobs\Updates\MigrateLocationsUpdate;
 use Pegasus\GoogleForJobs\Updates\PluginListTypeToCTypeUpdate;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
@@ -17,4 +18,8 @@ return static function (ContainerConfigurator $configurator): void {
         ->autowire()
         ->public()
         ->tag('install.upgradewizard', ['identifier' => PluginListTypeToCTypeUpdate::IDENTIFIER]);
+    $services->set(MigrateLocationsUpdate::class)
+        ->autowire()
+        ->public()
+        ->tag('install.upgradewizard', ['identifier' => MigrateLocationsUpdate::IDENTIFIER]);
 };
