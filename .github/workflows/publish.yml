@@ -1,0 +1,39 @@
+name: Publish to TER
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish version ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    env:
+      TYPO3_EXTENSION_KEY: google_for_jobs
+      TYPO3_API_TOKEN: ${{ secrets.TYPO3_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      - name: Check version numbers
+        run: |
+          grep -q "'version' => '${{ github.ref_name }}'" ext_emconf.php
+          grep -q '"version": "${{ github.ref_name }}"' composer.json
+
+      - name: Install tailor
+        run: composer global require typo3/tailor --prefer-dist --no-progress
+
+      - name: Publish
+        run: |
+          "$(composer global config bin-dir --absolute --quiet)/tailor" ter:publish \
+            --comment "Release ${{ github.ref_name }}. See CHANGELOG.md for details: https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md" \
+            ${{ github.ref_name }}

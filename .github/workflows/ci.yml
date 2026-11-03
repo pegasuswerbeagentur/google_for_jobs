@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint and static analysis (TYPO3 ${{ matrix.typo3 }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        typo3: ['^13.4.37', '^14.3.10']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+
+      - name: Install dependencies
+        run: composer update --no-interaction --no-progress --with "typo3/cms-core:${{ matrix.typo3 }}"
+
+      - name: Validate composer.json
+        run: composer validate --no-check-lock
+
+      - name: PHP syntax
+        run: find Classes Configuration Tests ext_*.php -name '*.php' -print0 | xargs -0 -n1 php -l > /dev/null
+
+      - name: Coding guidelines
+        run: composer ci:cgl
+
+      - name: PHPStan
+        run: composer ci:phpstan
+
+  tests:
+    name: Tests (TYPO3 ${{ matrix.typo3 }}, PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - typo3: '^13.4.37'
+            php: '8.2'
+          - typo3: '^13.4.37'
+            php: '8.3'
+          - typo3: '^13.4.37'
+            php: '8.4'
+          - typo3: '^14.3.10'
+            php: '8.2'
+          - typo3: '^14.3.10'
+            php: '8.3'
+          - typo3: '^14.3.10'
+            php: '8.4'
+          - typo3: '^14.3.10'
+            php: '8.5'
+    env:
+      TYPO3_PATH_ROOT: ${{ github.workspace }}/.Build/public
+      TYPO3_PATH_APP: ${{ github.workspace }}/.Build
+      typo3DatabaseDriver: pdo_sqlite
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: intl, pdo_sqlite
+          tools: composer:v2
+          coverage: none
+
+      - name: Install dependencies
+        run: composer update --no-interaction --no-progress --with "typo3/cms-core:${{ matrix.typo3 }}"
+
+      - name: Unit tests
+        run: composer ci:tests:unit
+
+      - name: Functional tests
+        run: composer ci:tests:functional
